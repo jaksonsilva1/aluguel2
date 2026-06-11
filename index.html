@@ -2,21 +2,26 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#8b5cf6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>SuaveConsulta | Débitos Veiculares</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Poppins', 'Inter', sans-serif;
             background: linear-gradient(145deg, #f0f4f8 0%, #e2e8f0 100%);
             min-height: 100vh;
-            padding: 24px;
+            padding: 16px;
             position: relative;
+            touch-action: pan-y pinch-zoom;
         }
 
         /* Elementos decorativos suaves */
@@ -32,24 +37,24 @@
         .blob-1 {
             top: -100px;
             right: -100px;
-            width: 400px;
-            height: 400px;
+            width: 300px;
+            height: 300px;
             background: #a78bfa;
         }
 
         .blob-2 {
             bottom: -100px;
             left: -100px;
-            width: 350px;
-            height: 350px;
+            width: 250px;
+            height: 250px;
             background: #6ee7b7;
         }
 
         .blob-3 {
             top: 50%;
             left: 50%;
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             background: #fde68a;
             transform: translate(-50%, -50%);
         }
@@ -63,56 +68,56 @@
 
         /* Cards suaves */
         .soft-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 48px;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
 
         /* Tela de Login */
         .login-card {
-            max-width: 520px;
+            max-width: 500px;
             margin: 0 auto;
-            padding: 48px 40px;
+            padding: 32px 24px;
             text-align: center;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, #8b5cf6, #6ee7b7);
-            border-radius: 32px;
+            border-radius: 28px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
         }
 
         .logo span {
-            font-size: 44px;
+            font-size: 36px;
         }
 
         h1 {
-            font-size: 36px;
-            font-weight: 600;
+            font-size: 28px;
+            font-weight: 700;
             background: linear-gradient(135deg, #4c1d95, #0f766e);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             letter-spacing: -0.5px;
         }
 
         .tagline {
             color: #64748b;
-            font-size: 15px;
-            margin-bottom: 32px;
+            font-size: 13px;
+            margin-bottom: 28px;
         }
 
         .input-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
@@ -121,7 +126,7 @@
             margin-bottom: 8px;
             color: #334155;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .input-wrapper {
@@ -133,67 +138,66 @@
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 20px;
+            font-size: 18px;
             color: #94a3b8;
         }
 
         .input-wrapper input {
             width: 100%;
-            padding: 14px 16px 14px 48px;
+            padding: 16px 16px 16px 48px;
             border: 2px solid #e2e8f0;
             border-radius: 24px;
-            font-size: 16px;
+            font-size: 18px;
             transition: all 0.3s;
             background: white;
             font-family: monospace;
-            font-size: 18px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .input-wrapper input:focus {
             outline: none;
             border-color: #8b5cf6;
-            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
         }
 
         .btn-primary {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: linear-gradient(135deg, #8b5cf6, #6ee7b7);
             border: none;
-            border-radius: 24px;
+            border-radius: 28px;
             color: white;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.3);
+            gap: 10px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .btn-primary:active {
-            transform: translateY(0);
+            transform: scale(0.97);
+            transition: transform 0.05s;
         }
 
         .examples-box {
-            margin-top: 32px;
-            padding: 20px;
+            margin-top: 28px;
+            padding: 16px;
             background: #f8fafc;
             border-radius: 24px;
         }
 
         .examples-title {
             color: #64748b;
-            font-size: 13px;
-            margin-bottom: 12px;
+            font-size: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -208,31 +212,33 @@
         }
 
         .chip {
-            padding: 8px 16px;
+            padding: 10px 18px;
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 40px;
-            font-size: 13px;
+            font-size: 14px;
             font-family: monospace;
             cursor: pointer;
             transition: all 0.2s;
             color: #475569;
+            font-weight: 500;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .chip:hover {
+        .chip:active {
+            transform: scale(0.95);
             background: #8b5cf6;
             color: white;
-            border-color: #8b5cf6;
-            transform: scale(1.02);
         }
 
-        /* Alertas suaves */
+        /* Alertas */
         .alert {
-            padding: 12px 16px;
+            padding: 14px 16px;
             border-radius: 20px;
             margin-bottom: 20px;
             display: none;
-            font-size: 14px;
+            font-size: 13px;
             animation: slideDown 0.3s ease;
         }
 
@@ -287,13 +293,13 @@
         }
 
         .dashboard-header {
-            padding: 32px 40px;
+            padding: 20px 20px;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 20px;
         }
 
         /* Container da direita - info do veículo */
@@ -306,17 +312,17 @@
 
         .vehicle-model-right {
             color: #475569;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
         }
 
         /* Placa pequena estilo texto */
         .plate-small {
             background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 6px 14px;
+            border-radius: 24px;
             font-family: 'Courier New', monospace;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             letter-spacing: 2px;
             color: #1e293b;
@@ -325,7 +331,7 @@
         }
 
         .btn-secondary {
-            padding: 10px 24px;
+            padding: 10px 20px;
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 40px;
@@ -337,52 +343,50 @@
             align-items: center;
             gap: 8px;
             font-weight: 500;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .btn-secondary:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
-            transform: translateX(-2px);
+        .btn-secondary:active {
+            transform: scale(0.97);
+            background: #f1f5f9;
         }
 
-        /* Stats Grid */
+        /* Stats Grid - Mobile first */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 32px 40px;
-            max-width: 800px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            padding: 20px;
         }
 
         .stat-item {
             background: white;
-            padding: 20px;
-            border-radius: 28px;
-            transition: all 0.3s;
+            padding: 16px;
+            border-radius: 24px;
+            transition: all 0.2s;
             border: 1px solid #f1f5f9;
             text-align: center;
         }
 
-        .stat-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.1);
+        .stat-item:active {
+            transform: scale(0.98);
         }
 
         .stat-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
+            font-size: 24px;
+            margin-bottom: 8px;
         }
 
         .stat-value {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 4px;
         }
 
         .stat-label {
-            font-size: 13px;
+            font-size: 11px;
             color: #94a3b8;
         }
 
@@ -392,18 +396,18 @@
 
         /* Seções */
         .section {
-            padding: 0 40px 32px 40px;
+            padding: 0 20px 20px 20px;
         }
 
         .section-title {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 16px;
         }
 
         .section-title h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #1e293b;
         }
@@ -411,45 +415,39 @@
         .table-container {
             overflow-x: auto;
             background: white;
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid #f1f5f9;
+            -webkit-overflow-scrolling: touch;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 500px;
         }
 
         th {
             text-align: left;
-            padding: 16px 20px;
+            padding: 14px 14px;
             color: #64748b;
             font-weight: 500;
-            font-size: 13px;
+            font-size: 12px;
             background: #fafcff;
             border-bottom: 1px solid #e2e8f0;
         }
 
         td {
-            padding: 14px 20px;
+            padding: 12px 14px;
             color: #334155;
             border-bottom: 1px solid #f1f5f9;
-            font-size: 14px;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover td {
-            background: #fafcff;
+            font-size: 13px;
         }
 
         .badge {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
         }
 
@@ -466,36 +464,33 @@
         .btn-pix {
             background: linear-gradient(135deg, #00a86b, #0095d9);
             border: none;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 40px;
             color: white;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-family: inherit;
-        }
-
-        .btn-pix:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 168, 107, 0.3);
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .btn-pix:active {
-            transform: scale(0.98);
+            transform: scale(0.95);
         }
 
         .pix-icon-img {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             filter: brightness(0) invert(1);
         }
 
         .fee-info {
-            font-size: 11px;
+            font-size: 10px;
             color: #dc2626;
             margin-top: 4px;
             display: block;
@@ -503,18 +498,19 @@
 
         .original-amount {
             text-decoration: line-through;
-            font-size: 12px;
+            font-size: 11px;
             color: #94a3b8;
             margin-right: 6px;
         }
 
         .empty-state {
             text-align: center;
-            padding: 48px;
+            padding: 40px;
             color: #94a3b8;
+            font-size: 14px;
         }
 
-        /* Modal PIX */
+        /* Modal PIX - Mobile otimizado */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -528,6 +524,7 @@
             justify-content: center;
             z-index: 1000;
             animation: fadeIn 0.3s ease;
+            padding: 16px;
         }
 
         .modal-overlay.active {
@@ -537,11 +534,14 @@
         .modal-content {
             background: white;
             border-radius: 32px;
-            max-width: 480px;
-            width: 90%;
-            padding: 32px;
+            max-width: 450px;
+            width: 100%;
+            padding: 28px 24px;
             text-align: center;
             animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         @keyframes slideUp {
@@ -556,20 +556,20 @@
         }
 
         .pix-icon-large {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 16px;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 12px;
             display: block;
         }
 
         .modal-content h4 {
-            font-size: 24px;
+            font-size: 22px;
             color: #1e293b;
             margin-bottom: 8px;
         }
 
         .modal-amount {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: #00a86b;
             margin: 16px 0;
@@ -580,14 +580,14 @@
             padding: 12px;
             border-radius: 16px;
             margin: 12px 0;
-            font-size: 13px;
+            font-size: 12px;
             color: #d97706;
         }
 
         .qrcode-container {
             background: white;
-            padding: 20px;
-            border-radius: 24px;
+            padding: 16px;
+            border-radius: 20px;
             margin: 16px 0;
             display: flex;
             justify-content: center;
@@ -597,22 +597,22 @@
         }
 
         .qrcode-placeholder {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             color: #64748b;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .qrcode-placeholder .loading-spinner {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border: 3px solid #e2e8f0;
             border-top-color: #00a86b;
             border-radius: 50%;
@@ -625,10 +625,10 @@
 
         .pix-code {
             background: #f1f5f9;
-            padding: 16px;
+            padding: 14px;
             border-radius: 16px;
             font-family: monospace;
-            font-size: 12px;
+            font-size: 11px;
             word-break: break-all;
             margin: 16px 0;
             text-align: left;
@@ -637,58 +637,96 @@
         .btn-close {
             background: #e2e8f0;
             border: none;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 40px;
             color: #475569;
             font-weight: 600;
             cursor: pointer;
             margin-top: 8px;
+            touch-action: manipulation;
         }
 
         .btn-copy {
             background: #00a86b;
             border: none;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 40px;
             color: white;
             font-weight: 600;
             cursor: pointer;
             margin-right: 8px;
+            touch-action: manipulation;
         }
 
-        .btn-copy:hover {
-            background: #008f5a;
+        .btn-copy:active, .btn-close:active {
+            transform: scale(0.97);
         }
 
-        /* Responsivo */
+        /* Pull to refresh indicator */
+        .pull-indicator {
+            text-align: center;
+            padding: 10px;
+            color: #94a3b8;
+            font-size: 12px;
+            display: none;
+        }
+
+        /* Melhorias para touch */
         @media (max-width: 768px) {
             body {
-                padding: 16px;
+                padding: 12px;
             }
             
             .login-card {
-                padding: 32px 24px;
+                padding: 28px 20px;
             }
             
             h1 {
-                font-size: 28px;
+                font-size: 26px;
             }
             
-            .dashboard-header, .stats-grid, .section {
-                padding: 24px 20px;
+            .plate-text {
+                font-size: 18px;
+                letter-spacing: 2px;
             }
             
             .stats-grid {
-                gap: 12px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                padding: 16px;
+            }
+            
+            .stat-item {
+                padding: 12px;
             }
             
             .stat-value {
-                font-size: 24px;
+                font-size: 20px;
             }
             
-            th, td {
-                padding: 12px;
+            .dashboard-header {
+                padding: 16px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .vehicle-info-right {
+                align-items: flex-end;
+            }
+            
+            .vehicle-model-right {
+                font-size: 11px;
+            }
+            
+            .plate-small {
                 font-size: 12px;
+                padding: 4px 10px;
+            }
+            
+            .btn-secondary {
+                padding: 8px 16px;
+                font-size: 13px;
             }
             
             .btn-pix {
@@ -696,25 +734,29 @@
                 font-size: 11px;
             }
             
+            .pix-icon-img {
+                width: 14px;
+                height: 14px;
+            }
+            
+            .section {
+                padding: 0 16px 16px 16px;
+            }
+            
+            .modal-content {
+                padding: 24px 20px;
+            }
+            
             .qrcode-placeholder {
                 width: 150px;
                 height: 150px;
             }
-            
-            .dashboard-header {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 16px;
-            }
-            
-            .vehicle-info-right {
-                align-items: center;
-                order: 1;
-            }
-            
-            .btn-secondary {
-                justify-content: center;
-                order: 2;
+        }
+
+        /* Prevenir zoom em inputs no iOS */
+        @media (max-width: 768px) {
+            input, button, .btn-pix, .chip {
+                font-size: 16px;
             }
         }
     </style>
@@ -731,7 +773,7 @@
                 <span>🚗</span>
             </div>
             <h1>SuaveConsulta</h1>
-            <div class="tagline">Consulte débitos do seu veículo de forma simples e rápida</div>
+            <div class="tagline">Consulte débitos do seu veículo</div>
             
             <div id="loginAlert" class="alert alert-error"></div>
             
@@ -739,7 +781,7 @@
                 <label>Placa do veículo</label>
                 <div class="input-wrapper">
                     <span class="input-icon">🔢</span>
-                    <input type="text" id="plateInput" placeholder="ABC1D23" maxlength="8" autocomplete="off">
+                    <input type="text" id="plateInput" placeholder="ABC1D23" maxlength="8" autocomplete="off" inputmode="text">
                 </div>
             </div>
             
@@ -749,7 +791,7 @@
             
             <div class="examples-box">
                 <div class="examples-title">
-                    <span>📋</span> Exemplos para teste
+                    <span>📋</span> Testar com exemplo
                 </div>
                 <div class="chips">
                     <div class="chip" onclick="setExamplePlate('ABC1234')">ABC1234</div>
@@ -763,26 +805,23 @@
         <!-- Dashboard -->
         <div id="dashboard" class="dashboard soft-card">
             <div class="dashboard-header">
-                <!-- Botão Nova consulta à ESQUERDA -->
                 <button class="btn-secondary" onclick="handleLogout()">
                     ← Nova consulta
                 </button>
-                
-                <!-- Placa e modelo à DIREITA -->
                 <div class="vehicle-info-right">
                     <div class="vehicle-model-right" id="vehicleModel">Honda Civic 2019</div>
                     <div class="plate-small" id="plateDisplay">DEF5678</div>
                 </div>
             </div>
             
-            <div id="dashboardAlert" class="alert" style="margin: 0 40px 0 40px;"></div>
+            <div id="dashboardAlert" class="alert" style="margin: 0 16px;"></div>
             
             <div class="stats-grid" id="statsGrid"></div>
             
             <div class="section">
                 <div class="section-title">
                     <span>📌</span>
-                    <h3>Débitos pendentes e atrasados</h3>
+                    <h3>Débitos pendentes</h3>
                 </div>
                 <div class="table-container" id="debtsContainer"></div>
             </div>
@@ -790,7 +829,7 @@
             <div class="section">
                 <div class="section-title">
                     <span>📜</span>
-                    <h3>Histórico de pagamentos</h3>
+                    <h3>Histórico</h3>
                 </div>
                 <div class="table-container" id="historyContainer"></div>
             </div>
@@ -801,53 +840,33 @@
     <div id="pixModal" class="modal-overlay">
         <div class="modal-content">
             <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" alt="PIX" class="pix-icon-large">
-            <h4>Pagamento via PIX</h4>
-            <p style="color: #64748b; margin-bottom: 8px;">Débito:</p>
-            <div id="modalDebtDesc" style="font-weight: 500; color: #334155;"></div>
+            <h4>Pagar com PIX</h4>
+            <p style="color: #64748b; margin-bottom: 8px; font-size: 13px;">Débito:</p>
+            <div id="modalDebtDesc" style="font-weight: 500; color: #334155; font-size: 14px;"></div>
             <div id="modalFeeDetail" class="modal-fee-detail" style="display: none;"></div>
             <div class="modal-amount" id="modalAmount">R$ 0,00</div>
             
-            <!-- QR Code container para integração com Mercado Pago -->
             <div class="qrcode-container">
                 <div id="qrcodeArea" class="qrcode-placeholder">
                     <div class="loading-spinner"></div>
-                    <span>Aguardando PIX...</span>
+                    <span>Gerando PIX...</span>
                 </div>
             </div>
             
-            <!-- Código PIX copiável -->
             <div class="pix-code" id="pixCode">Carregando código PIX...</div>
             <div>
-                <button class="btn-copy" onclick="copyPixCode()">📋 Copiar código PIX</button>
+                <button class="btn-copy" onclick="copyPixCode()">📋 Copiar código</button>
                 <button class="btn-close" onclick="closePixModal()">Fechar</button>
             </div>
-            <p style="font-size: 11px; color: #94a3b8; margin-top: 16px;">Após o pagamento, o débito será atualizado em até 24h</p>
+            <p style="font-size: 10px; color: #94a3b8; margin-top: 14px;">Pagamento seguro via Mercado Pago</p>
         </div>
     </div>
 
     <script>
-        // ============================================
-        // MERCADO PAGO - API INTEGRATION (PREPARADO)
-        // ============================================
-        // Para integrar com Mercado Pago, utilize as funções abaixo:
-        //
-        // 1. Configure suas credenciais:
-        //    const ACCESS_TOKEN = "SEU_ACCESS_TOKEN_MERCADO_PAGO";
-        //    const PUBLIC_KEY = "SUA_PUBLIC_KEY";
-        //
-        // 2. No backend, crie um endpoint para gerar QR Code PIX:
-        //    POST /api/create-pix-payment
-        //    Body: { amount, description, debtId, plate }
-        //    Response: { qr_code_base64, qr_code_string, payment_id }
-        //
-        // 3. Implemente a função callMercadoPagoAPI(debt) abaixo
-        // ============================================
-
         // Taxa de multa por dia de atraso: R$ 6,60 (máximo 7 dias = R$ 46,20)
         const FEE_PER_DAY = 6.60;
         const MAX_FEE_DAYS = 7;
 
-        // Função para calcular dias de atraso
         function calculateOverdueDays(dueDateStr) {
             const today = new Date();
             const dueDate = parseDate(dueDateStr);
@@ -857,13 +876,11 @@
             return Math.min(diffDays, MAX_FEE_DAYS);
         }
 
-        // Função para parsear data no formato DD/MM/AAAA
         function parseDate(dateStr) {
             const parts = dateStr.split('/');
             return new Date(parts[2], parts[1] - 1, parts[0]);
         }
 
-        // Função para calcular valor total com multa
         function calculateTotalWithFee(originalAmount, dueDate, status) {
             if (status !== 'overdue') return originalAmount;
             const daysOverdue = calculateOverdueDays(dueDate);
@@ -872,455 +889,156 @@
             return originalAmount + fee;
         }
 
-        // Função para obter detalhe da multa
         function getFeeDetail(originalAmount, dueDate, status) {
             if (status !== 'overdue') return null;
             const daysOverdue = calculateOverdueDays(dueDate);
             if (daysOverdue === 0) return null;
             const fee = daysOverdue * FEE_PER_DAY;
-            return {
-                days: daysOverdue,
-                fee: fee,
-                total: originalAmount + fee
-            };
+            return { days: daysOverdue, fee: fee, total: originalAmount + fee };
         }
 
-        // ============================================
-        // INTEGRAÇÃO MERCADO PAGO (PREPARADO)
-        // ============================================
-        
-        // Configuração do Mercado Pago (substitua pelos seus dados)
-        const MERCADO_PAGO_CONFIG = {
-            //accessToken: "SEU_ACCESS_TOKEN_AQUI",
-            //publicKey: "SUA_PUBLIC_KEY_AQUI",
-            //apiUrl: "https://api.mercadopago.com/v1/payments",
-            sandbox: true // Modo de teste
-        };
-
-        // Função para criar pagamento PIX via API do Mercado Pago
-        // DESCOMENTE E IMPLEMENTE QUANDO TIVER O BACKEND PRONTO
         async function createMercadoPagoPixPayment(debt, totalAmount, plate) {
-            // Exemplo de implementação para quando o backend estiver pronto:
-            /*
-            try {
-                const response = await fetch('/api/create-pix-payment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        amount: totalAmount,
-                        description: debt.description,
-                        debtId: debt.id,
-                        plate: plate,
-                        originalAmount: debt.originalAmount,
-                        fee: totalAmount - debt.originalAmount
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    return {
-                        qrCodeBase64: data.qr_code_base64,
-                        qrCodeString: data.qr_code_string,
-                        paymentId: data.payment_id
-                    };
-                } else {
-                    throw new Error(data.message);
-                }
-            } catch (error) {
-                console.error('Erro ao criar pagamento PIX:', error);
-                // Fallback para modo de demonstração
-                return generateDemoPix(debt, totalAmount);
-            }
-            */
-            
-            // Enquanto não tem backend, usa modo demonstração
             return generateDemoPix(debt, totalAmount);
         }
 
-        // Função de demonstração (simula QR Code PIX)
         function generateDemoPix(debt, totalAmount) {
             const demoId = `DEMO_${debt.id}_${Date.now()}`;
             const demoPixString = `00020126360014br.gov.bcb.pix0114${demoId}@mercadopago.com5204000053039865404${totalAmount.toFixed(2).replace('.', '')}5802BR5912DETRAN-SP6008SAO PAULO62070503***6304${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
-            
-            // Simula um QR Code em base64 (apenas demonstração)
             const demoQrBase64 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0f4f8'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' fill='%2364748b' font-size='12'%3E🔷 QR Code PIX%3C/text%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' fill='%2364748b' font-size='10'%3EDemonstração%3C/text%3E%3Ctext x='50%25' y='75%25' text-anchor='middle' fill='%2300a86b' font-size='11'%3ER$ " + totalAmount.toFixed(2) + "%3C/text%3E%3C/svg%3E";
-            
-            return {
-                qrCodeBase64: demoQrBase64,
-                qrCodeString: demoPixString,
-                paymentId: demoId,
-                isDemo: true
-            };
+            return { qrCodeBase64: demoQrBase64, qrCodeString: demoPixString, paymentId: demoId, isDemo: true };
         }
 
-        // Função para exibir QR Code no modal
         async function displayPixQrCode(debt, totalAmount, plate) {
             const qrcodeArea = document.getElementById('qrcodeArea');
             const pixCodeElement = document.getElementById('pixCode');
             
-            // Mostrar loading
-            qrcodeArea.innerHTML = `
-                <div class="loading-spinner"></div>
-                <span>Gerando PIX...</span>
-            `;
+            qrcodeArea.innerHTML = `<div class="loading-spinner"></div><span>Gerando PIX...</span>`;
             pixCodeElement.innerHTML = 'Gerando código PIX...';
             
             try {
-                // Chamar API Mercado Pago
                 const pixData = await createMercadoPagoPixPayment(debt, totalAmount, plate);
-                
-                // Exibir QR Code
                 if (pixData.qrCodeBase64) {
-                    qrcodeArea.innerHTML = `<img src="${pixData.qrCodeBase64}" alt="QR Code PIX" style="width: 200px; height: 200px; border-radius: 12px;">`;
-                } else {
-                    qrcodeArea.innerHTML = `
-                        <div style="text-align: center;">
-                            <div style="font-size: 48px;">📱</div>
-                            <span>Escaneie o código no seu banco</span>
-                        </div>
-                    `;
+                    qrcodeArea.innerHTML = `<img src="${pixData.qrCodeBase64}" alt="QR Code PIX" style="width: 180px; height: 180px; border-radius: 12px;">`;
                 }
-                
-                // Exibir código copiável
                 pixCodeElement.innerHTML = pixData.qrCodeString;
-                
-                // Armazenar dados do pagamento para possível verificação
-                window.currentPixData = {
-                    paymentId: pixData.paymentId,
-                    debtId: debt.id,
-                    amount: totalAmount,
-                    plate: plate,
-                    isDemo: pixData.isDemo || false
-                };
-                
-                // Se for demonstração, mostrar aviso
                 if (pixData.isDemo) {
-                    showAlert(document.getElementById('dashboardAlert'), '🔷 Modo demonstração - Integre com Mercado Pago para gerar QR Codes reais', 'info');
+                    showAlert(document.getElementById('dashboardAlert'), '🔷 Modo demonstração', 'info');
                 }
-                
             } catch (error) {
-                console.error('Erro ao gerar PIX:', error);
-                qrcodeArea.innerHTML = `
-                    <div style="text-align: center; color: #dc2626;">
-                        <div style="font-size: 32px;">⚠️</div>
-                        <span>Erro ao gerar PIX</span>
-                        <span style="font-size: 11px;">Tente novamente</span>
-                    </div>
-                `;
+                qrcodeArea.innerHTML = `<div style="text-align: center; color: #dc2626;"><div style="font-size: 32px;">⚠️</div><span>Erro ao gerar PIX</span></div>`;
                 pixCodeElement.innerHTML = 'Erro ao gerar código PIX. Tente novamente.';
             }
         }
 
-        // Base de dados
         const vehicleDatabase = {
-            "ABC1234": {
-                plate: "ABC1234",
-                vehicle: "Fiat Strada 2020",
-                debts: [
-                    { id: 1, dueDate: "15/03/2024", description: "IPVA 2024", amount: 1250.00, status: "pending", originalAmount: 1250.00 },
-                    { id: 2, dueDate: "30/04/2024", description: "Licenciamento Anual", amount: 185.00, status: "pending", originalAmount: 185.00 }
-                ],
-                history: [
-                    { paymentDate: "10/01/2024", description: "IPVA 2023", amount: 1200.00, reference: "Parcela única" },
-                    { paymentDate: "05/02/2024", description: "Multa de Trânsito", amount: 195.00, reference: "Ato 123456" }
-                ]
-            },
-            "DEF5678": {
-                plate: "DEF5678",
-                vehicle: "Honda Civic 2019",
-                debts: [
-                    { id: 3, dueDate: "10/02/2024", description: "IPVA 2024 - 1ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 },
-                    { id: 4, dueDate: "10/03/2024", description: "IPVA 2024 - 2ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 },
-                    { id: 5, dueDate: "20/01/2024", description: "DPVAT", amount: 85.00, status: "overdue", originalAmount: 85.00 }
-                ],
-                history: [
-                    { paymentDate: "15/12/2023", description: "Licenciamento 2023", amount: 180.00, reference: "Exercício 2023" }
-                ]
-            },
-            "GHI9012": {
-                plate: "GHI9012",
-                vehicle: "Volkswagen Gol 2022",
-                debts: [],
-                history: [
-                    { paymentDate: "20/01/2024", description: "IPVA 2024", amount: 1100.00, reference: "À vista" },
-                    { paymentDate: "15/02/2024", description: "Licenciamento 2024", amount: 190.00, reference: "Exercício 2024" }
-                ]
-            },
-            "JKL3456": {
-                plate: "JKL3456",
-                vehicle: "Chevrolet Onix 2021",
-                debts: [
-                    { id: 6, dueDate: "05/05/2024", description: "IPVA 2024", amount: 980.00, status: "pending", originalAmount: 980.00 },
-                    { id: 7, dueDate: "20/06/2024", description: "Seguro Obrigatório", amount: 95.00, status: "pending", originalAmount: 95.00 },
-                    { id: 8, dueDate: "01/03/2024", description: "Multa - Radar", amount: 280.00, status: "overdue", originalAmount: 280.00 }
-                ],
-                history: [
-                    { paymentDate: "10/02/2023", description: "IPVA 2023", amount: 950.00, reference: "Parcela única" },
-                    { paymentDate: "15/03/2023", description: "Licenciamento 2023", amount: 175.00, reference: "Exercício 2023" },
-                    { paymentDate: "20/11/2023", description: "Multa - Estacionamento", amount: 150.00, reference: "Auto 789" }
-                ]
-            }
+            "ABC1234": { plate: "ABC1234", vehicle: "Fiat Strada 2020", debts: [{ id: 1, dueDate: "15/03/2024", description: "IPVA 2024", amount: 1250.00, status: "pending", originalAmount: 1250.00 }, { id: 2, dueDate: "30/04/2024", description: "Licenciamento Anual", amount: 185.00, status: "pending", originalAmount: 185.00 }], history: [{ paymentDate: "10/01/2024", description: "IPVA 2023", amount: 1200.00, reference: "Parcela única" }, { paymentDate: "05/02/2024", description: "Multa de Trânsito", amount: 195.00, reference: "Ato 123456" }] },
+            "DEF5678": { plate: "DEF5678", vehicle: "Honda Civic 2019", debts: [{ id: 3, dueDate: "10/02/2024", description: "IPVA 2024 - 1ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 }, { id: 4, dueDate: "10/03/2024", description: "IPVA 2024 - 2ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 }, { id: 5, dueDate: "20/01/2024", description: "DPVAT", amount: 85.00, status: "overdue", originalAmount: 85.00 }], history: [{ paymentDate: "15/12/2023", description: "Licenciamento 2023", amount: 180.00, reference: "Exercício 2023" }] },
+            "GHI9012": { plate: "GHI9012", vehicle: "Volkswagen Gol 2022", debts: [], history: [{ paymentDate: "20/01/2024", description: "IPVA 2024", amount: 1100.00, reference: "À vista" }, { paymentDate: "15/02/2024", description: "Licenciamento 2024", amount: 190.00, reference: "Exercício 2024" }] },
+            "JKL3456": { plate: "JKL3456", vehicle: "Chevrolet Onix 2021", debts: [{ id: 6, dueDate: "05/05/2024", description: "IPVA 2024", amount: 980.00, status: "pending", originalAmount: 980.00 }, { id: 7, dueDate: "20/06/2024", description: "Seguro Obrigatório", amount: 95.00, status: "pending", originalAmount: 95.00 }, { id: 8, dueDate: "01/03/2024", description: "Multa - Radar", amount: 280.00, status: "overdue", originalAmount: 280.00 }], history: [{ paymentDate: "10/02/2023", description: "IPVA 2023", amount: 950.00, reference: "Parcela única" }, { paymentDate: "15/03/2023", description: "Licenciamento 2023", amount: 175.00, reference: "Exercício 2023" }, { paymentDate: "20/11/2023", description: "Multa - Estacionamento", amount: 150.00, reference: "Auto 789" }] }
         };
 
-        let currentDebtForPix = null;
-        let currentPlateForPayment = null;
-
-        function normalizePlate(plate) {
-            return plate.replace(/[\s-]/g, '').toUpperCase();
-        }
-
-        function isValidPlate(plate) {
-            const normalized = normalizePlate(plate);
-            return /^[A-Z]{3}\d{4}$/.test(normalized) || /^[A-Z]{3}\d[A-Z]\d{2}$/.test(normalized);
-        }
-
-        function getVehicleData(plate) {
-            return vehicleDatabase[normalizePlate(plate)] || null;
-        }
-
-        function setExamplePlate(plate) {
-            document.getElementById('plateInput').value = plate;
-            document.getElementById('loginAlert').style.display = 'none';
-        }
+        function normalizePlate(plate) { return plate.replace(/[\s-]/g, '').toUpperCase(); }
+        function isValidPlate(plate) { const n = normalizePlate(plate); return /^[A-Z]{3}\d{4}$/.test(n) || /^[A-Z]{3}\d[A-Z]\d{2}$/.test(n); }
+        function getVehicleData(plate) { return vehicleDatabase[normalizePlate(plate)] || null; }
+        function setExamplePlate(plate) { document.getElementById('plateInput').value = plate; document.getElementById('loginAlert').style.display = 'none'; }
 
         function showAlert(element, message, type = 'error') {
             element.className = `alert alert-${type}`;
             element.innerHTML = message;
             element.style.display = 'block';
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 4000);
+            setTimeout(() => { element.style.display = 'none'; }, 3000);
         }
 
         async function openPixModal(debt, plate) {
-            currentDebtForPix = debt;
-            currentPlateForPayment = plate;
-            
             document.getElementById('modalDebtDesc').innerHTML = debt.description;
-            
-            let finalAmount = debt.amount;
-            let feeDetailHtml = '';
-            
+            let finalAmount = debt.amount, feeDetailHtml = '';
             if (debt.status === 'overdue') {
                 const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
                 if (feeInfo) {
                     finalAmount = feeInfo.total;
-                    feeDetailHtml = `
-                        <strong>📌 Multa por atraso:</strong><br>
-                        ${feeInfo.days} dia(s) de atraso × R$ ${FEE_PER_DAY.toFixed(2)} = R$ ${feeInfo.fee.toFixed(2)}<br>
-                        <strong>Valor original:</strong> R$ ${debt.originalAmount.toFixed(2)}<br>
-                        <strong>Valor total com multa:</strong> R$ ${feeInfo.total.toFixed(2)}
-                    `;
+                    feeDetailHtml = `<strong>Multa por atraso:</strong><br>${feeInfo.days} dia(s) × R$ ${FEE_PER_DAY.toFixed(2)} = R$ ${feeInfo.fee.toFixed(2)}<br><strong>Total:</strong> R$ ${feeInfo.total.toFixed(2)}`;
                     document.getElementById('modalFeeDetail').style.display = 'block';
                     document.getElementById('modalFeeDetail').innerHTML = feeDetailHtml;
-                } else {
-                    document.getElementById('modalFeeDetail').style.display = 'none';
-                }
-            } else {
-                document.getElementById('modalFeeDetail').style.display = 'none';
-            }
-            
+                } else { document.getElementById('modalFeeDetail').style.display = 'none'; }
+            } else { document.getElementById('modalFeeDetail').style.display = 'none'; }
             document.getElementById('modalAmount').innerHTML = `R$ ${finalAmount.toFixed(2)}`;
-            
-            // Abrir modal
             document.getElementById('pixModal').classList.add('active');
-            
-            // Gerar QR Code via Mercado Pago (ou demo)
             await displayPixQrCode(debt, finalAmount, plate);
         }
 
-        function closePixModal() {
-            document.getElementById('pixModal').classList.remove('active');
-            currentDebtForPix = null;
-            currentPlateForPayment = null;
-        }
-
+        function closePixModal() { document.getElementById('pixModal').classList.remove('active'); }
         function copyPixCode() {
-            const pixCode = document.getElementById('pixCode').innerText;
-            if (pixCode && pixCode !== 'Carregando código PIX...') {
-                navigator.clipboard.writeText(pixCode).then(() => {
-                    showAlert(document.getElementById('dashboardAlert'), '✅ Código PIX copiado! Agora cole no seu app do banco.', 'success');
-                }).catch(() => {
-                    showAlert(document.getElementById('dashboardAlert'), '❌ Erro ao copiar. Copie manualmente.', 'error');
-                });
-            } else {
-                showAlert(document.getElementById('dashboardAlert'), '⏳ Aguarde o código PIX ser gerado', 'info');
+            const code = document.getElementById('pixCode').innerText;
+            if (code && code !== 'Carregando código PIX...') {
+                navigator.clipboard.writeText(code).then(() => showAlert(document.getElementById('dashboardAlert'), '✅ Código PIX copiado!', 'success'));
             }
         }
 
         function handleLogin() {
-            const input = document.getElementById('plateInput');
-            let plate = input.value.trim();
+            let plate = document.getElementById('plateInput').value.trim();
             const alertDiv = document.getElementById('loginAlert');
-            
             alertDiv.style.display = 'none';
-            
-            if (!plate) {
-                showAlert(alertDiv, '✨ Por favor, informe a placa do veículo', 'error');
-                return;
-            }
-            
-            if (!isValidPlate(plate)) {
-                showAlert(alertDiv, '🔍 Formato inválido! Use ABC1234 ou ABC1D23', 'error');
-                return;
-            }
-            
+            if (!plate) { showAlert(alertDiv, 'Informe a placa do veículo', 'error'); return; }
+            if (!isValidPlate(plate)) { showAlert(alertDiv, 'Formato inválido! Ex: ABC1234', 'error'); return; }
             const vehicle = getVehicleData(plate);
-            if (!vehicle) {
-                showAlert(alertDiv, '🚗 Nenhum veículo encontrado com esta placa', 'error');
-                return;
-            }
-            
+            if (!vehicle) { showAlert(alertDiv, 'Veículo não encontrado', 'error'); return; }
             document.getElementById('loginScreen').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('loginScreen').style.opacity = '1';
-                const dashboard = document.getElementById('dashboard');
-                dashboard.classList.add('active');
+                document.getElementById('dashboard').classList.add('active');
                 updateDashboard(vehicle, normalizePlate(plate));
             }, 200);
-            
-            input.value = '';
+            document.getElementById('plateInput').value = '';
         }
 
         function updateDashboard(vehicle, plate) {
             document.getElementById('plateDisplay').innerHTML = plate;
             document.getElementById('vehicleModel').innerHTML = vehicle.vehicle;
-            
             let totalDebt = 0, overdueCount = 0, pendingCount = 0;
-            
-            const updatedDebts = vehicle.debts.map(debt => {
-                let currentAmount = debt.amount;
-                if (debt.status === 'overdue') {
-                    const totalWithFee = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
-                    currentAmount = totalWithFee;
-                    debt.amount = currentAmount;
-                }
-                totalDebt += currentAmount;
+            vehicle.debts.forEach(debt => {
+                let current = debt.amount;
+                if (debt.status === 'overdue') current = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
+                totalDebt += current;
                 if (debt.status === 'overdue') overdueCount++;
                 else if (debt.status === 'pending') pendingCount++;
-                return debt;
             });
-            
-            const statsHTML = `
-                <div class="stat-item">
-                    <div class="stat-icon">💰</div>
-                    <div class="stat-value debt">R$ ${totalDebt.toFixed(2)}</div>
-                    <div class="stat-label">Total em débito</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">⚠️</div>
-                    <div class="stat-value debt">${overdueCount}</div>
-                    <div class="stat-label">Débitos atrasados</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">⏳</div>
-                    <div class="stat-value">${pendingCount}</div>
-                    <div class="stat-label">Débitos pendentes</div>
-                </div>
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-item"><div class="stat-icon">💰</div><div class="stat-value debt">R$ ${totalDebt.toFixed(2)}</div><div class="stat-label">Total em débito</div></div>
+                <div class="stat-item"><div class="stat-icon">⚠️</div><div class="stat-value debt">${overdueCount}</div><div class="stat-label">Atrasados</div></div>
+                <div class="stat-item"><div class="stat-icon">⏳</div><div class="stat-value">${pendingCount}</div><div class="stat-label">Pendentes</div></div>
             `;
-            document.getElementById('statsGrid').innerHTML = statsHTML;
-            
             if (vehicle.debts.length === 0) {
-                document.getElementById('debtsContainer').innerHTML = `
-                    <div class="empty-state">
-                        🎉 Nenhum débito pendente! Seu veículo está em dia.
-                    </div>
-                `;
+                document.getElementById('debtsContainer').innerHTML = `<div class="empty-state">🎉 Nenhum débito pendente! Seu veículo está em dia.</div>`;
             } else {
-                const debtsHTML = `
-                    <table>
-                        <thead>
-                            <tr><th>Vencimento</th><th>Descrição</th><th>Valor</th><th>Situação</th><th>Ação</th></tr>
-                        </thead>
-                        <tbody>
-                            ${vehicle.debts.map(debt => {
-                                let displayAmount = debt.amount;
-                                let originalDisplay = '';
-                                let feeDisplay = '';
-                                
-                                if (debt.status === 'overdue') {
-                                    const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
-                                    if (feeInfo && feeInfo.fee > 0) {
-                                        originalDisplay = `<span class="original-amount">R$ ${debt.originalAmount.toFixed(2)}</span>`;
-                                        feeDisplay = `<span class="fee-info">+ R$ ${feeInfo.fee.toFixed(2)} (${feeInfo.days} dias atraso)</span>`;
-                                        displayAmount = feeInfo.total;
-                                    }
-                                }
-                                
-                                return `
-                                    <tr>
-                                        <td>${debt.dueDate}</td>
-                                        <td>${debt.description}</td>
-                                        <td>
-                                            ${originalDisplay}
-                                            <strong>R$ ${displayAmount.toFixed(2)}</strong>
-                                            ${feeDisplay}
-                                        </td>
-                                        <td><span class="badge ${debt.status === 'overdue' ? 'badge-overdue' : 'badge-pending'}">
-                                            ${debt.status === 'overdue' ? '⚠️ Atrasado' : '⏳ Pendente'}
-                                        </span></td>
-                                        <td>
-                                            <button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${plate}")'>
-                                                <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" alt="PIX" class="pix-icon-img"> PIX
-                                            </button>
-                                        </td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                `;
-                document.getElementById('debtsContainer').innerHTML = debtsHTML;
+                document.getElementById('debtsContainer').innerHTML = `<table><thead><tr><th>Vencimento</th><th>Descrição</th><th>Valor</th><th>Ação</th></tr></thead><tbody>${vehicle.debts.map(debt => {
+                    let displayAmount = debt.amount, originalDisplay = '', feeDisplay = '';
+                    if (debt.status === 'overdue') {
+                        const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
+                        if (feeInfo && feeInfo.fee > 0) {
+                            originalDisplay = `<span class="original-amount">R$ ${debt.originalAmount.toFixed(2)}</span>`;
+                            feeDisplay = `<span class="fee-info">+ R$ ${feeInfo.fee.toFixed(2)}</span>`;
+                            displayAmount = feeInfo.total;
+                        }
+                    }
+                    return `<tr><td>${debt.dueDate}</td><td>${debt.description}</td><td>${originalDisplay}<strong>R$ ${displayAmount.toFixed(2)}</strong>${feeDisplay}</td><td><button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${plate}")'><img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img"> PIX</button></td></tr>`;
+                }).join('')}</tbody></table>`;
             }
-            
             if (vehicle.history.length === 0) {
-                document.getElementById('historyContainer').innerHTML = `
-                    <div class="empty-state">
-                        📭 Nenhum histórico de pagamento encontrado
-                    </div>
-                `;
+                document.getElementById('historyContainer').innerHTML = `<div class="empty-state">📭 Nenhum histórico de pagamento</div>`;
             } else {
-                const historyHTML = `
-                    <table>
-                        <thead>
-                            <tr><th>Data pagamento</th><th>Descrição</th><th>Valor pago</th><th>Referência</th></tr>
-                        </thead>
-                        <tbody>
-                            ${vehicle.history.map(hist => `
-                                <tr>
-                                    <td>${hist.paymentDate}</td>
-                                    <td>${hist.description}</td>
-                                    <td>R$ ${hist.amount.toFixed(2)}</td>
-                                    <td>${hist.reference}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                `;
-                document.getElementById('historyContainer').innerHTML = historyHTML;
+                document.getElementById('historyContainer').innerHTML = `<table><thead><tr><th>Data</th><th>Descrição</th><th>Valor</th><th>Referência</th></tr></thead><tbody>${vehicle.history.map(h => `<tr><td>${h.paymentDate}</td><td>${h.description}</td><td>R$ ${h.amount.toFixed(2)}</td><td>${h.reference}</td></tr>`).join('')}</tbody></table>`;
             }
         }
 
         function handleLogout() {
-            const dashboard = document.getElementById('dashboard');
-            dashboard.classList.remove('active');
-            const loginScreen = document.getElementById('loginScreen');
-            loginScreen.style.display = 'block';
+            document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('loginScreen').style.display = 'block';
             document.getElementById('plateInput').focus();
-            document.getElementById('dashboardAlert').style.display = 'none';
         }
 
-        document.getElementById('plateInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') handleLogin();
-        });
-
-        window.addEventListener('load', () => {
-            document.getElementById('plateInput').focus();
-        });
+        document.getElementById('plateInput').addEventListener('keypress', e => { if (e.key === 'Enter') handleLogin(); });
+        window.addEventListener('load', () => document.getElementById('plateInput').focus());
     </script>
 </body>
 </html>
