@@ -676,7 +676,7 @@
         /* Stats Grid - Mobile first */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
         }
 
@@ -699,7 +699,7 @@
         }
 
         .stat-value {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 4px;
@@ -718,48 +718,63 @@
             color: #059669;
         }
 
-        /* Tabelas */
+        /* Tabelas - SEM ROLAGEM HORIZONTAL */
         .table-container {
-            overflow-x: auto;
+            overflow: visible;
             background: white;
             border-radius: 20px;
             border: 1px solid #f1f5f9;
-            -webkit-overflow-scrolling: touch;
+            width: 100%;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 500px;
+            table-layout: fixed;
         }
 
         th {
             text-align: left;
-            padding: 14px 14px;
+            padding: 12px 10px;
             color: #64748b;
             font-weight: 500;
-            font-size: 12px;
+            font-size: 11px;
             background: #fafcff;
             border-bottom: 1px solid #e2e8f0;
         }
 
         td {
-            padding: 12px 14px;
+            padding: 10px 10px;
             color: #334155;
             border-bottom: 1px solid #f1f5f9;
-            font-size: 13px;
+            font-size: 12px;
+            word-wrap: break-word;
         }
 
         tr:last-child td {
             border-bottom: none;
         }
 
+        /* Larguras fixas para colunas - EVITA ROLAGEM */
+        .debt-table .col-due { width: 15%; }
+        .debt-table .col-desc { width: 28%; }
+        .debt-table .col-status { width: 18%; }
+        .debt-table .col-value { width: 22%; }
+        .debt-table .col-action { width: 17%; }
+
+        .history-table .col-date { width: 18%; }
+        .history-table .col-desc { width: 28%; }
+        .history-table .col-amount { width: 20%; }
+        .history-table .col-ref { width: 22%; }
+        .history-table .col-status { width: 12%; }
+
         .badge {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 3px 10px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .badge-pending {
@@ -780,19 +795,20 @@
         .btn-pix {
             background: linear-gradient(135deg, #00a86b, #0095d9);
             border: none;
-            padding: 8px 14px;
+            padding: 6px 12px;
             border-radius: 40px;
             color: white;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 11px;
             cursor: pointer;
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             font-family: inherit;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
+            white-space: nowrap;
         }
 
         .btn-pix:active {
@@ -800,23 +816,23 @@
         }
 
         .pix-icon-img {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             filter: brightness(0) invert(1);
         }
 
         .fee-info {
-            font-size: 10px;
+            font-size: 9px;
             color: #dc2626;
-            margin-top: 4px;
+            margin-top: 2px;
             display: block;
         }
 
         .original-amount {
             text-decoration: line-through;
-            font-size: 11px;
+            font-size: 10px;
             color: #94a3b8;
-            margin-right: 6px;
+            margin-right: 4px;
         }
 
         .empty-state {
@@ -835,7 +851,7 @@
         /* Resumo de estatísticas - página */
         .stats-summary-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 16px;
             margin-bottom: 24px;
         }
@@ -849,7 +865,7 @@
         }
 
         .stats-summary-card .number {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: #1e293b;
         }
@@ -1031,6 +1047,10 @@
                 padding: 12px;
             }
 
+            .main-content {
+                padding: 8px;
+            }
+
             .login-card {
                 padding: 28px 20px;
             }
@@ -1041,20 +1061,25 @@
 
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
+                gap: 8px;
             }
 
             .stats-summary-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 10px;
             }
 
             .stat-item {
-                padding: 12px;
+                padding: 10px 6px;
             }
 
             .stat-value {
-                font-size: 20px;
+                font-size: 18px;
+            }
+
+            .stat-icon {
+                font-size: 18px;
+                margin-bottom: 4px;
             }
 
             .dashboard-header {
@@ -1078,22 +1103,31 @@
             }
 
             .btn-secondary {
-                padding: 8px 16px;
-                font-size: 13px;
+                padding: 8px 14px;
+                font-size: 12px;
             }
 
             .btn-pix {
-                padding: 6px 12px;
-                font-size: 11px;
+                padding: 5px 10px;
+                font-size: 10px;
             }
 
             .pix-icon-img {
-                width: 14px;
-                height: 14px;
+                width: 12px;
+                height: 12px;
             }
 
             .page {
-                padding: 16px;
+                padding: 12px;
+            }
+
+            .page-title {
+                font-size: 17px;
+            }
+
+            .page-subtitle {
+                font-size: 12px;
+                margin-bottom: 12px;
             }
 
             .modal-content {
@@ -1116,6 +1150,83 @@
 
             .dashboard-header-left .btn-secondary {
                 display: none;
+            }
+
+            /* Ajustes nas tabelas para mobile - SEM ROLAGEM */
+            .debt-table .col-due { width: 14%; }
+            .debt-table .col-desc { width: 26%; }
+            .debt-table .col-status { width: 16%; }
+            .debt-table .col-value { width: 24%; }
+            .debt-table .col-action { width: 20%; }
+
+            .history-table .col-date { width: 16%; }
+            .history-table .col-desc { width: 26%; }
+            .history-table .col-amount { width: 18%; }
+            .history-table .col-ref { width: 24%; }
+            .history-table .col-status { width: 16%; }
+
+            th, td {
+                padding: 8px 6px;
+                font-size: 11px;
+            }
+
+            .badge {
+                font-size: 9px;
+                padding: 2px 8px;
+            }
+
+            .original-amount {
+                font-size: 9px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+
+            .debt-table .col-due { width: 12%; }
+            .debt-table .col-desc { width: 22%; }
+            .debt-table .col-status { width: 14%; }
+            .debt-table .col-value { width: 26%; }
+            .debt-table .col-action { width: 26%; }
+
+            .history-table .col-date { width: 14%; }
+            .history-table .col-desc { width: 22%; }
+            .history-table .col-amount { width: 16%; }
+            .history-table .col-ref { width: 26%; }
+            .history-table .col-status { width: 22%; }
+
+            th, td {
+                padding: 6px 4px;
+                font-size: 10px;
+            }
+
+            .btn-pix {
+                padding: 4px 8px;
+                font-size: 9px;
+                gap: 2px;
+            }
+
+            .pix-icon-img {
+                width: 10px;
+                height: 10px;
+            }
+
+            .badge {
+                font-size: 8px;
+                padding: 2px 6px;
+            }
+
+            .plate-small {
+                font-size: 10px;
+                padding: 3px 8px;
+                letter-spacing: 1px;
+            }
+
+            .vehicle-model-right {
+                font-size: 10px;
             }
         }
 
@@ -1653,7 +1764,13 @@
                 return;
             }
 
-            let html = `<table><thead><tr><th>Vencimento</th><th>Descrição</th><th>Status</th><th>Valor</th><th>Ação</th></tr></thead><tbody>`;
+            let html = `<table class="debt-table"><thead><tr>
+                <th class="col-due">Venc.</th>
+                <th class="col-desc">Descrição</th>
+                <th class="col-status">Status</th>
+                <th class="col-value">Valor</th>
+                <th class="col-action">Ação</th>
+            </tr></thead><tbody>`;
 
             vehicle.debts.forEach(debt => {
                 let displayAmount = debt.amount,
@@ -1672,11 +1789,11 @@
                 }
 
                 html += `<tr>
-                    <td>${debt.dueDate}</td>
-                    <td>${debt.description}</td>
-                    <td><span class="badge ${statusBadge}">${statusLabel}</span></td>
-                    <td>${originalDisplay}<strong>${formatCurrency(displayAmount)}</strong>${feeDisplay}</td>
-                    <td><button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${currentPlate}")'><img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img"> PIX</button></td>
+                    <td class="col-due">${debt.dueDate}</td>
+                    <td class="col-desc">${debt.description}</td>
+                    <td class="col-status"><span class="badge ${statusBadge}">${statusLabel}</span></td>
+                    <td class="col-value">${originalDisplay}<strong>${formatCurrency(displayAmount)}</strong>${feeDisplay}</td>
+                    <td class="col-action"><button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${currentPlate}")'><img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img"> PIX</button></td>
                 </tr>`;
             });
 
@@ -1694,15 +1811,21 @@
                 return;
             }
 
-            let html = `<table><thead><tr><th>Data</th><th>Descrição</th><th>Valor</th><th>Referência</th><th>Status</th></tr></thead><tbody>`;
+            let html = `<table class="history-table"><thead><tr>
+                <th class="col-date">Data</th>
+                <th class="col-desc">Descrição</th>
+                <th class="col-amount">Valor</th>
+                <th class="col-ref">Referência</th>
+                <th class="col-status">Status</th>
+            </tr></thead><tbody>`;
 
             vehicle.history.forEach(h => {
                 html += `<tr>
-                    <td>${h.paymentDate}</td>
-                    <td>${h.description}</td>
-                    <td><strong>${formatCurrency(h.amount)}</strong></td>
-                    <td>${h.reference}</td>
-                    <td><span class="badge badge-paid">Pago</span></td>
+                    <td class="col-date">${h.paymentDate}</td>
+                    <td class="col-desc">${h.description}</td>
+                    <td class="col-amount"><strong>${formatCurrency(h.amount)}</strong></td>
+                    <td class="col-ref">${h.reference}</td>
+                    <td class="col-status"><span class="badge badge-paid">Pago</span></td>
                 </tr>`;
             });
 
