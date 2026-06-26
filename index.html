@@ -756,9 +756,9 @@
         }
 
         /* Larguras fixas para colunas - EVITA ROLAGEM */
-        .debt-table .col-due { width: 15%; }
-        .debt-table .col-desc { width: 28%; }
-        .debt-table .col-status { width: 18%; }
+        .debt-table .col-due { width: 18%; }
+        .debt-table .col-desc { width: 27%; }
+        .debt-table .col-status { width: 16%; }
         .debt-table .col-value { width: 22%; }
         .debt-table .col-action { width: 17%; }
 
@@ -958,6 +958,35 @@
             color: #d97706;
         }
 
+        .modal-debt-info {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 16px;
+            margin: 8px 0 12px 0;
+            font-size: 13px;
+            color: #475569;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .modal-debt-info .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+        }
+
+        .modal-debt-info .info-label {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .modal-debt-info .info-value {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
         .qrcode-container {
             background: white;
             padding: 16px;
@@ -1153,9 +1182,9 @@
             }
 
             /* Ajustes nas tabelas para mobile - SEM ROLAGEM */
-            .debt-table .col-due { width: 14%; }
-            .debt-table .col-desc { width: 26%; }
-            .debt-table .col-status { width: 16%; }
+            .debt-table .col-due { width: 16%; }
+            .debt-table .col-desc { width: 25%; }
+            .debt-table .col-status { width: 15%; }
             .debt-table .col-value { width: 24%; }
             .debt-table .col-action { width: 20%; }
 
@@ -1186,11 +1215,11 @@
                 gap: 6px;
             }
 
-            .debt-table .col-due { width: 12%; }
+            .debt-table .col-due { width: 14%; }
             .debt-table .col-desc { width: 22%; }
             .debt-table .col-status { width: 14%; }
             .debt-table .col-value { width: 26%; }
-            .debt-table .col-action { width: 26%; }
+            .debt-table .col-action { width: 24%; }
 
             .history-table .col-date { width: 14%; }
             .history-table .col-desc { width: 22%; }
@@ -1417,8 +1446,24 @@
         <div class="modal-content">
             <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" alt="PIX" class="pix-icon-large">
             <h4>Pagar com PIX</h4>
-            <p style="color: #64748b; margin-bottom: 8px; font-size: 13px;">Débito:</p>
-            <div id="modalDebtDesc" style="font-weight: 500; color: #334155; font-size: 14px;"></div>
+            <p style="color: #64748b; margin-bottom: 8px; font-size: 13px;">Detalhes do débito:</p>
+            
+            <!-- Informações do débito no modal -->
+            <div class="modal-debt-info" id="modalDebtInfo">
+                <div class="info-row">
+                    <span class="info-label">📝 Descrição</span>
+                    <span class="info-value" id="modalDebtDesc">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">📅 Vencimento</span>
+                    <span class="info-value" id="modalDebtDueDate">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">📊 Status</span>
+                    <span class="info-value" id="modalDebtStatus">-</span>
+                </div>
+            </div>
+
             <div id="modalFeeDetail" class="modal-fee-detail" style="display: none;"></div>
             <div class="modal-amount" id="modalAmount">R$ 0,00</div>
 
@@ -1561,6 +1606,15 @@
             return 'R$ ' + value.toFixed(2);
         }
 
+        function getStatusLabel(status) {
+            const labels = {
+                'pending': '⏳ Pendente',
+                'overdue': '⚠️ Atrasado',
+                'paid': '✅ Pago'
+            };
+            return labels[status] || status;
+        }
+
         // ==================== SIDEBAR ====================
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -1579,22 +1633,18 @@
         function navigateTo(page) {
             currentPage = page;
 
-            // Atualiza itens ativos na sidebar
             document.querySelectorAll('.sidebar-nav-item[data-page]').forEach(item => {
                 item.classList.toggle('active', item.dataset.page === page);
             });
 
-            // Mostra/oculta páginas
             document.querySelectorAll('.page').forEach(p => {
                 p.classList.toggle('active', p.id === 'page-' + page);
             });
 
-            // Fecha sidebar em mobile
             if (window.innerWidth <= 768) {
                 closeSidebar();
             }
 
-            // Atualiza conteúdo se já tiver dados
             if (currentVehicle) {
                 renderPageContent(page);
             }
@@ -1670,23 +1720,33 @@
         }
 
         function openPixModal(debt, plate) {
-            document.getElementById('modalDebtDesc').innerHTML = debt.description;
-            let finalAmount = debt.amount,
-                feeDetailHtml = '';
+            // Preenche as informações do débito no modal
+            document.getElementById('modalDebtDesc').textContent = debt.description;
+            document.getElementById('modalDebtDueDate').textContent = debt.dueDate;
+            
+            const statusLabel = debt.status === 'overdue' ? '⚠️ Atrasado' : '⏳ Pendente';
+            document.getElementById('modalDebtStatus').textContent = statusLabel;
+            
+            let finalAmount = debt.amount;
+            const feeDetailEl = document.getElementById('modalFeeDetail');
+            
             if (debt.status === 'overdue') {
                 const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
-                if (feeInfo) {
+                if (feeInfo && feeInfo.fee > 0) {
                     finalAmount = feeInfo.total;
-                    feeDetailHtml =
-                        `<strong>Multa por atraso:</strong><br>${feeInfo.days} dia(s) × R$ ${FEE_PER_DAY.toFixed(2)} = R$ ${feeInfo.fee.toFixed(2)}<br><strong>Total:</strong> R$ ${feeInfo.total.toFixed(2)}`;
-                    document.getElementById('modalFeeDetail').style.display = 'block';
-                    document.getElementById('modalFeeDetail').innerHTML = feeDetailHtml;
+                    feeDetailEl.style.display = 'block';
+                    feeDetailEl.innerHTML = `
+                        <strong>💰 Multa por atraso:</strong><br>
+                        ${feeInfo.days} dia(s) × R$ ${FEE_PER_DAY.toFixed(2)} = R$ ${feeInfo.fee.toFixed(2)}<br>
+                        <strong>Total com multa:</strong> R$ ${feeInfo.total.toFixed(2)}
+                    `;
                 } else {
-                    document.getElementById('modalFeeDetail').style.display = 'none';
+                    feeDetailEl.style.display = 'none';
                 }
             } else {
-                document.getElementById('modalFeeDetail').style.display = 'none';
+                feeDetailEl.style.display = 'none';
             }
+            
             document.getElementById('modalAmount').innerHTML = `R$ ${finalAmount.toFixed(2)}`;
             document.getElementById('pixModal').classList.add('active');
             displayPixQrCode(debt, finalAmount, plate);
@@ -1765,7 +1825,7 @@
             }
 
             let html = `<table class="debt-table"><thead><tr>
-                <th class="col-due">Venc.</th>
+                <th class="col-due">📅 Venc.</th>
                 <th class="col-desc">Descrição</th>
                 <th class="col-status">Status</th>
                 <th class="col-value">Valor</th>
@@ -1789,7 +1849,7 @@
                 }
 
                 html += `<tr>
-                    <td class="col-due">${debt.dueDate}</td>
+                    <td class="col-due"><strong>${debt.dueDate}</strong></td>
                     <td class="col-desc">${debt.description}</td>
                     <td class="col-status"><span class="badge ${statusBadge}">${statusLabel}</span></td>
                     <td class="col-value">${originalDisplay}<strong>${formatCurrency(displayAmount)}</strong>${feeDisplay}</td>
@@ -1812,7 +1872,7 @@
             }
 
             let html = `<table class="history-table"><thead><tr>
-                <th class="col-date">Data</th>
+                <th class="col-date">📅 Data</th>
                 <th class="col-desc">Descrição</th>
                 <th class="col-amount">Valor</th>
                 <th class="col-ref">Referência</th>
@@ -1825,7 +1885,7 @@
                     <td class="col-desc">${h.description}</td>
                     <td class="col-amount"><strong>${formatCurrency(h.amount)}</strong></td>
                     <td class="col-ref">${h.reference}</td>
-                    <td class="col-status"><span class="badge badge-paid">Pago</span></td>
+                    <td class="col-status"><span class="badge badge-paid">✅ Pago</span></td>
                 </tr>`;
             });
 
@@ -1946,14 +2006,11 @@
             currentVehicle = vehicle;
             currentPlate = plate;
 
-            // Atualiza cabeçalho
             document.getElementById('plateDisplay').innerHTML = plate;
             document.getElementById('vehicleModel').innerHTML = vehicle.vehicle;
 
-            // Atualiza sidebar
             updateSidebarVehicle(vehicle, plate);
 
-            // Renderiza página atual
             renderPageContent(currentPage);
         }
 
@@ -1978,13 +2035,11 @@
                 return;
             }
 
-            // Transição
             document.getElementById('loginScreen').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('loginScreen').style.opacity = '1';
                 document.getElementById('dashboard').classList.add('active');
-                // Volta para a página inicial (Visão Geral)
                 currentPage = 'overview';
                 document.querySelectorAll('.sidebar-nav-item[data-page]').forEach(item => {
                     item.classList.toggle('active', item.dataset.page === 'overview');
@@ -2005,7 +2060,6 @@
             currentVehicle = null;
             currentPlate = '';
             updateSidebarVehicle(null, '');
-            // Limpa conteúdo
             document.getElementById('statsGrid').innerHTML = '';
             document.getElementById('debtsContainer').innerHTML = '';
             document.getElementById('historyContainer').innerHTML = '';
