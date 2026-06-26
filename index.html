@@ -19,9 +19,9 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Poppins', 'Inter', sans-serif;
             background: linear-gradient(145deg, #f0f4f8 0%, #e2e8f0 100%);
             min-height: 100vh;
-            padding: 16px;
             position: relative;
             touch-action: pan-y pinch-zoom;
+            overflow-x: hidden;
         }
 
         /* Elementos decorativos suaves */
@@ -59,11 +59,281 @@
             transform: translate(-50%, -50%);
         }
 
-        .container {
+        /* ==================== SIDEBAR ==================== */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            max-width: 85vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 4px 0 40px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 24px 0 20px 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        /* Cabeçalho da sidebar */
+        .sidebar-header {
+            padding: 0 20px 20px 20px;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-logo {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #8b5cf6, #6ee7b7);
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+            flex-shrink: 0;
+        }
+
+        .sidebar-brand-text h2 {
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4c1d95, #0f766e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .sidebar-brand-text span {
+            font-size: 11px;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .sidebar-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 4px;
+            touch-action: manipulation;
+            transition: transform 0.2s;
+        }
+
+        .sidebar-close:active {
+            transform: scale(0.9);
+        }
+
+        /* Info do veículo na sidebar */
+        .sidebar-vehicle {
+            padding: 16px 20px;
+            background: #f8fafc;
+            margin: 16px 16px 12px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .sidebar-vehicle-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-vehicle-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sidebar-vehicle-info .model {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar-vehicle-info .plate {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: #475569;
+            letter-spacing: 1.5px;
+        }
+
+        /* Navegação da sidebar */
+        .sidebar-nav {
+            flex: 1;
+            padding: 8px 12px;
+        }
+
+        .sidebar-nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 12px 8px 12px;
+        }
+
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 16px;
+            color: #475569;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .sidebar-nav-item:active {
+            transform: scale(0.97);
+        }
+
+        .sidebar-nav-item:hover {
+            background: #f1f5f9;
+        }
+
+        .sidebar-nav-item.active {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .sidebar-nav-item .nav-icon {
+            font-size: 20px;
+            width: 28px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .sidebar-nav-item .nav-badge {
+            margin-left: auto;
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .sidebar-nav-item.active .nav-badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        .sidebar-nav-item .nav-arrow {
+            margin-left: auto;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .sidebar-nav-item.active .nav-arrow {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Rodapé da sidebar */
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: auto;
+        }
+
+        .sidebar-footer .btn-logout {
+            width: 100%;
+            padding: 12px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 16px;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            touch-action: manipulation;
+            font-family: inherit;
+        }
+
+        .sidebar-footer .btn-logout:active {
+            transform: scale(0.97);
+            background: #e2e8f0;
+        }
+
+        .sidebar-version {
+            text-align: center;
+            font-size: 10px;
+            color: #cbd5e1;
+            margin-top: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ==================== CONTEÚDO PRINCIPAL ==================== */
+        .main-content {
+            padding: 16px;
             max-width: 1280px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            transition: all 0.3s ease;
         }
 
         /* Cards suaves */
@@ -114,6 +384,28 @@
             color: #64748b;
             font-size: 13px;
             margin-bottom: 28px;
+        }
+
+        /* Botão hambúrguer - aparece no dashboard */
+        .hamburger-btn {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 10px 12px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #475569;
+            transition: all 0.2s;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .hamburger-btn:active {
+            transform: scale(0.95);
         }
 
         .input-group {
@@ -253,6 +545,15 @@
             }
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         .alert-error {
             background: #fee2e2;
             color: #dc2626;
@@ -277,23 +578,12 @@
             animation: fadeIn 0.4s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .dashboard.active {
             display: block;
         }
 
         .dashboard-header {
-            padding: 20px 20px;
+            padding: 16px 20px;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
@@ -302,12 +592,18 @@
             flex-wrap: wrap;
         }
 
+        .dashboard-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         /* Container da direita - info do veículo */
         .vehicle-info-right {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 6px;
+            gap: 4px;
         }
 
         .vehicle-model-right {
@@ -345,6 +641,7 @@
             font-weight: 500;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
+            font-family: inherit;
         }
 
         .btn-secondary:active {
@@ -352,12 +649,35 @@
             background: #f1f5f9;
         }
 
+        /* ==================== PÁGINAS (SECTIONS) ==================== */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+            padding: 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .page-subtitle {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
         /* Stats Grid - Mobile first */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 12px;
-            padding: 20px;
         }
 
         .stat-item {
@@ -394,24 +714,11 @@
             color: #dc2626;
         }
 
-        /* Seções */
-        .section {
-            padding: 0 20px 20px 20px;
+        .stat-value.success {
+            color: #059669;
         }
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .section-title h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
+        /* Tabelas */
         .table-container {
             overflow-x: auto;
             background: white;
@@ -443,6 +750,10 @@
             font-size: 13px;
         }
 
+        tr:last-child td {
+            border-bottom: none;
+        }
+
         .badge {
             display: inline-block;
             padding: 4px 10px;
@@ -459,6 +770,11 @@
         .badge-overdue {
             background: #fee2e2;
             color: #dc2626;
+        }
+
+        .badge-paid {
+            background: #d1fae5;
+            color: #059669;
         }
 
         .btn-pix {
@@ -510,6 +826,48 @@
             font-size: 14px;
         }
 
+        .empty-state .emoji {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* Resumo de estatísticas - página */
+        .stats-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stats-summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 24px;
+            border: 1px solid #f1f5f9;
+            text-align: center;
+        }
+
+        .stats-summary-card .number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .stats-summary-card .label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .stats-summary-card .number.debt {
+            color: #dc2626;
+        }
+
+        .stats-summary-card .number.success {
+            color: #059669;
+        }
+
         /* Modal PIX - Mobile otimizado */
         .modal-overlay {
             position: fixed;
@@ -522,7 +880,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
             animation: fadeIn 0.3s ease;
             padding: 16px;
         }
@@ -620,7 +978,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .pix-code {
@@ -644,6 +1004,7 @@
             cursor: pointer;
             margin-top: 8px;
             touch-action: manipulation;
+            font-family: inherit;
         }
 
         .btn-copy {
@@ -656,106 +1017,120 @@
             cursor: pointer;
             margin-right: 8px;
             touch-action: manipulation;
+            font-family: inherit;
         }
 
-        .btn-copy:active, .btn-close:active {
+        .btn-copy:active,
+        .btn-close:active {
             transform: scale(0.97);
         }
 
-        /* Pull to refresh indicator */
-        .pull-indicator {
-            text-align: center;
-            padding: 10px;
-            color: #94a3b8;
-            font-size: 12px;
-            display: none;
-        }
-
-        /* Melhorias para touch */
+        /* ==================== RESPONSIVO ==================== */
         @media (max-width: 768px) {
             body {
                 padding: 12px;
             }
-            
+
             .login-card {
                 padding: 28px 20px;
             }
-            
+
             h1 {
                 font-size: 26px;
             }
-            
-            .plate-text {
-                font-size: 18px;
-                letter-spacing: 2px;
-            }
-            
+
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
-                padding: 16px;
             }
-            
+
+            .stats-summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
             .stat-item {
                 padding: 12px;
             }
-            
+
             .stat-value {
                 font-size: 20px;
             }
-            
+
             .dashboard-header {
-                padding: 16px;
+                padding: 12px 16px;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
             }
-            
+
             .vehicle-info-right {
                 align-items: flex-end;
             }
-            
+
             .vehicle-model-right {
                 font-size: 11px;
             }
-            
+
             .plate-small {
                 font-size: 12px;
                 padding: 4px 10px;
             }
-            
+
             .btn-secondary {
                 padding: 8px 16px;
                 font-size: 13px;
             }
-            
+
             .btn-pix {
                 padding: 6px 12px;
                 font-size: 11px;
             }
-            
+
             .pix-icon-img {
                 width: 14px;
                 height: 14px;
             }
-            
-            .section {
-                padding: 0 16px 16px 16px;
+
+            .page {
+                padding: 16px;
             }
-            
+
             .modal-content {
                 padding: 24px 20px;
             }
-            
+
             .qrcode-placeholder {
                 width: 150px;
                 height: 150px;
+            }
+
+            .hamburger-btn {
+                display: flex;
+            }
+
+            .sidebar {
+                width: 280px;
+                left: -300px;
+            }
+
+            .dashboard-header-left .btn-secondary {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger-btn {
+                display: none;
             }
         }
 
         /* Prevenir zoom em inputs no iOS */
         @media (max-width: 768px) {
-            input, button, .btn-pix, .chip {
+            input,
+            button,
+            .btn-pix,
+            .chip {
                 font-size: 16px;
             }
         }
@@ -766,17 +1141,92 @@
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
 
-    <div class="container">
-        <!-- Tela de Login Suave -->
+    <!-- ==================== SIDEBAR ==================== -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <nav class="sidebar" id="sidebar">
+        <!-- Cabeçalho -->
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">🚗</div>
+                <div class="sidebar-brand-text">
+                    <h2>SuaveConsulta</h2>
+                    <span>Débitos veiculares</span>
+                </div>
+            </div>
+            <button class="sidebar-close" onclick="closeSidebar()" aria-label="Fechar menu">✕</button>
+        </div>
+
+        <!-- Veículo atual -->
+        <div class="sidebar-vehicle" id="sidebarVehicle">
+            <div class="sidebar-vehicle-icon">🚙</div>
+            <div class="sidebar-vehicle-info">
+                <div class="model" id="sidebarVehicleModel">Nenhum veículo</div>
+                <div class="plate" id="sidebarVehiclePlate">---</div>
+            </div>
+        </div>
+
+        <!-- Navegação -->
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-label">Menu</div>
+
+            <button class="sidebar-nav-item active" data-page="overview" onclick="navigateTo('overview')">
+                <span class="nav-icon">📊</span>
+                <span>Visão Geral</span>
+            </button>
+
+            <button class="sidebar-nav-item" data-page="debts" onclick="navigateTo('debts')">
+                <span class="nav-icon">📌</span>
+                <span>Débitos</span>
+                <span class="nav-badge" id="sidebarDebtBadge">0</span>
+            </button>
+
+            <button class="sidebar-nav-item" data-page="history" onclick="navigateTo('history')">
+                <span class="nav-icon">📜</span>
+                <span>Histórico</span>
+            </button>
+
+            <button class="sidebar-nav-item" data-page="summary" onclick="navigateTo('summary')">
+                <span class="nav-icon">📈</span>
+                <span>Resumo</span>
+            </button>
+
+            <div class="sidebar-nav-label" style="margin-top: 12px;">Ajuda</div>
+
+            <button class="sidebar-nav-item" onclick="showHelp()">
+                <span class="nav-icon">❓</span>
+                <span>Ajuda</span>
+                <span class="nav-arrow">→</span>
+            </button>
+
+            <button class="sidebar-nav-item" onclick="showAbout()">
+                <span class="nav-icon">ℹ️</span>
+                <span>Sobre</span>
+                <span class="nav-arrow">→</span>
+            </button>
+        </nav>
+
+        <!-- Rodapé -->
+        <div class="sidebar-footer">
+            <button class="btn-logout" onclick="handleLogout()">
+                <span>🚪</span> Nova consulta
+            </button>
+            <div class="sidebar-version">v2.0.0 • SuaveConsulta</div>
+        </div>
+    </nav>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <div class="main-content" id="mainContent">
+
+        <!-- Tela de Login -->
         <div id="loginScreen" class="login-card soft-card">
             <div class="logo">
                 <span>🚗</span>
             </div>
             <h1>SuaveConsulta</h1>
             <div class="tagline">Consulte débitos do seu veículo</div>
-            
+
             <div id="loginAlert" class="alert alert-error"></div>
-            
+
             <div class="input-group">
                 <label>Placa do veículo</label>
                 <div class="input-wrapper">
@@ -784,11 +1234,11 @@
                     <input type="text" id="plateInput" placeholder="ABC1D23" maxlength="8" autocomplete="off" inputmode="text">
                 </div>
             </div>
-            
+
             <button class="btn-primary" onclick="handleLogin()">
                 <span>🔍</span> Consultar débitos
             </button>
-            
+
             <div class="examples-box">
                 <div class="examples-title">
                     <span>📋</span> Testar com exemplo
@@ -801,37 +1251,52 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Dashboard -->
         <div id="dashboard" class="dashboard soft-card">
             <div class="dashboard-header">
-                <button class="btn-secondary" onclick="handleLogout()">
-                    ← Nova consulta
-                </button>
+                <div class="dashboard-header-left">
+                    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Abrir menu">
+                        ☰
+                    </button>
+                    <button class="btn-secondary" onclick="handleLogout()">
+                        ← Nova consulta
+                    </button>
+                </div>
                 <div class="vehicle-info-right">
                     <div class="vehicle-model-right" id="vehicleModel">Honda Civic 2019</div>
                     <div class="plate-small" id="plateDisplay">DEF5678</div>
                 </div>
             </div>
-            
+
             <div id="dashboardAlert" class="alert" style="margin: 0 16px;"></div>
-            
-            <div class="stats-grid" id="statsGrid"></div>
-            
-            <div class="section">
-                <div class="section-title">
-                    <span>📌</span>
-                    <h3>Débitos pendentes</h3>
-                </div>
+
+            <!-- ==================== PÁGINA: VISÃO GERAL ==================== -->
+            <div class="page active" id="page-overview">
+                <div class="page-title">📊 Visão Geral</div>
+                <div class="page-subtitle">Resumo rápido da situação do seu veículo</div>
+                <div class="stats-grid" id="statsGrid"></div>
+            </div>
+
+            <!-- ==================== PÁGINA: DÉBITOS ==================== -->
+            <div class="page" id="page-debts">
+                <div class="page-title">📌 Débitos Pendentes</div>
+                <div class="page-subtitle">Todos os débitos em aberto do veículo</div>
                 <div class="table-container" id="debtsContainer"></div>
             </div>
-            
-            <div class="section">
-                <div class="section-title">
-                    <span>📜</span>
-                    <h3>Histórico</h3>
-                </div>
+
+            <!-- ==================== PÁGINA: HISTÓRICO ==================== -->
+            <div class="page" id="page-history">
+                <div class="page-title">📜 Histórico de Pagamentos</div>
+                <div class="page-subtitle">Registro de todos os pagamentos realizados</div>
                 <div class="table-container" id="historyContainer"></div>
+            </div>
+
+            <!-- ==================== PÁGINA: RESUMO ==================== -->
+            <div class="page" id="page-summary">
+                <div class="page-title">📈 Resumo Completo</div>
+                <div class="page-subtitle">Análise detalhada da situação financeira do veículo</div>
+                <div id="summaryContainer"></div>
             </div>
         </div>
     </div>
@@ -845,14 +1310,14 @@
             <div id="modalDebtDesc" style="font-weight: 500; color: #334155; font-size: 14px;"></div>
             <div id="modalFeeDetail" class="modal-fee-detail" style="display: none;"></div>
             <div class="modal-amount" id="modalAmount">R$ 0,00</div>
-            
+
             <div class="qrcode-container">
                 <div id="qrcodeArea" class="qrcode-placeholder">
                     <div class="loading-spinner"></div>
                     <span>Gerando PIX...</span>
                 </div>
             </div>
-            
+
             <div class="pix-code" id="pixCode">Carregando código PIX...</div>
             <div>
                 <button class="btn-copy" onclick="copyPixCode()">📋 Copiar código</button>
@@ -863,9 +1328,98 @@
     </div>
 
     <script>
-        // Taxa de multa por dia de atraso: R$ 6,60 (máximo 7 dias = R$ 46,20)
+        // ==================== CONFIGURAÇÕES ====================
         const FEE_PER_DAY = 6.60;
         const MAX_FEE_DAYS = 7;
+        let currentVehicle = null;
+        let currentPlate = '';
+        let currentPage = 'overview';
+
+        // ==================== BANCO DE DADOS SIMULADO ====================
+        const vehicleDatabase = {
+            "ABC1234": {
+                plate: "ABC1234",
+                vehicle: "Fiat Strada 2020",
+                debts: [
+                    { id: 1, dueDate: "15/03/2024", description: "IPVA 2024", amount: 1250.00, status: "pending",
+                        originalAmount: 1250.00 },
+                    { id: 2, dueDate: "30/04/2024", description: "Licenciamento Anual", amount: 185.00,
+                        status: "pending", originalAmount: 185.00 }
+                ],
+                history: [
+                    { paymentDate: "10/01/2024", description: "IPVA 2023", amount: 1200.00,
+                    reference: "Parcela única" },
+                    { paymentDate: "05/02/2024", description: "Multa de Trânsito", amount: 195.00,
+                        reference: "Ato 123456" }
+                ]
+            },
+            "DEF5678": {
+                plate: "DEF5678",
+                vehicle: "Honda Civic 2019",
+                debts: [
+                    { id: 3, dueDate: "10/02/2024", description: "IPVA 2024 - 1ª Parcela", amount: 450.00,
+                        status: "overdue", originalAmount: 450.00 },
+                    { id: 4, dueDate: "10/03/2024", description: "IPVA 2024 - 2ª Parcela", amount: 450.00,
+                        status: "overdue", originalAmount: 450.00 },
+                    { id: 5, dueDate: "20/01/2024", description: "DPVAT", amount: 85.00, status: "overdue",
+                        originalAmount: 85.00 }
+                ],
+                history: [
+                    { paymentDate: "15/12/2023", description: "Licenciamento 2023", amount: 180.00,
+                        reference: "Exercício 2023" }
+                ]
+            },
+            "GHI9012": {
+                plate: "GHI9012",
+                vehicle: "Volkswagen Gol 2022",
+                debts: [],
+                history: [
+                    { paymentDate: "20/01/2024", description: "IPVA 2024", amount: 1100.00,
+                    reference: "À vista" },
+                    { paymentDate: "15/02/2024", description: "Licenciamento 2024", amount: 190.00,
+                        reference: "Exercício 2024" }
+                ]
+            },
+            "JKL3456": {
+                plate: "JKL3456",
+                vehicle: "Chevrolet Onix 2021",
+                debts: [
+                    { id: 6, dueDate: "05/05/2024", description: "IPVA 2024", amount: 980.00, status: "pending",
+                        originalAmount: 980.00 },
+                    { id: 7, dueDate: "20/06/2024", description: "Seguro Obrigatório", amount: 95.00,
+                        status: "pending", originalAmount: 95.00 },
+                    { id: 8, dueDate: "01/03/2024", description: "Multa - Radar", amount: 280.00,
+                        status: "overdue", originalAmount: 280.00 }
+                ],
+                history: [
+                    { paymentDate: "10/02/2023", description: "IPVA 2023", amount: 950.00,
+                    reference: "Parcela única" },
+                    { paymentDate: "15/03/2023", description: "Licenciamento 2023", amount: 175.00,
+                        reference: "Exercício 2023" },
+                    { paymentDate: "20/11/2023", description: "Multa - Estacionamento", amount: 150.00,
+                        reference: "Auto 789" }
+                ]
+            }
+        };
+
+        // ==================== FUNÇÕES AUXILIARES ====================
+        function normalizePlate(plate) {
+            return plate.replace(/[\s-]/g, '').toUpperCase();
+        }
+
+        function isValidPlate(plate) {
+            const n = normalizePlate(plate);
+            return /^[A-Z]{3}\d{4}$/.test(n) || /^[A-Z]{3}\d[A-Z]\d{2}$/.test(n);
+        }
+
+        function getVehicleData(plate) {
+            return vehicleDatabase[normalizePlate(plate)] || null;
+        }
+
+        function parseDate(dateStr) {
+            const parts = dateStr.split('/');
+            return new Date(parts[2], parts[1] - 1, parts[0]);
+        }
 
         function calculateOverdueDays(dueDateStr) {
             const today = new Date();
@@ -874,11 +1428,6 @@
             const diffTime = today - dueDate;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             return Math.min(diffDays, MAX_FEE_DAYS);
-        }
-
-        function parseDate(dateStr) {
-            const parts = dateStr.split('/');
-            return new Date(parts[2], parts[1] - 1, parts[0]);
         }
 
         function calculateTotalWithFee(originalAmount, dueDate, status) {
@@ -897,148 +1446,470 @@
             return { days: daysOverdue, fee: fee, total: originalAmount + fee };
         }
 
-        async function createMercadoPagoPixPayment(debt, totalAmount, plate) {
-            return generateDemoPix(debt, totalAmount);
+        function formatCurrency(value) {
+            return 'R$ ' + value.toFixed(2);
         }
 
+        // ==================== SIDEBAR ====================
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigateTo(page) {
+            currentPage = page;
+
+            // Atualiza itens ativos na sidebar
+            document.querySelectorAll('.sidebar-nav-item[data-page]').forEach(item => {
+                item.classList.toggle('active', item.dataset.page === page);
+            });
+
+            // Mostra/oculta páginas
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.toggle('active', p.id === 'page-' + page);
+            });
+
+            // Fecha sidebar em mobile
+            if (window.innerWidth <= 768) {
+                closeSidebar();
+            }
+
+            // Atualiza conteúdo se já tiver dados
+            if (currentVehicle) {
+                renderPageContent(page);
+            }
+        }
+
+        function updateSidebarVehicle(vehicle, plate) {
+            const modelEl = document.getElementById('sidebarVehicleModel');
+            const plateEl = document.getElementById('sidebarVehiclePlate');
+            const badgeEl = document.getElementById('sidebarDebtBadge');
+
+            if (vehicle) {
+                modelEl.textContent = vehicle.vehicle;
+                plateEl.textContent = plate;
+                const debtCount = vehicle.debts.length;
+                badgeEl.textContent = debtCount;
+                badgeEl.style.display = debtCount > 0 ? 'inline-block' : 'none';
+            } else {
+                modelEl.textContent = 'Nenhum veículo';
+                plateEl.textContent = '---';
+                badgeEl.textContent = '0';
+                badgeEl.style.display = 'none';
+            }
+        }
+
+        // ==================== HELP / ABOUT ====================
+        function showHelp() {
+            showAlert(document.getElementById('dashboardAlert'),
+                '💡 <strong>Como usar:</strong><br>• Digite a placa do veículo<br>• Clique em "PIX" para pagar<br>• Copie o código PIX ou use o QR Code',
+                'info');
+            if (window.innerWidth <= 768) closeSidebar();
+        }
+
+        function showAbout() {
+            showAlert(document.getElementById('dashboardAlert'),
+                '🚗 <strong>SuaveConsulta v2.0</strong><br>Consulte débitos veiculares de forma rápida e segura.<br><br>🔷 Dados simulados para demonstração.',
+                'info');
+            if (window.innerWidth <= 768) closeSidebar();
+        }
+
+        // ==================== PIX ====================
         function generateDemoPix(debt, totalAmount) {
             const demoId = `DEMO_${debt.id}_${Date.now()}`;
-            const demoPixString = `00020126360014br.gov.bcb.pix0114${demoId}@mercadopago.com5204000053039865404${totalAmount.toFixed(2).replace('.', '')}5802BR5912DETRAN-SP6008SAO PAULO62070503***6304${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
-            const demoQrBase64 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0f4f8'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' fill='%2364748b' font-size='12'%3E🔷 QR Code PIX%3C/text%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' fill='%2364748b' font-size='10'%3EDemonstração%3C/text%3E%3Ctext x='50%25' y='75%25' text-anchor='middle' fill='%2300a86b' font-size='11'%3ER$ " + totalAmount.toFixed(2) + "%3C/text%3E%3C/svg%3E";
+            const demoPixString =
+                `00020126360014br.gov.bcb.pix0114${demoId}@mercadopago.com5204000053039865404${totalAmount.toFixed(2).replace('.', '')}5802BR5912DETRAN-SP6008SAO PAULO62070503***6304${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
+            const demoQrBase64 =
+                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0f4f8'/%3E%3Ctext x='50%25' y='45%25' text-anchor='middle' fill='%2364748b' font-size='12'%3E🔷 QR Code PIX%3C/text%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' fill='%2364748b' font-size='10'%3EDemonstração%3C/text%3E%3Ctext x='50%25' y='75%25' text-anchor='middle' fill='%2300a86b' font-size='11'%3ER$ " +
+                totalAmount.toFixed(2) + "%3C/text%3E%3C/svg%3E";
             return { qrCodeBase64: demoQrBase64, qrCodeString: demoPixString, paymentId: demoId, isDemo: true };
         }
 
         async function displayPixQrCode(debt, totalAmount, plate) {
             const qrcodeArea = document.getElementById('qrcodeArea');
             const pixCodeElement = document.getElementById('pixCode');
-            
+
             qrcodeArea.innerHTML = `<div class="loading-spinner"></div><span>Gerando PIX...</span>`;
             pixCodeElement.innerHTML = 'Gerando código PIX...';
-            
+
             try {
-                const pixData = await createMercadoPagoPixPayment(debt, totalAmount, plate);
+                const pixData = generateDemoPix(debt, totalAmount);
                 if (pixData.qrCodeBase64) {
-                    qrcodeArea.innerHTML = `<img src="${pixData.qrCodeBase64}" alt="QR Code PIX" style="width: 180px; height: 180px; border-radius: 12px;">`;
+                    qrcodeArea.innerHTML =
+                        `<img src="${pixData.qrCodeBase64}" alt="QR Code PIX" style="width: 180px; height: 180px; border-radius: 12px;">`;
                 }
                 pixCodeElement.innerHTML = pixData.qrCodeString;
                 if (pixData.isDemo) {
                     showAlert(document.getElementById('dashboardAlert'), '🔷 Modo demonstração', 'info');
                 }
             } catch (error) {
-                qrcodeArea.innerHTML = `<div style="text-align: center; color: #dc2626;"><div style="font-size: 32px;">⚠️</div><span>Erro ao gerar PIX</span></div>`;
+                qrcodeArea.innerHTML =
+                    `<div style="text-align: center; color: #dc2626;"><div style="font-size: 32px;">⚠️</div><span>Erro ao gerar PIX</span></div>`;
                 pixCodeElement.innerHTML = 'Erro ao gerar código PIX. Tente novamente.';
             }
         }
 
-        const vehicleDatabase = {
-            "ABC1234": { plate: "ABC1234", vehicle: "Fiat Strada 2020", debts: [{ id: 1, dueDate: "15/03/2024", description: "IPVA 2024", amount: 1250.00, status: "pending", originalAmount: 1250.00 }, { id: 2, dueDate: "30/04/2024", description: "Licenciamento Anual", amount: 185.00, status: "pending", originalAmount: 185.00 }], history: [{ paymentDate: "10/01/2024", description: "IPVA 2023", amount: 1200.00, reference: "Parcela única" }, { paymentDate: "05/02/2024", description: "Multa de Trânsito", amount: 195.00, reference: "Ato 123456" }] },
-            "DEF5678": { plate: "DEF5678", vehicle: "Honda Civic 2019", debts: [{ id: 3, dueDate: "10/02/2024", description: "IPVA 2024 - 1ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 }, { id: 4, dueDate: "10/03/2024", description: "IPVA 2024 - 2ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 }, { id: 5, dueDate: "20/01/2024", description: "DPVAT", amount: 85.00, status: "overdue", originalAmount: 85.00 }], history: [{ paymentDate: "15/12/2023", description: "Licenciamento 2023", amount: 180.00, reference: "Exercício 2023" }] },
-            "GHI9012": { plate: "GHI9012", vehicle: "Volkswagen Gol 2022", debts: [], history: [{ paymentDate: "20/01/2024", description: "IPVA 2024", amount: 1100.00, reference: "À vista" }, { paymentDate: "15/02/2024", description: "Licenciamento 2024", amount: 190.00, reference: "Exercício 2024" }] },
-            "JKL3456": { plate: "JKL3456", vehicle: "Chevrolet Onix 2021", debts: [{ id: 6, dueDate: "05/05/2024", description: "IPVA 2024", amount: 980.00, status: "pending", originalAmount: 980.00 }, { id: 7, dueDate: "20/06/2024", description: "Seguro Obrigatório", amount: 95.00, status: "pending", originalAmount: 95.00 }, { id: 8, dueDate: "01/03/2024", description: "Multa - Radar", amount: 280.00, status: "overdue", originalAmount: 280.00 }], history: [{ paymentDate: "10/02/2023", description: "IPVA 2023", amount: 950.00, reference: "Parcela única" }, { paymentDate: "15/03/2023", description: "Licenciamento 2023", amount: 175.00, reference: "Exercício 2023" }, { paymentDate: "20/11/2023", description: "Multa - Estacionamento", amount: 150.00, reference: "Auto 789" }] }
-        };
-
-        function normalizePlate(plate) { return plate.replace(/[\s-]/g, '').toUpperCase(); }
-        function isValidPlate(plate) { const n = normalizePlate(plate); return /^[A-Z]{3}\d{4}$/.test(n) || /^[A-Z]{3}\d[A-Z]\d{2}$/.test(n); }
-        function getVehicleData(plate) { return vehicleDatabase[normalizePlate(plate)] || null; }
-        function setExamplePlate(plate) { document.getElementById('plateInput').value = plate; document.getElementById('loginAlert').style.display = 'none'; }
-
-        function showAlert(element, message, type = 'error') {
-            element.className = `alert alert-${type}`;
-            element.innerHTML = message;
-            element.style.display = 'block';
-            setTimeout(() => { element.style.display = 'none'; }, 3000);
-        }
-
-        async function openPixModal(debt, plate) {
+        function openPixModal(debt, plate) {
             document.getElementById('modalDebtDesc').innerHTML = debt.description;
-            let finalAmount = debt.amount, feeDetailHtml = '';
+            let finalAmount = debt.amount,
+                feeDetailHtml = '';
             if (debt.status === 'overdue') {
                 const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
                 if (feeInfo) {
                     finalAmount = feeInfo.total;
-                    feeDetailHtml = `<strong>Multa por atraso:</strong><br>${feeInfo.days} dia(s) × R$ ${FEE_PER_DAY.toFixed(2)} = R$ ${feeInfo.fee.toFixed(2)}<br><strong>Total:</strong> R$ ${feeInfo.total.toFixed(2)}`;
+                    feeDetailHtml =
+                        `<strong>Multa por atraso:</strong><br>${feeInfo.days} dia(s) × R$ ${FEE_PER_DAY.toFixed(2)} = R$ ${feeInfo.fee.toFixed(2)}<br><strong>Total:</strong> R$ ${feeInfo.total.toFixed(2)}`;
                     document.getElementById('modalFeeDetail').style.display = 'block';
                     document.getElementById('modalFeeDetail').innerHTML = feeDetailHtml;
-                } else { document.getElementById('modalFeeDetail').style.display = 'none'; }
-            } else { document.getElementById('modalFeeDetail').style.display = 'none'; }
+                } else {
+                    document.getElementById('modalFeeDetail').style.display = 'none';
+                }
+            } else {
+                document.getElementById('modalFeeDetail').style.display = 'none';
+            }
             document.getElementById('modalAmount').innerHTML = `R$ ${finalAmount.toFixed(2)}`;
             document.getElementById('pixModal').classList.add('active');
-            await displayPixQrCode(debt, finalAmount, plate);
+            displayPixQrCode(debt, finalAmount, plate);
         }
 
-        function closePixModal() { document.getElementById('pixModal').classList.remove('active'); }
+        function closePixModal() {
+            document.getElementById('pixModal').classList.remove('active');
+        }
+
         function copyPixCode() {
             const code = document.getElementById('pixCode').innerText;
-            if (code && code !== 'Carregando código PIX...') {
-                navigator.clipboard.writeText(code).then(() => showAlert(document.getElementById('dashboardAlert'), '✅ Código PIX copiado!', 'success'));
+            if (code && code !== 'Carregando código PIX...' && code !== 'Erro ao gerar código PIX. Tente novamente.') {
+                navigator.clipboard.writeText(code).then(() => {
+                    showAlert(document.getElementById('dashboardAlert'), '✅ Código PIX copiado!', 'success');
+                });
             }
         }
 
+        // ==================== RENDERIZAÇÃO DAS PÁGINAS ====================
+        function renderPageContent(page) {
+            if (!currentVehicle) return;
+
+            switch (page) {
+                case 'overview':
+                    renderOverview();
+                    break;
+                case 'debts':
+                    renderDebts();
+                    break;
+                case 'history':
+                    renderHistory();
+                    break;
+                case 'summary':
+                    renderSummary();
+                    break;
+            }
+        }
+
+        function renderOverview() {
+            const vehicle = currentVehicle;
+            let totalDebt = 0,
+                overdueCount = 0,
+                pendingCount = 0,
+                totalPaid = 0;
+
+            vehicle.debts.forEach(debt => {
+                let current = debt.amount;
+                if (debt.status === 'overdue') {
+                    current = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
+                }
+                totalDebt += current;
+                if (debt.status === 'overdue') overdueCount++;
+                else if (debt.status === 'pending') pendingCount++;
+            });
+
+            vehicle.history.forEach(h => totalPaid += h.amount);
+
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-item"><div class="stat-icon">💰</div><div class="stat-value debt">${formatCurrency(totalDebt)}</div><div class="stat-label">Total em débito</div></div>
+                <div class="stat-item"><div class="stat-icon">⚠️</div><div class="stat-value debt">${overdueCount}</div><div class="stat-label">Atrasados</div></div>
+                <div class="stat-item"><div class="stat-icon">⏳</div><div class="stat-value">${pendingCount}</div><div class="stat-label">Pendentes</div></div>
+                <div class="stat-item"><div class="stat-icon">✅</div><div class="stat-value success">${formatCurrency(totalPaid)}</div><div class="stat-label">Total pago</div></div>
+                <div class="stat-item"><div class="stat-icon">📋</div><div class="stat-value">${vehicle.history.length}</div><div class="stat-label">Pagamentos realizados</div></div>
+                <div class="stat-item"><div class="stat-icon">📊</div><div class="stat-value">${vehicle.debts.length}</div><div class="stat-label">Débitos totais</div></div>
+            `;
+        }
+
+        function renderDebts() {
+            const vehicle = currentVehicle;
+            const container = document.getElementById('debtsContainer');
+
+            if (vehicle.debts.length === 0) {
+                container.innerHTML =
+                    `<div class="empty-state"><span class="emoji">🎉</span>Nenhum débito pendente!<br><span style="font-size:12px;color:#94a3b8;">Seu veículo está em dia.</span></div>`;
+                return;
+            }
+
+            let html = `<table><thead><tr><th>Vencimento</th><th>Descrição</th><th>Status</th><th>Valor</th><th>Ação</th></tr></thead><tbody>`;
+
+            vehicle.debts.forEach(debt => {
+                let displayAmount = debt.amount,
+                    originalDisplay = '',
+                    feeDisplay = '';
+                const statusLabel = debt.status === 'overdue' ? 'Atrasado' : 'Pendente';
+                const statusBadge = debt.status === 'overdue' ? 'badge-overdue' : 'badge-pending';
+
+                if (debt.status === 'overdue') {
+                    const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
+                    if (feeInfo && feeInfo.fee > 0) {
+                        originalDisplay = `<span class="original-amount">${formatCurrency(debt.originalAmount)}</span>`;
+                        feeDisplay = `<span class="fee-info">+ ${formatCurrency(feeInfo.fee)}</span>`;
+                        displayAmount = feeInfo.total;
+                    }
+                }
+
+                html += `<tr>
+                    <td>${debt.dueDate}</td>
+                    <td>${debt.description}</td>
+                    <td><span class="badge ${statusBadge}">${statusLabel}</span></td>
+                    <td>${originalDisplay}<strong>${formatCurrency(displayAmount)}</strong>${feeDisplay}</td>
+                    <td><button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${currentPlate}")'><img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img"> PIX</button></td>
+                </tr>`;
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
+        function renderHistory() {
+            const vehicle = currentVehicle;
+            const container = document.getElementById('historyContainer');
+
+            if (vehicle.history.length === 0) {
+                container.innerHTML =
+                    `<div class="empty-state"><span class="emoji">📭</span>Nenhum histórico de pagamento<br><span style="font-size:12px;color:#94a3b8;">Os pagamentos aparecerão aqui.</span></div>`;
+                return;
+            }
+
+            let html = `<table><thead><tr><th>Data</th><th>Descrição</th><th>Valor</th><th>Referência</th><th>Status</th></tr></thead><tbody>`;
+
+            vehicle.history.forEach(h => {
+                html += `<tr>
+                    <td>${h.paymentDate}</td>
+                    <td>${h.description}</td>
+                    <td><strong>${formatCurrency(h.amount)}</strong></td>
+                    <td>${h.reference}</td>
+                    <td><span class="badge badge-paid">Pago</span></td>
+                </tr>`;
+            });
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
+
+        function renderSummary() {
+            const vehicle = currentVehicle;
+            const container = document.getElementById('summaryContainer');
+
+            let totalDebt = 0,
+                overdueCount = 0,
+                pendingCount = 0,
+                totalPaid = 0,
+                totalOverdueAmount = 0,
+                totalPendingAmount = 0;
+
+            vehicle.debts.forEach(debt => {
+                let current = debt.amount;
+                if (debt.status === 'overdue') {
+                    current = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
+                    totalOverdueAmount += current;
+                    overdueCount++;
+                } else if (debt.status === 'pending') {
+                    totalPendingAmount += current;
+                    pendingCount++;
+                }
+                totalDebt += current;
+            });
+
+            vehicle.history.forEach(h => totalPaid += h.amount);
+
+            const hasOverdue = overdueCount > 0;
+            const hasPending = pendingCount > 0;
+            const isAllPaid = vehicle.debts.length === 0;
+
+            let statusMessage = '';
+            let statusColor = '';
+
+            if (isAllPaid) {
+                statusMessage = '✅ Tudo em dia!';
+                statusColor = '#059669';
+            } else if (hasOverdue) {
+                statusMessage = '⚠️ Atenção! Há débitos atrasados.';
+                statusColor = '#dc2626';
+            } else if (hasPending) {
+                statusMessage = '⏳ Há débitos pendentes. Fique atento aos vencimentos.';
+                statusColor = '#d97706';
+            }
+
+            container.innerHTML = `
+                <div style="background: ${statusColor}10; border: 1px solid ${statusColor}30; border-radius: 20px; padding: 20px; margin-bottom: 24px; text-align: center;">
+                    <div style="font-size: 24px; font-weight: 700; color: ${statusColor};">${statusMessage}</div>
+                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Situação atual do veículo ${vehicle.vehicle}</div>
+                </div>
+
+                <div class="stats-summary-grid">
+                    <div class="stats-summary-card">
+                        <div class="number debt">${formatCurrency(totalDebt)}</div>
+                        <div class="label">💰 Total em débito</div>
+                    </div>
+                    <div class="stats-summary-card">
+                        <div class="number success">${formatCurrency(totalPaid)}</div>
+                        <div class="label">✅ Total já pago</div>
+                    </div>
+                    <div class="stats-summary-card">
+                        <div class="number">${vehicle.debts.length}</div>
+                        <div class="label">📋 Débitos totais</div>
+                    </div>
+                    <div class="stats-summary-card">
+                        <div class="number">${vehicle.history.length}</div>
+                        <div class="label">📜 Pagamentos realizados</div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div style="background: #fef3c7; padding: 16px; border-radius: 16px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #d97706;">${pendingCount}</div>
+                        <div style="font-size: 12px; color: #92400e;">⏳ Pendentes</div>
+                    </div>
+                    <div style="background: #fee2e2; padding: 16px; border-radius: 16px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #dc2626;">${overdueCount}</div>
+                        <div style="font-size: 12px; color: #991b1b;">⚠️ Atrasados</div>
+                    </div>
+                </div>
+
+                ${hasOverdue ? `
+                <div style="margin-top: 16px; background: #fee2e2; padding: 16px; border-radius: 16px; border-left: 4px solid #dc2626;">
+                    <div style="font-size: 13px; font-weight: 600; color: #dc2626;">🔴 Débitos em atraso:</div>
+                    <div style="font-size: 13px; color: #991b1b; margin-top: 4px;">${formatCurrency(totalOverdueAmount)} em débitos atrasados</div>
+                    <div style="font-size: 11px; color: #991b1b; margin-top: 2px;">Multa de R$ ${FEE_PER_DAY.toFixed(2)} por dia de atraso (máx. ${MAX_FEE_DAYS} dias)</div>
+                </div>
+                ` : ''}
+
+                <div style="margin-top: 16px; background: #f1f5f9; padding: 16px; border-radius: 16px; text-align: center; font-size: 12px; color: #64748b;">
+                    🚗 <strong>${vehicle.vehicle}</strong> • Placa <strong>${currentPlate}</strong>
+                </div>
+            `;
+        }
+
+        // ==================== UI ====================
+        function showAlert(element, message, type = 'error') {
+            element.className = `alert alert-${type}`;
+            element.innerHTML = message;
+            element.style.display = 'block';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 5000);
+        }
+
+        function setExamplePlate(plate) {
+            document.getElementById('plateInput').value = plate;
+            document.getElementById('loginAlert').style.display = 'none';
+        }
+
+        function updateDashboard(vehicle, plate) {
+            currentVehicle = vehicle;
+            currentPlate = plate;
+
+            // Atualiza cabeçalho
+            document.getElementById('plateDisplay').innerHTML = plate;
+            document.getElementById('vehicleModel').innerHTML = vehicle.vehicle;
+
+            // Atualiza sidebar
+            updateSidebarVehicle(vehicle, plate);
+
+            // Renderiza página atual
+            renderPageContent(currentPage);
+        }
+
+        // ==================== LOGIN / LOGOUT ====================
         function handleLogin() {
             let plate = document.getElementById('plateInput').value.trim();
             const alertDiv = document.getElementById('loginAlert');
             alertDiv.style.display = 'none';
-            if (!plate) { showAlert(alertDiv, 'Informe a placa do veículo', 'error'); return; }
-            if (!isValidPlate(plate)) { showAlert(alertDiv, 'Formato inválido! Ex: ABC1234', 'error'); return; }
+
+            if (!plate) {
+                showAlert(alertDiv, 'Informe a placa do veículo', 'error');
+                return;
+            }
+            if (!isValidPlate(plate)) {
+                showAlert(alertDiv, 'Formato inválido! Ex: ABC1234', 'error');
+                return;
+            }
+
             const vehicle = getVehicleData(plate);
-            if (!vehicle) { showAlert(alertDiv, 'Veículo não encontrado', 'error'); return; }
+            if (!vehicle) {
+                showAlert(alertDiv, 'Veículo não encontrado', 'error');
+                return;
+            }
+
+            // Transição
             document.getElementById('loginScreen').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('loginScreen').style.opacity = '1';
                 document.getElementById('dashboard').classList.add('active');
+                // Volta para a página inicial (Visão Geral)
+                currentPage = 'overview';
+                document.querySelectorAll('.sidebar-nav-item[data-page]').forEach(item => {
+                    item.classList.toggle('active', item.dataset.page === 'overview');
+                });
+                document.querySelectorAll('.page').forEach(p => {
+                    p.classList.toggle('active', p.id === 'page-overview');
+                });
                 updateDashboard(vehicle, normalizePlate(plate));
             }, 200);
             document.getElementById('plateInput').value = '';
         }
 
-        function updateDashboard(vehicle, plate) {
-            document.getElementById('plateDisplay').innerHTML = plate;
-            document.getElementById('vehicleModel').innerHTML = vehicle.vehicle;
-            let totalDebt = 0, overdueCount = 0, pendingCount = 0;
-            vehicle.debts.forEach(debt => {
-                let current = debt.amount;
-                if (debt.status === 'overdue') current = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
-                totalDebt += current;
-                if (debt.status === 'overdue') overdueCount++;
-                else if (debt.status === 'pending') pendingCount++;
-            });
-            document.getElementById('statsGrid').innerHTML = `
-                <div class="stat-item"><div class="stat-icon">💰</div><div class="stat-value debt">R$ ${totalDebt.toFixed(2)}</div><div class="stat-label">Total em débito</div></div>
-                <div class="stat-item"><div class="stat-icon">⚠️</div><div class="stat-value debt">${overdueCount}</div><div class="stat-label">Atrasados</div></div>
-                <div class="stat-item"><div class="stat-icon">⏳</div><div class="stat-value">${pendingCount}</div><div class="stat-label">Pendentes</div></div>
-            `;
-            if (vehicle.debts.length === 0) {
-                document.getElementById('debtsContainer').innerHTML = `<div class="empty-state">🎉 Nenhum débito pendente! Seu veículo está em dia.</div>`;
-            } else {
-                document.getElementById('debtsContainer').innerHTML = `<table><thead><tr><th>Vencimento</th><th>Descrição</th><th>Valor</th><th>Ação</th></tr></thead><tbody>${vehicle.debts.map(debt => {
-                    let displayAmount = debt.amount, originalDisplay = '', feeDisplay = '';
-                    if (debt.status === 'overdue') {
-                        const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
-                        if (feeInfo && feeInfo.fee > 0) {
-                            originalDisplay = `<span class="original-amount">R$ ${debt.originalAmount.toFixed(2)}</span>`;
-                            feeDisplay = `<span class="fee-info">+ R$ ${feeInfo.fee.toFixed(2)}</span>`;
-                            displayAmount = feeInfo.total;
-                        }
-                    }
-                    return `<tr><td>${debt.dueDate}</td><td>${debt.description}</td><td>${originalDisplay}<strong>R$ ${displayAmount.toFixed(2)}</strong>${feeDisplay}</td><td><button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${plate}")'><img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img"> PIX</button></td></tr>`;
-                }).join('')}</tbody></table>`;
-            }
-            if (vehicle.history.length === 0) {
-                document.getElementById('historyContainer').innerHTML = `<div class="empty-state">📭 Nenhum histórico de pagamento</div>`;
-            } else {
-                document.getElementById('historyContainer').innerHTML = `<table><thead><tr><th>Data</th><th>Descrição</th><th>Valor</th><th>Referência</th></tr></thead><tbody>${vehicle.history.map(h => `<tr><td>${h.paymentDate}</td><td>${h.description}</td><td>R$ ${h.amount.toFixed(2)}</td><td>${h.reference}</td></tr>`).join('')}</tbody></table>`;
-            }
-        }
-
         function handleLogout() {
+            closeSidebar();
             document.getElementById('dashboard').classList.remove('active');
             document.getElementById('loginScreen').style.display = 'block';
             document.getElementById('plateInput').focus();
+            currentVehicle = null;
+            currentPlate = '';
+            updateSidebarVehicle(null, '');
+            // Limpa conteúdo
+            document.getElementById('statsGrid').innerHTML = '';
+            document.getElementById('debtsContainer').innerHTML = '';
+            document.getElementById('historyContainer').innerHTML = '';
+            document.getElementById('summaryContainer').innerHTML = '';
         }
 
-        document.getElementById('plateInput').addEventListener('keypress', e => { if (e.key === 'Enter') handleLogin(); });
-        window.addEventListener('load', () => document.getElementById('plateInput').focus());
+        // ==================== EVENT LISTENERS ====================
+        document.getElementById('plateInput').addEventListener('keypress', e => {
+            if (e.key === 'Enter') handleLogin();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeSidebar();
+                const modal = document.getElementById('pixModal');
+                if (modal.classList.contains('active')) closePixModal();
+            }
+        });
+
+        document.getElementById('pixModal').addEventListener('click', function(e) {
+            if (e.target === this) closePixModal();
+        });
+
+        window.addEventListener('load', () => {
+            document.getElementById('plateInput').focus();
+            updateSidebarVehicle(null, '');
+        });
     </script>
 </body>
 </html>
