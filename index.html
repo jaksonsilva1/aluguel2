@@ -756,17 +756,40 @@
         }
 
         /* Larguras fixas para colunas - EVITA ROLAGEM */
-        .debt-table .col-due { width: 18%; }
+        .debt-table .col-due { 
+            width: 18%; 
+            white-space: nowrap;
+            min-width: 70px;
+        }
         .debt-table .col-desc { width: 27%; }
-        .debt-table .col-status { width: 16%; }
-        .debt-table .col-value { width: 22%; }
-        .debt-table .col-action { width: 17%; }
+        .debt-table .col-status { 
+            width: 16%; 
+            white-space: nowrap;
+        }
+        .debt-table .col-value { 
+            width: 22%; 
+            min-width: 80px;
+        }
+        .debt-table .col-action { 
+            width: 17%; 
+            min-width: 60px;
+        }
 
         .history-table .col-date { width: 18%; }
         .history-table .col-desc { width: 28%; }
         .history-table .col-amount { width: 20%; }
         .history-table .col-ref { width: 22%; }
         .history-table .col-status { width: 12%; }
+
+        /* FORÇA A DATA FICAR EM UMA LINHA */
+        .debt-table .col-due {
+            white-space: nowrap !important;
+        }
+        
+        .debt-table .col-due strong {
+            font-size: 11px;
+            letter-spacing: 0.3px;
+        }
 
         .badge {
             display: inline-block;
@@ -1182,11 +1205,24 @@
             }
 
             /* Ajustes nas tabelas para mobile - SEM ROLAGEM */
-            .debt-table .col-due { width: 16%; }
+            .debt-table .col-due { 
+                width: 16%; 
+                min-width: 60px;
+                white-space: nowrap !important;
+            }
             .debt-table .col-desc { width: 25%; }
-            .debt-table .col-status { width: 15%; }
-            .debt-table .col-value { width: 24%; }
-            .debt-table .col-action { width: 20%; }
+            .debt-table .col-status { 
+                width: 15%; 
+                white-space: nowrap;
+            }
+            .debt-table .col-value { 
+                width: 24%; 
+                min-width: 70px;
+            }
+            .debt-table .col-action { 
+                width: 20%; 
+                min-width: 55px;
+            }
 
             .history-table .col-date { width: 16%; }
             .history-table .col-desc { width: 26%; }
@@ -1207,6 +1243,10 @@
             .original-amount {
                 font-size: 9px;
             }
+
+            .debt-table .col-due strong {
+                font-size: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1215,11 +1255,24 @@
                 gap: 6px;
             }
 
-            .debt-table .col-due { width: 14%; }
+            .debt-table .col-due { 
+                width: 14%; 
+                min-width: 50px;
+                white-space: nowrap !important;
+            }
             .debt-table .col-desc { width: 22%; }
-            .debt-table .col-status { width: 14%; }
-            .debt-table .col-value { width: 26%; }
-            .debt-table .col-action { width: 24%; }
+            .debt-table .col-status { 
+                width: 14%; 
+                white-space: nowrap;
+            }
+            .debt-table .col-value { 
+                width: 26%; 
+                min-width: 65px;
+            }
+            .debt-table .col-action { 
+                width: 24%; 
+                min-width: 50px;
+            }
 
             .history-table .col-date { width: 14%; }
             .history-table .col-desc { width: 22%; }
@@ -1256,6 +1309,10 @@
 
             .vehicle-model-right {
                 font-size: 10px;
+            }
+
+            .debt-table .col-due strong {
+                font-size: 9px;
             }
         }
 
@@ -1448,7 +1505,6 @@
             <h4>Pagar com PIX</h4>
             <p style="color: #64748b; margin-bottom: 8px; font-size: 13px;">Detalhes do débito:</p>
             
-            <!-- Informações do débito no modal -->
             <div class="modal-debt-info" id="modalDebtInfo">
                 <div class="info-row">
                     <span class="info-label">📝 Descrição</span>
@@ -1720,7 +1776,6 @@
         }
 
         function openPixModal(debt, plate) {
-            // Preenche as informações do débito no modal
             document.getElementById('modalDebtDesc').textContent = debt.description;
             document.getElementById('modalDebtDueDate').textContent = debt.dueDate;
             
