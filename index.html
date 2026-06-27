@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* Elementos decorativos suaves */
         .blob {
             position: fixed;
             border-radius: 50%;
@@ -33,31 +32,9 @@
             z-index: 0;
             pointer-events: none;
         }
-
-        .blob-1 {
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: #a78bfa;
-        }
-
-        .blob-2 {
-            bottom: -100px;
-            left: -100px;
-            width: 250px;
-            height: 250px;
-            background: #6ee7b7;
-        }
-
-        .blob-3 {
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            background: #fde68a;
-            transform: translate(-50%, -50%);
-        }
+        .blob-1 { top: -100px; right: -100px; width: 300px; height: 300px; background: #a78bfa; }
+        .blob-2 { bottom: -100px; left: -100px; width: 250px; height: 250px; background: #6ee7b7; }
+        .blob-3 { top: 50%; left: 50%; width: 200px; height: 200px; background: #fde68a; transform: translate(-50%, -50%); }
 
         /* ==================== SIDEBAR ==================== */
         .sidebar-overlay {
@@ -72,10 +49,7 @@
             display: none;
             animation: fadeIn 0.3s ease;
         }
-
-        .sidebar-overlay.active {
-            display: block;
-        }
+        .sidebar-overlay.active { display: block; }
 
         .sidebar {
             position: fixed;
@@ -95,12 +69,8 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
+        .sidebar.open { left: 0; }
 
-        .sidebar.open {
-            left: 0;
-        }
-
-        /* Cabeçalho da sidebar */
         .sidebar-header {
             padding: 0 20px 20px 20px;
             border-bottom: 1px solid #f1f5f9;
@@ -108,13 +78,11 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .sidebar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
         .sidebar-logo {
             width: 44px;
             height: 44px;
@@ -127,7 +95,6 @@
             box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
             flex-shrink: 0;
         }
-
         .sidebar-brand-text h2 {
             font-size: 18px;
             font-weight: 700;
@@ -137,13 +104,11 @@
             color: transparent;
             line-height: 1.2;
         }
-
         .sidebar-brand-text span {
             font-size: 11px;
             color: #94a3b8;
             font-weight: 500;
         }
-
         .sidebar-close {
             background: none;
             border: none;
@@ -154,12 +119,8 @@
             touch-action: manipulation;
             transition: transform 0.2s;
         }
+        .sidebar-close:active { transform: scale(0.9); }
 
-        .sidebar-close:active {
-            transform: scale(0.9);
-        }
-
-        /* Info do veículo na sidebar */
         .sidebar-vehicle {
             padding: 16px 20px;
             background: #f8fafc;
@@ -170,7 +131,6 @@
             gap: 12px;
             border: 1px solid #e2e8f0;
         }
-
         .sidebar-vehicle-icon {
             width: 40px;
             height: 40px;
@@ -182,12 +142,10 @@
             font-size: 20px;
             flex-shrink: 0;
         }
-
         .sidebar-vehicle-info {
             flex: 1;
             min-width: 0;
         }
-
         .sidebar-vehicle-info .model {
             font-weight: 600;
             color: #1e293b;
@@ -196,7 +154,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-
         .sidebar-vehicle-info .plate {
             font-family: 'Courier New', monospace;
             font-size: 13px;
@@ -205,12 +162,10 @@
             letter-spacing: 1.5px;
         }
 
-        /* Navegação da sidebar */
         .sidebar-nav {
             flex: 1;
             padding: 8px 12px;
         }
-
         .sidebar-nav-label {
             font-size: 11px;
             font-weight: 600;
@@ -219,7 +174,6 @@
             letter-spacing: 0.5px;
             padding: 8px 12px 8px 12px;
         }
-
         .sidebar-nav-item {
             display: flex;
             align-items: center;
@@ -240,28 +194,14 @@
             font-family: inherit;
             text-align: left;
         }
-
-        .sidebar-nav-item:active {
-            transform: scale(0.97);
-        }
-
-        .sidebar-nav-item:hover {
-            background: #f1f5f9;
-        }
-
+        .sidebar-nav-item:active { transform: scale(0.97); }
+        .sidebar-nav-item:hover { background: #f1f5f9; }
         .sidebar-nav-item.active {
             background: linear-gradient(135deg, #8b5cf6, #a78bfa);
             color: white;
             box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
         }
-
-        .sidebar-nav-item .nav-icon {
-            font-size: 20px;
-            width: 28px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
+        .sidebar-nav-item .nav-icon { font-size: 20px; width: 28px; text-align: center; flex-shrink: 0; }
         .sidebar-nav-item .nav-badge {
             margin-left: auto;
             background: #fee2e2;
@@ -271,29 +211,22 @@
             font-size: 11px;
             font-weight: 600;
         }
-
         .sidebar-nav-item.active .nav-badge {
             background: rgba(255, 255, 255, 0.25);
             color: white;
         }
-
         .sidebar-nav-item .nav-arrow {
             margin-left: auto;
             font-size: 12px;
             color: #94a3b8;
         }
+        .sidebar-nav-item.active .nav-arrow { color: rgba(255, 255, 255, 0.6); }
 
-        .sidebar-nav-item.active .nav-arrow {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Rodapé da sidebar */
         .sidebar-footer {
             padding: 16px 20px;
             border-top: 1px solid #f1f5f9;
             margin-top: auto;
         }
-
         .sidebar-footer .btn-logout {
             width: 100%;
             padding: 12px;
@@ -312,12 +245,10 @@
             touch-action: manipulation;
             font-family: inherit;
         }
-
         .sidebar-footer .btn-logout:active {
             transform: scale(0.97);
             background: #e2e8f0;
         }
-
         .sidebar-version {
             text-align: center;
             font-size: 10px;
@@ -335,8 +266,6 @@
             z-index: 1;
             transition: all 0.3s ease;
         }
-
-        /* Cards suaves */
         .soft-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -345,14 +274,13 @@
             transition: all 0.3s ease;
         }
 
-        /* Tela de Login */
+        /* Login */
         .login-card {
             max-width: 500px;
             margin: 0 auto;
             padding: 32px 24px;
             text-align: center;
         }
-
         .logo {
             width: 70px;
             height: 70px;
@@ -364,11 +292,7 @@
             margin-bottom: 20px;
             box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
         }
-
-        .logo span {
-            font-size: 36px;
-        }
-
+        .logo span { font-size: 36px; }
         h1 {
             font-size: 28px;
             font-weight: 700;
@@ -379,14 +303,8 @@
             margin-bottom: 6px;
             letter-spacing: -0.5px;
         }
+        .tagline { color: #64748b; font-size: 13px; margin-bottom: 28px; }
 
-        .tagline {
-            color: #64748b;
-            font-size: 13px;
-            margin-bottom: 28px;
-        }
-
-        /* Botão hambúrguer - aparece no dashboard */
         .hamburger-btn {
             background: white;
             border: 1px solid #e2e8f0;
@@ -400,31 +318,13 @@
             color: #475569;
             transition: all 0.2s;
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
+        .hamburger-btn:active { transform: scale(0.95); }
 
-        .hamburger-btn:active {
-            transform: scale(0.95);
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #334155;
-            font-weight: 500;
-            font-size: 13px;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; margin-bottom: 8px; color: #334155; font-weight: 500; font-size: 13px; }
+        .input-wrapper { position: relative; }
         .input-icon {
             position: absolute;
             left: 16px;
@@ -433,7 +333,6 @@
             font-size: 18px;
             color: #94a3b8;
         }
-
         .input-wrapper input {
             width: 100%;
             padding: 16px 16px 16px 48px;
@@ -448,7 +347,6 @@
             -webkit-appearance: none;
             appearance: none;
         }
-
         .input-wrapper input:focus {
             outline: none;
             border-color: #8b5cf6;
@@ -470,14 +368,9 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
         }
-
-        .btn-primary:active {
-            transform: scale(0.97);
-            transition: transform 0.05s;
-        }
+        .btn-primary:active { transform: scale(0.97); }
 
         .examples-box {
             margin-top: 28px;
@@ -485,7 +378,6 @@
             background: #f8fafc;
             border-radius: 24px;
         }
-
         .examples-title {
             color: #64748b;
             font-size: 12px;
@@ -495,14 +387,12 @@
             gap: 6px;
             justify-content: center;
         }
-
         .chips {
             display: flex;
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
         }
-
         .chip {
             padding: 10px 18px;
             background: white;
@@ -515,16 +405,13 @@
             color: #475569;
             font-weight: 500;
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
         }
-
         .chip:active {
             transform: scale(0.95);
             background: #8b5cf6;
             color: white;
         }
 
-        /* Alertas */
         .alert {
             padding: 14px 16px;
             border-radius: 20px;
@@ -533,54 +420,21 @@
             font-size: 13px;
             animation: slideDown 0.3s ease;
         }
-
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        .alert-error {
-            background: #fee2e2;
-            color: #dc2626;
-            border-left: 4px solid #dc2626;
-        }
-
-        .alert-success {
-            background: #d1fae5;
-            color: #059669;
-            border-left: 4px solid #059669;
-        }
-
-        .alert-info {
-            background: #dbeafe;
-            color: #2563eb;
-            border-left: 4px solid #2563eb;
-        }
+        .alert-error { background: #fee2e2; color: #dc2626; border-left: 4px solid #dc2626; }
+        .alert-success { background: #d1fae5; color: #059669; border-left: 4px solid #059669; }
+        .alert-info { background: #dbeafe; color: #2563eb; border-left: 4px solid #2563eb; }
 
         /* Dashboard */
-        .dashboard {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .dashboard.active {
-            display: block;
-        }
+        .dashboard { display: none; animation: fadeIn 0.4s ease; }
+        .dashboard.active { display: block; }
 
         .dashboard-header {
             padding: 16px 20px;
@@ -591,28 +445,22 @@
             gap: 12px;
             flex-wrap: wrap;
         }
-
         .dashboard-header-left {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
-        /* Container da direita - info do veículo */
         .vehicle-info-right {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             gap: 4px;
         }
-
         .vehicle-model-right {
             color: #475569;
             font-size: 13px;
             font-weight: 500;
         }
-
-        /* Placa pequena estilo texto */
         .plate-small {
             background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
             padding: 6px 14px;
@@ -640,46 +488,25 @@
             gap: 8px;
             font-weight: 500;
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
             font-family: inherit;
         }
-
         .btn-secondary:active {
             transform: scale(0.97);
             background: #f1f5f9;
         }
 
-        /* ==================== PÁGINAS (SECTIONS) ==================== */
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-            padding: 20px;
-        }
+        /* Páginas */
+        .page { display: none; animation: fadeIn 0.3s ease; padding: 20px; }
+        .page.active { display: block; }
+        .page-title { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+        .page-subtitle { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
 
-        .page.active {
-            display: block;
-        }
-
-        .page-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 4px;
-        }
-
-        .page-subtitle {
-            color: #94a3b8;
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        /* Stats Grid - Mobile first */
+        /* Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
         }
-
         .stat-item {
             background: white;
             padding: 16px;
@@ -688,37 +515,14 @@
             border: 1px solid #f1f5f9;
             text-align: center;
         }
+        .stat-item:active { transform: scale(0.98); }
+        .stat-icon { font-size: 24px; margin-bottom: 8px; }
+        .stat-value { font-size: 24px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+        .stat-label { font-size: 11px; color: #94a3b8; }
+        .stat-value.debt { color: #dc2626; }
+        .stat-value.success { color: #059669; }
 
-        .stat-item:active {
-            transform: scale(0.98);
-        }
-
-        .stat-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            color: #94a3b8;
-        }
-
-        .stat-value.debt {
-            color: #dc2626;
-        }
-
-        .stat-value.success {
-            color: #059669;
-        }
-
-        /* Tabelas - SEM ROLAGEM HORIZONTAL */
+        /* Tabelas */
         .table-container {
             overflow: visible;
             background: white;
@@ -726,13 +530,11 @@
             border: 1px solid #f1f5f9;
             width: 100%;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
         }
-
         th {
             text-align: left;
             padding: 12px 10px;
@@ -742,7 +544,6 @@
             background: #fafcff;
             border-bottom: 1px solid #e2e8f0;
         }
-
         td {
             padding: 10px 10px;
             color: #334155;
@@ -750,12 +551,8 @@
             font-size: 12px;
             word-wrap: break-word;
         }
+        tr:last-child td { border-bottom: none; }
 
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Larguras fixas para colunas - EVITA ROLAGEM */
         .debt-table .col-due { width: 18%; }
         .debt-table .col-desc { width: 27%; }
         .debt-table .col-status { width: 16%; }
@@ -768,6 +565,13 @@
         .history-table .col-ref { width: 22%; }
         .history-table .col-status { width: 12%; }
 
+        /* Colunas da tabela de manutenções */
+        .maintenance-table .col-date { width: 16%; }
+        .maintenance-table .col-desc { width: 22%; }
+        .maintenance-table .col-parts { width: 26%; }
+        .maintenance-table .col-labor { width: 18%; }
+        .maintenance-table .col-total { width: 18%; }
+
         .badge {
             display: inline-block;
             padding: 3px 10px;
@@ -776,21 +580,10 @@
             font-weight: 500;
             white-space: nowrap;
         }
-
-        .badge-pending {
-            background: #fef3c7;
-            color: #d97706;
-        }
-
-        .badge-overdue {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-
-        .badge-paid {
-            background: #d1fae5;
-            color: #059669;
-        }
+        .badge-pending { background: #fef3c7; color: #d97706; }
+        .badge-overdue { background: #fee2e2; color: #dc2626; }
+        .badge-paid { background: #d1fae5; color: #059669; }
+        .badge-maintenance { background: #e0e7ff; color: #4f46e5; }
 
         .btn-pix {
             background: linear-gradient(135deg, #00a86b, #0095d9);
@@ -807,27 +600,16 @@
             gap: 4px;
             font-family: inherit;
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
             white-space: nowrap;
         }
-
-        .btn-pix:active {
-            transform: scale(0.95);
-        }
-
+        .btn-pix:active { transform: scale(0.95); }
         .pix-icon-img {
             width: 14px;
             height: 14px;
             filter: brightness(0) invert(1);
         }
 
-        .fee-info {
-            font-size: 9px;
-            color: #dc2626;
-            margin-top: 2px;
-            display: block;
-        }
-
+        .fee-info { font-size: 9px; color: #dc2626; margin-top: 2px; display: block; }
         .original-amount {
             text-decoration: line-through;
             font-size: 10px;
@@ -841,21 +623,14 @@
             color: #94a3b8;
             font-size: 14px;
         }
+        .empty-state .emoji { font-size: 40px; display: block; margin-bottom: 12px; }
 
-        .empty-state .emoji {
-            font-size: 40px;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        /* Resumo de estatísticas - página */
         .stats-summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 16px;
             margin-bottom: 24px;
         }
-
         .stats-summary-card {
             background: white;
             padding: 20px;
@@ -863,28 +638,12 @@
             border: 1px solid #f1f5f9;
             text-align: center;
         }
+        .stats-summary-card .number { font-size: 28px; font-weight: 700; color: #1e293b; }
+        .stats-summary-card .label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+        .stats-summary-card .number.debt { color: #dc2626; }
+        .stats-summary-card .number.success { color: #059669; }
 
-        .stats-summary-card .number {
-            font-size: 28px;
-            font-weight: 700;
-            color: #1e293b;
-        }
-
-        .stats-summary-card .label {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 4px;
-        }
-
-        .stats-summary-card .number.debt {
-            color: #dc2626;
-        }
-
-        .stats-summary-card .number.success {
-            color: #059669;
-        }
-
-        /* Modal PIX - Mobile otimizado */
+        /* Modal PIX */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -900,11 +659,7 @@
             animation: fadeIn 0.3s ease;
             padding: 16px;
         }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
+        .modal-overlay.active { display: flex; }
         .modal-content {
             background: white;
             border-radius: 32px;
@@ -917,38 +672,23 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
-
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         .pix-icon-large {
             width: 56px;
             height: 56px;
             margin: 0 auto 12px;
             display: block;
         }
-
-        .modal-content h4 {
-            font-size: 22px;
-            color: #1e293b;
-            margin-bottom: 8px;
-        }
-
+        .modal-content h4 { font-size: 22px; color: #1e293b; margin-bottom: 8px; }
         .modal-amount {
             font-size: 28px;
             font-weight: 700;
             color: #00a86b;
             margin: 16px 0;
         }
-
         .modal-fee-detail {
             background: #fef3c7;
             padding: 12px;
@@ -957,7 +697,6 @@
             font-size: 12px;
             color: #d97706;
         }
-
         .modal-debt-info {
             background: #f8fafc;
             padding: 12px;
@@ -970,22 +709,13 @@
             flex-direction: column;
             gap: 4px;
         }
-
         .modal-debt-info .info-row {
             display: flex;
             justify-content: space-between;
             padding: 2px 0;
         }
-
-        .modal-debt-info .info-label {
-            color: #94a3b8;
-            font-weight: 500;
-        }
-
-        .modal-debt-info .info-value {
-            color: #1e293b;
-            font-weight: 600;
-        }
+        .modal-debt-info .info-label { color: #94a3b8; font-weight: 500; }
+        .modal-debt-info .info-value { color: #1e293b; font-weight: 600; }
 
         .qrcode-container {
             background: white;
@@ -998,7 +728,6 @@
             flex-direction: column;
             border: 2px solid #e2e8f0;
         }
-
         .qrcode-placeholder {
             width: 180px;
             height: 180px;
@@ -1012,7 +741,6 @@
             color: #64748b;
             font-size: 12px;
         }
-
         .qrcode-placeholder .loading-spinner {
             width: 36px;
             height: 36px;
@@ -1021,12 +749,7 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         .pix-code {
             background: #f1f5f9;
@@ -1038,7 +761,6 @@
             margin: 16px 0;
             text-align: left;
         }
-
         .btn-close {
             background: #e2e8f0;
             border: none;
@@ -1051,7 +773,6 @@
             touch-action: manipulation;
             font-family: inherit;
         }
-
         .btn-copy {
             background: #00a86b;
             border: none;
@@ -1064,124 +785,35 @@
             touch-action: manipulation;
             font-family: inherit;
         }
-
-        .btn-copy:active,
-        .btn-close:active {
-            transform: scale(0.97);
-        }
+        .btn-copy:active, .btn-close:active { transform: scale(0.97); }
 
         /* ==================== RESPONSIVO ==================== */
         @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
+            body { padding: 12px; }
+            .main-content { padding: 8px; }
+            .login-card { padding: 28px 20px; }
+            h1 { font-size: 26px; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .stats-summary-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-item { padding: 10px 6px; }
+            .stat-value { font-size: 18px; }
+            .stat-icon { font-size: 18px; margin-bottom: 4px; }
+            .dashboard-header { padding: 12px 16px; flex-direction: row; justify-content: space-between; align-items: center; }
+            .vehicle-info-right { align-items: flex-end; }
+            .vehicle-model-right { font-size: 11px; }
+            .plate-small { font-size: 12px; padding: 4px 10px; }
+            .btn-secondary { padding: 8px 14px; font-size: 12px; }
+            .btn-pix { padding: 5px 10px; font-size: 10px; }
+            .pix-icon-img { width: 12px; height: 12px; }
+            .page { padding: 12px; }
+            .page-title { font-size: 17px; }
+            .page-subtitle { font-size: 12px; margin-bottom: 12px; }
+            .modal-content { padding: 24px 20px; }
+            .qrcode-placeholder { width: 150px; height: 150px; }
+            .hamburger-btn { display: flex; }
+            .sidebar { width: 280px; left: -300px; }
+            .dashboard-header-left .btn-secondary { display: none; }
 
-            .main-content {
-                padding: 8px;
-            }
-
-            .login-card {
-                padding: 28px 20px;
-            }
-
-            h1 {
-                font-size: 26px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-
-            .stats-summary-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .stat-item {
-                padding: 10px 6px;
-            }
-
-            .stat-value {
-                font-size: 18px;
-            }
-
-            .stat-icon {
-                font-size: 18px;
-                margin-bottom: 4px;
-            }
-
-            .dashboard-header {
-                padding: 12px 16px;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .vehicle-info-right {
-                align-items: flex-end;
-            }
-
-            .vehicle-model-right {
-                font-size: 11px;
-            }
-
-            .plate-small {
-                font-size: 12px;
-                padding: 4px 10px;
-            }
-
-            .btn-secondary {
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-
-            .btn-pix {
-                padding: 5px 10px;
-                font-size: 10px;
-            }
-
-            .pix-icon-img {
-                width: 12px;
-                height: 12px;
-            }
-
-            .page {
-                padding: 12px;
-            }
-
-            .page-title {
-                font-size: 17px;
-            }
-
-            .page-subtitle {
-                font-size: 12px;
-                margin-bottom: 12px;
-            }
-
-            .modal-content {
-                padding: 24px 20px;
-            }
-
-            .qrcode-placeholder {
-                width: 150px;
-                height: 150px;
-            }
-
-            .hamburger-btn {
-                display: flex;
-            }
-
-            .sidebar {
-                width: 280px;
-                left: -300px;
-            }
-
-            .dashboard-header-left .btn-secondary {
-                display: none;
-            }
-
-            /* Ajustes nas tabelas para mobile - SEM ROLAGEM */
             .debt-table .col-due { width: 16%; }
             .debt-table .col-desc { width: 25%; }
             .debt-table .col-status { width: 15%; }
@@ -1194,27 +826,19 @@
             .history-table .col-ref { width: 24%; }
             .history-table .col-status { width: 16%; }
 
-            th, td {
-                padding: 8px 6px;
-                font-size: 11px;
-            }
+            .maintenance-table .col-date { width: 16%; }
+            .maintenance-table .col-desc { width: 20%; }
+            .maintenance-table .col-parts { width: 24%; }
+            .maintenance-table .col-labor { width: 18%; }
+            .maintenance-table .col-total { width: 22%; }
 
-            .badge {
-                font-size: 9px;
-                padding: 2px 8px;
-            }
-
-            .original-amount {
-                font-size: 9px;
-            }
+            th, td { padding: 8px 6px; font-size: 11px; }
+            .badge { font-size: 9px; padding: 2px 8px; }
+            .original-amount { font-size: 9px; }
         }
 
         @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 6px;
-            }
-
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
             .debt-table .col-due { width: 14%; }
             .debt-table .col-desc { width: 22%; }
             .debt-table .col-status { width: 14%; }
@@ -1227,52 +851,26 @@
             .history-table .col-ref { width: 26%; }
             .history-table .col-status { width: 22%; }
 
-            th, td {
-                padding: 6px 4px;
-                font-size: 10px;
-            }
+            .maintenance-table .col-date { width: 14%; }
+            .maintenance-table .col-desc { width: 18%; }
+            .maintenance-table .col-parts { width: 22%; }
+            .maintenance-table .col-labor { width: 18%; }
+            .maintenance-table .col-total { width: 28%; }
 
-            .btn-pix {
-                padding: 4px 8px;
-                font-size: 9px;
-                gap: 2px;
-            }
-
-            .pix-icon-img {
-                width: 10px;
-                height: 10px;
-            }
-
-            .badge {
-                font-size: 8px;
-                padding: 2px 6px;
-            }
-
-            .plate-small {
-                font-size: 10px;
-                padding: 3px 8px;
-                letter-spacing: 1px;
-            }
-
-            .vehicle-model-right {
-                font-size: 10px;
-            }
+            th, td { padding: 6px 4px; font-size: 10px; }
+            .btn-pix { padding: 4px 8px; font-size: 9px; gap: 2px; }
+            .pix-icon-img { width: 10px; height: 10px; }
+            .badge { font-size: 8px; padding: 2px 6px; }
+            .plate-small { font-size: 10px; padding: 3px 8px; letter-spacing: 1px; }
+            .vehicle-model-right { font-size: 10px; }
         }
 
         @media (min-width: 769px) {
-            .hamburger-btn {
-                display: none;
-            }
+            .hamburger-btn { display: none; }
         }
 
-        /* Prevenir zoom em inputs no iOS */
         @media (max-width: 768px) {
-            input,
-            button,
-            .btn-pix,
-            .chip {
-                font-size: 16px;
-            }
+            input, button, .btn-pix, .chip { font-size: 16px; }
         }
     </style>
 </head>
@@ -1284,7 +882,6 @@
     <!-- ==================== SIDEBAR ==================== -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
     <nav class="sidebar" id="sidebar">
-        <!-- Cabeçalho -->
         <div class="sidebar-header">
             <div class="sidebar-brand">
                 <div class="sidebar-logo">🚗</div>
@@ -1296,7 +893,6 @@
             <button class="sidebar-close" onclick="closeSidebar()" aria-label="Fechar menu">✕</button>
         </div>
 
-        <!-- Veículo atual -->
         <div class="sidebar-vehicle" id="sidebarVehicle">
             <div class="sidebar-vehicle-icon">🚙</div>
             <div class="sidebar-vehicle-info">
@@ -1305,47 +901,44 @@
             </div>
         </div>
 
-        <!-- Navegação -->
         <nav class="sidebar-nav">
             <div class="sidebar-nav-label">Menu</div>
 
             <button class="sidebar-nav-item active" data-page="overview" onclick="navigateTo('overview')">
-                <span class="nav-icon">📊</span>
-                <span>Visão Geral</span>
+                <span class="nav-icon">📊</span> <span>Visão Geral</span>
             </button>
 
             <button class="sidebar-nav-item" data-page="debts" onclick="navigateTo('debts')">
-                <span class="nav-icon">📌</span>
-                <span>Débitos</span>
+                <span class="nav-icon">📌</span> <span>Débitos</span>
                 <span class="nav-badge" id="sidebarDebtBadge">0</span>
             </button>
 
+            <button class="sidebar-nav-item" data-page="maintenance" onclick="navigateTo('maintenance')">
+                <span class="nav-icon">🔧</span> <span>Manutenções</span>
+                <span class="nav-badge" id="sidebarMaintenanceBadge">0</span>
+            </button>
+
             <button class="sidebar-nav-item" data-page="history" onclick="navigateTo('history')">
-                <span class="nav-icon">📜</span>
-                <span>Histórico</span>
+                <span class="nav-icon">📜</span> <span>Histórico</span>
             </button>
 
             <button class="sidebar-nav-item" data-page="summary" onclick="navigateTo('summary')">
-                <span class="nav-icon">📈</span>
-                <span>Resumo</span>
+                <span class="nav-icon">📈</span> <span>Resumo</span>
             </button>
 
             <div class="sidebar-nav-label" style="margin-top: 12px;">Ajuda</div>
 
             <button class="sidebar-nav-item" onclick="showHelp()">
-                <span class="nav-icon">❓</span>
-                <span>Ajuda</span>
+                <span class="nav-icon">❓</span> <span>Ajuda</span>
                 <span class="nav-arrow">→</span>
             </button>
 
             <button class="sidebar-nav-item" onclick="showAbout()">
-                <span class="nav-icon">ℹ️</span>
-                <span>Sobre</span>
+                <span class="nav-icon">ℹ️</span> <span>Sobre</span>
                 <span class="nav-arrow">→</span>
             </button>
         </nav>
 
-        <!-- Rodapé -->
         <div class="sidebar-footer">
             <button class="btn-logout" onclick="handleLogout()">
                 <span>🚪</span> Nova consulta
@@ -1359,9 +952,7 @@
 
         <!-- Tela de Login -->
         <div id="loginScreen" class="login-card soft-card">
-            <div class="logo">
-                <span>🚗</span>
-            </div>
+            <div class="logo"><span>🚗</span></div>
             <h1>SuaveConsulta</h1>
             <div class="tagline">Consulte débitos do seu veículo</div>
 
@@ -1380,9 +971,7 @@
             </button>
 
             <div class="examples-box">
-                <div class="examples-title">
-                    <span>📋</span> Testar com exemplo
-                </div>
+                <div class="examples-title"><span>📋</span> Testar com exemplo</div>
                 <div class="chips">
                     <div class="chip" onclick="setExamplePlate('ABC1234')">ABC1234</div>
                     <div class="chip" onclick="setExamplePlate('DEF5678')">DEF5678</div>
@@ -1396,12 +985,8 @@
         <div id="dashboard" class="dashboard soft-card">
             <div class="dashboard-header">
                 <div class="dashboard-header-left">
-                    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Abrir menu">
-                        ☰
-                    </button>
-                    <button class="btn-secondary" onclick="handleLogout()">
-                        ← Nova consulta
-                    </button>
+                    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Abrir menu">☰</button>
+                    <button class="btn-secondary" onclick="handleLogout()">← Nova consulta</button>
                 </div>
                 <div class="vehicle-info-right">
                     <div class="vehicle-model-right" id="vehicleModel">Honda Civic 2019</div>
@@ -1411,28 +996,35 @@
 
             <div id="dashboardAlert" class="alert" style="margin: 0 16px;"></div>
 
-            <!-- ==================== PÁGINA: VISÃO GERAL ==================== -->
+            <!-- PÁGINA: VISÃO GERAL -->
             <div class="page active" id="page-overview">
                 <div class="page-title">📊 Visão Geral</div>
                 <div class="page-subtitle">Resumo rápido da situação do seu veículo</div>
                 <div class="stats-grid" id="statsGrid"></div>
             </div>
 
-            <!-- ==================== PÁGINA: DÉBITOS ==================== -->
+            <!-- PÁGINA: DÉBITOS -->
             <div class="page" id="page-debts">
                 <div class="page-title">📌 Débitos Pendentes</div>
                 <div class="page-subtitle">Todos os débitos em aberto do veículo</div>
                 <div class="table-container" id="debtsContainer"></div>
             </div>
 
-            <!-- ==================== PÁGINA: HISTÓRICO ==================== -->
+            <!-- PÁGINA: MANUTENÇÕES -->
+            <div class="page" id="page-maintenance">
+                <div class="page-title">🔧 Manutenções</div>
+                <div class="page-subtitle">Histórico de manutenções, peças trocadas e custos</div>
+                <div class="table-container" id="maintenanceContainer"></div>
+            </div>
+
+            <!-- PÁGINA: HISTÓRICO -->
             <div class="page" id="page-history">
                 <div class="page-title">📜 Histórico de Pagamentos</div>
                 <div class="page-subtitle">Registro de todos os pagamentos realizados</div>
                 <div class="table-container" id="historyContainer"></div>
             </div>
 
-            <!-- ==================== PÁGINA: RESUMO ==================== -->
+            <!-- PÁGINA: RESUMO -->
             <div class="page" id="page-summary">
                 <div class="page-title">📈 Resumo Completo</div>
                 <div class="page-subtitle">Análise detalhada da situação financeira do veículo</div>
@@ -1447,8 +1039,6 @@
             <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" alt="PIX" class="pix-icon-large">
             <h4>Pagar com PIX</h4>
             <p style="color: #64748b; margin-bottom: 8px; font-size: 13px;">Detalhes do débito:</p>
-            
-            <!-- Informações do débito no modal -->
             <div class="modal-debt-info" id="modalDebtInfo">
                 <div class="info-row">
                     <span class="info-label">📝 Descrição</span>
@@ -1463,17 +1053,14 @@
                     <span class="info-value" id="modalDebtStatus">-</span>
                 </div>
             </div>
-
             <div id="modalFeeDetail" class="modal-fee-detail" style="display: none;"></div>
             <div class="modal-amount" id="modalAmount">R$ 0,00</div>
-
             <div class="qrcode-container">
                 <div id="qrcodeArea" class="qrcode-placeholder">
                     <div class="loading-spinner"></div>
                     <span>Gerando PIX...</span>
                 </div>
             </div>
-
             <div class="pix-code" id="pixCode">Carregando código PIX...</div>
             <div>
                 <button class="btn-copy" onclick="copyPixCode()">📋 Copiar código</button>
@@ -1497,32 +1084,33 @@
                 plate: "ABC1234",
                 vehicle: "Fiat Strada 2020",
                 debts: [
-                    { id: 1, dueDate: "15/03/2024", description: "IPVA 2024", amount: 1250.00, status: "pending",
-                        originalAmount: 1250.00 },
-                    { id: 2, dueDate: "30/04/2024", description: "Licenciamento Anual", amount: 185.00,
-                        status: "pending", originalAmount: 185.00 }
+                    { id: 1, dueDate: "15/03/2024", description: "IPVA 2024", amount: 1250.00, status: "pending", originalAmount: 1250.00 },
+                    { id: 2, dueDate: "30/04/2024", description: "Licenciamento Anual", amount: 185.00, status: "pending", originalAmount: 185.00 }
                 ],
                 history: [
-                    { paymentDate: "10/01/2024", description: "IPVA 2023", amount: 1200.00,
-                    reference: "Parcela única" },
-                    { paymentDate: "05/02/2024", description: "Multa de Trânsito", amount: 195.00,
-                        reference: "Ato 123456" }
+                    { paymentDate: "10/01/2024", description: "IPVA 2023", amount: 1200.00, reference: "Parcela única" },
+                    { paymentDate: "05/02/2024", description: "Multa de Trânsito", amount: 195.00, reference: "Ato 123456" }
+                ],
+                maintenances: [
+                    { date: "12/01/2024", description: "Troca de óleo e filtros", parts: "Óleo 5W30, Filtro de óleo, Filtro de ar", labor: 120.00, total: 380.00 },
+                    { date: "20/03/2024", description: "Revisão dos freios", parts: "Pastilhas de freio dianteiras", labor: 180.00, total: 320.00 }
                 ]
             },
             "DEF5678": {
                 plate: "DEF5678",
                 vehicle: "Honda Civic 2019",
                 debts: [
-                    { id: 3, dueDate: "10/02/2024", description: "IPVA 2024 - 1ª Parcela", amount: 450.00,
-                        status: "overdue", originalAmount: 450.00 },
-                    { id: 4, dueDate: "10/03/2024", description: "IPVA 2024 - 2ª Parcela", amount: 450.00,
-                        status: "overdue", originalAmount: 450.00 },
-                    { id: 5, dueDate: "20/01/2024", description: "DPVAT", amount: 85.00, status: "overdue",
-                        originalAmount: 85.00 }
+                    { id: 3, dueDate: "10/02/2024", description: "IPVA 2024 - 1ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 },
+                    { id: 4, dueDate: "10/03/2024", description: "IPVA 2024 - 2ª Parcela", amount: 450.00, status: "overdue", originalAmount: 450.00 },
+                    { id: 5, dueDate: "20/01/2024", description: "DPVAT", amount: 85.00, status: "overdue", originalAmount: 85.00 }
                 ],
                 history: [
-                    { paymentDate: "15/12/2023", description: "Licenciamento 2023", amount: 180.00,
-                        reference: "Exercício 2023" }
+                    { paymentDate: "15/12/2023", description: "Licenciamento 2023", amount: 180.00, reference: "Exercício 2023" }
+                ],
+                maintenances: [
+                    { date: "05/02/2024", description: "Troca de pneus", parts: "Pneu Aro 17 (x4)", labor: 200.00, total: 2800.00 },
+                    { date: "18/03/2024", description: "Troca de óleo e filtros", parts: "Óleo 5W30, Filtro de óleo", labor: 100.00, total: 280.00 },
+                    { date: "02/04/2024", description: "Alinhamento e balanceamento", parts: "-", labor: 150.00, total: 150.00 }
                 ]
             },
             "GHI9012": {
@@ -1530,53 +1118,40 @@
                 vehicle: "Volkswagen Gol 2022",
                 debts: [],
                 history: [
-                    { paymentDate: "20/01/2024", description: "IPVA 2024", amount: 1100.00,
-                    reference: "À vista" },
-                    { paymentDate: "15/02/2024", description: "Licenciamento 2024", amount: 190.00,
-                        reference: "Exercício 2024" }
+                    { paymentDate: "20/01/2024", description: "IPVA 2024", amount: 1100.00, reference: "À vista" },
+                    { paymentDate: "15/02/2024", description: "Licenciamento 2024", amount: 190.00, reference: "Exercício 2024" }
+                ],
+                maintenances: [
+                    { date: "10/01/2024", description: "Troca de óleo", parts: "Óleo 5W40", labor: 80.00, total: 180.00 },
+                    { date: "25/02/2024", description: "Revisão completa", parts: "Filtros, vela de ignição", labor: 250.00, total: 450.00 }
                 ]
             },
             "JKL3456": {
                 plate: "JKL3456",
                 vehicle: "Chevrolet Onix 2021",
                 debts: [
-                    { id: 6, dueDate: "05/05/2024", description: "IPVA 2024", amount: 980.00, status: "pending",
-                        originalAmount: 980.00 },
-                    { id: 7, dueDate: "20/06/2024", description: "Seguro Obrigatório", amount: 95.00,
-                        status: "pending", originalAmount: 95.00 },
-                    { id: 8, dueDate: "01/03/2024", description: "Multa - Radar", amount: 280.00,
-                        status: "overdue", originalAmount: 280.00 }
+                    { id: 6, dueDate: "05/05/2024", description: "IPVA 2024", amount: 980.00, status: "pending", originalAmount: 980.00 },
+                    { id: 7, dueDate: "20/06/2024", description: "Seguro Obrigatório", amount: 95.00, status: "pending", originalAmount: 95.00 },
+                    { id: 8, dueDate: "01/03/2024", description: "Multa - Radar", amount: 280.00, status: "overdue", originalAmount: 280.00 }
                 ],
                 history: [
-                    { paymentDate: "10/02/2023", description: "IPVA 2023", amount: 950.00,
-                    reference: "Parcela única" },
-                    { paymentDate: "15/03/2023", description: "Licenciamento 2023", amount: 175.00,
-                        reference: "Exercício 2023" },
-                    { paymentDate: "20/11/2023", description: "Multa - Estacionamento", amount: 150.00,
-                        reference: "Auto 789" }
+                    { paymentDate: "10/02/2023", description: "IPVA 2023", amount: 950.00, reference: "Parcela única" },
+                    { paymentDate: "15/03/2023", description: "Licenciamento 2023", amount: 175.00, reference: "Exercício 2023" },
+                    { paymentDate: "20/11/2023", description: "Multa - Estacionamento", amount: 150.00, reference: "Auto 789" }
+                ],
+                maintenances: [
+                    { date: "15/01/2024", description: "Troca de óleo", parts: "Óleo 5W30, Filtro de óleo", labor: 90.00, total: 220.00 },
+                    { date: "10/02/2024", description: "Troca de pastilhas de freio", parts: "Pastilhas dianteiras e traseiras", labor: 160.00, total: 350.00 },
+                    { date: "05/03/2024", description: "Troca de bateria", parts: "Bateria 60Ah", labor: 50.00, total: 450.00 }
                 ]
             }
         };
 
         // ==================== FUNÇÕES AUXILIARES ====================
-        function normalizePlate(plate) {
-            return plate.replace(/[\s-]/g, '').toUpperCase();
-        }
-
-        function isValidPlate(plate) {
-            const n = normalizePlate(plate);
-            return /^[A-Z]{3}\d{4}$/.test(n) || /^[A-Z]{3}\d[A-Z]\d{2}$/.test(n);
-        }
-
-        function getVehicleData(plate) {
-            return vehicleDatabase[normalizePlate(plate)] || null;
-        }
-
-        function parseDate(dateStr) {
-            const parts = dateStr.split('/');
-            return new Date(parts[2], parts[1] - 1, parts[0]);
-        }
-
+        function normalizePlate(plate) { return plate.replace(/[\s-]/g, '').toUpperCase(); }
+        function isValidPlate(plate) { const n = normalizePlate(plate); return /^[A-Z]{3}\d{4}$/.test(n) || /^[A-Z]{3}\d[A-Z]\d{2}$/.test(n); }
+        function getVehicleData(plate) { return vehicleDatabase[normalizePlate(plate)] || null; }
+        function parseDate(dateStr) { const parts = dateStr.split('/'); return new Date(parts[2], parts[1] - 1, parts[0]); }
         function calculateOverdueDays(dueDateStr) {
             const today = new Date();
             const dueDate = parseDate(dueDateStr);
@@ -1585,15 +1160,12 @@
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             return Math.min(diffDays, MAX_FEE_DAYS);
         }
-
         function calculateTotalWithFee(originalAmount, dueDate, status) {
             if (status !== 'overdue') return originalAmount;
             const daysOverdue = calculateOverdueDays(dueDate);
             if (daysOverdue === 0) return originalAmount;
-            const fee = daysOverdue * FEE_PER_DAY;
-            return originalAmount + fee;
+            return originalAmount + (daysOverdue * FEE_PER_DAY);
         }
-
         function getFeeDetail(originalAmount, dueDate, status) {
             if (status !== 'overdue') return null;
             const daysOverdue = calculateOverdueDays(dueDate);
@@ -1601,29 +1173,18 @@
             const fee = daysOverdue * FEE_PER_DAY;
             return { days: daysOverdue, fee: fee, total: originalAmount + fee };
         }
-
-        function formatCurrency(value) {
-            return 'R$ ' + value.toFixed(2);
-        }
-
+        function formatCurrency(value) { return 'R$ ' + value.toFixed(2); }
         function getStatusLabel(status) {
-            const labels = {
-                'pending': '⏳ Pendente',
-                'overdue': '⚠️ Atrasado',
-                'paid': '✅ Pago'
-            };
+            const labels = { 'pending': '⏳ Pendente', 'overdue': '⚠️ Atrasado', 'paid': '✅ Pago' };
             return labels[status] || status;
         }
 
         // ==================== SIDEBAR ====================
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+            document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : '';
         }
-
         function closeSidebar() {
             document.getElementById('sidebar').classList.remove('open');
             document.getElementById('sidebarOverlay').classList.remove('active');
@@ -1632,40 +1193,36 @@
 
         function navigateTo(page) {
             currentPage = page;
-
             document.querySelectorAll('.sidebar-nav-item[data-page]').forEach(item => {
                 item.classList.toggle('active', item.dataset.page === page);
             });
-
             document.querySelectorAll('.page').forEach(p => {
                 p.classList.toggle('active', p.id === 'page-' + page);
             });
-
-            if (window.innerWidth <= 768) {
-                closeSidebar();
-            }
-
-            if (currentVehicle) {
-                renderPageContent(page);
-            }
+            if (window.innerWidth <= 768) closeSidebar();
+            if (currentVehicle) renderPageContent(page);
         }
 
         function updateSidebarVehicle(vehicle, plate) {
             const modelEl = document.getElementById('sidebarVehicleModel');
             const plateEl = document.getElementById('sidebarVehiclePlate');
-            const badgeEl = document.getElementById('sidebarDebtBadge');
+            const debtBadge = document.getElementById('sidebarDebtBadge');
+            const maintBadge = document.getElementById('sidebarMaintenanceBadge');
 
             if (vehicle) {
                 modelEl.textContent = vehicle.vehicle;
                 plateEl.textContent = plate;
-                const debtCount = vehicle.debts.length;
-                badgeEl.textContent = debtCount;
-                badgeEl.style.display = debtCount > 0 ? 'inline-block' : 'none';
+                debtBadge.textContent = vehicle.debts.length;
+                debtBadge.style.display = vehicle.debts.length > 0 ? 'inline-block' : 'none';
+                maintBadge.textContent = (vehicle.maintenances || []).length;
+                maintBadge.style.display = (vehicle.maintenances || []).length > 0 ? 'inline-block' : 'none';
             } else {
                 modelEl.textContent = 'Nenhum veículo';
                 plateEl.textContent = '---';
-                badgeEl.textContent = '0';
-                badgeEl.style.display = 'none';
+                debtBadge.textContent = '0';
+                debtBadge.style.display = 'none';
+                maintBadge.textContent = '0';
+                maintBadge.style.display = 'none';
             }
         }
 
@@ -1676,7 +1233,6 @@
                 'info');
             if (window.innerWidth <= 768) closeSidebar();
         }
-
         function showAbout() {
             showAlert(document.getElementById('dashboardAlert'),
                 '🚗 <strong>SuaveConsulta v2.0</strong><br>Consulte débitos veiculares de forma rápida e segura.<br><br>🔷 Dados simulados para demonstração.',
@@ -1698,10 +1254,8 @@
         async function displayPixQrCode(debt, totalAmount, plate) {
             const qrcodeArea = document.getElementById('qrcodeArea');
             const pixCodeElement = document.getElementById('pixCode');
-
             qrcodeArea.innerHTML = `<div class="loading-spinner"></div><span>Gerando PIX...</span>`;
             pixCodeElement.innerHTML = 'Gerando código PIX...';
-
             try {
                 const pixData = generateDemoPix(debt, totalAmount);
                 if (pixData.qrCodeBase64) {
@@ -1720,16 +1274,13 @@
         }
 
         function openPixModal(debt, plate) {
-            // Preenche as informações do débito no modal
             document.getElementById('modalDebtDesc').textContent = debt.description;
             document.getElementById('modalDebtDueDate').textContent = debt.dueDate;
-            
             const statusLabel = debt.status === 'overdue' ? '⚠️ Atrasado' : '⏳ Pendente';
             document.getElementById('modalDebtStatus').textContent = statusLabel;
-            
+
             let finalAmount = debt.amount;
             const feeDetailEl = document.getElementById('modalFeeDetail');
-            
             if (debt.status === 'overdue') {
                 const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
                 if (feeInfo && feeInfo.fee > 0) {
@@ -1746,15 +1297,12 @@
             } else {
                 feeDetailEl.style.display = 'none';
             }
-            
             document.getElementById('modalAmount').innerHTML = `R$ ${finalAmount.toFixed(2)}`;
             document.getElementById('pixModal').classList.add('active');
             displayPixQrCode(debt, finalAmount, plate);
         }
 
-        function closePixModal() {
-            document.getElementById('pixModal').classList.remove('active');
-        }
+        function closePixModal() { document.getElementById('pixModal').classList.remove('active'); }
 
         function copyPixCode() {
             const code = document.getElementById('pixCode').innerText;
@@ -1768,77 +1316,55 @@
         // ==================== RENDERIZAÇÃO DAS PÁGINAS ====================
         function renderPageContent(page) {
             if (!currentVehicle) return;
-
             switch (page) {
-                case 'overview':
-                    renderOverview();
-                    break;
-                case 'debts':
-                    renderDebts();
-                    break;
-                case 'history':
-                    renderHistory();
-                    break;
-                case 'summary':
-                    renderSummary();
-                    break;
+                case 'overview': renderOverview(); break;
+                case 'debts': renderDebts(); break;
+                case 'maintenance': renderMaintenance(); break;
+                case 'history': renderHistory(); break;
+                case 'summary': renderSummary(); break;
             }
         }
 
         function renderOverview() {
-            const vehicle = currentVehicle;
-            let totalDebt = 0,
-                overdueCount = 0,
-                pendingCount = 0,
-                totalPaid = 0;
-
-            vehicle.debts.forEach(debt => {
+            const v = currentVehicle;
+            let totalDebt = 0, overdueCount = 0, pendingCount = 0, totalPaid = 0;
+            v.debts.forEach(debt => {
                 let current = debt.amount;
-                if (debt.status === 'overdue') {
-                    current = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
-                }
+                if (debt.status === 'overdue') current = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
                 totalDebt += current;
                 if (debt.status === 'overdue') overdueCount++;
                 else if (debt.status === 'pending') pendingCount++;
             });
+            v.history.forEach(h => totalPaid += h.amount);
 
-            vehicle.history.forEach(h => totalPaid += h.amount);
+            const maintCount = (v.maintenances || []).length;
+            const totalMaintCost = (v.maintenances || []).reduce((sum, m) => sum + m.total, 0);
 
             document.getElementById('statsGrid').innerHTML = `
                 <div class="stat-item"><div class="stat-icon">💰</div><div class="stat-value debt">${formatCurrency(totalDebt)}</div><div class="stat-label">Total em débito</div></div>
                 <div class="stat-item"><div class="stat-icon">⚠️</div><div class="stat-value debt">${overdueCount}</div><div class="stat-label">Atrasados</div></div>
                 <div class="stat-item"><div class="stat-icon">⏳</div><div class="stat-value">${pendingCount}</div><div class="stat-label">Pendentes</div></div>
                 <div class="stat-item"><div class="stat-icon">✅</div><div class="stat-value success">${formatCurrency(totalPaid)}</div><div class="stat-label">Total pago</div></div>
-                <div class="stat-item"><div class="stat-icon">📋</div><div class="stat-value">${vehicle.history.length}</div><div class="stat-label">Pagamentos realizados</div></div>
-                <div class="stat-item"><div class="stat-icon">📊</div><div class="stat-value">${vehicle.debts.length}</div><div class="stat-label">Débitos totais</div></div>
+                <div class="stat-item"><div class="stat-icon">🔧</div><div class="stat-value">${maintCount}</div><div class="stat-label">Manutenções</div></div>
+                <div class="stat-item"><div class="stat-icon">🔩</div><div class="stat-value">${formatCurrency(totalMaintCost)}</div><div class="stat-label">Custo total</div></div>
             `;
         }
 
         function renderDebts() {
-            const vehicle = currentVehicle;
+            const v = currentVehicle;
             const container = document.getElementById('debtsContainer');
-
-            if (vehicle.debts.length === 0) {
+            if (v.debts.length === 0) {
                 container.innerHTML =
                     `<div class="empty-state"><span class="emoji">🎉</span>Nenhum débito pendente!<br><span style="font-size:12px;color:#94a3b8;">Seu veículo está em dia.</span></div>`;
                 return;
             }
-
             let html = `<table class="debt-table"><thead><tr>
-                <th class="col-due">📅 Venc.</th>
-                <th class="col-desc">Descrição</th>
-                <th class="col-status">Status</th>
-                <th class="col-value">Valor</th>
-                <th class="col-action">Ação</th>
+                <th class="col-due">📅 Venc.</th><th class="col-desc">Descrição</th><th class="col-status">Status</th><th class="col-value">Valor</th><th class="col-action">Ação</th>
             </tr></thead><tbody>`;
-
-            vehicle.debts.forEach(debt => {
-                let displayAmount = debt.amount,
-                    originalDisplay = '',
-                    feeDisplay = '';
+            v.debts.forEach(debt => {
+                let displayAmount = debt.amount, originalDisplay = '', feeDisplay = '';
                 const statusLabel = debt.status === 'overdue' ? 'Atrasado' : 'Pendente';
                 const statusBadge = debt.status === 'overdue' ? 'badge-overdue' : 'badge-pending';
-
                 if (debt.status === 'overdue') {
                     const feeInfo = getFeeDetail(debt.originalAmount, debt.dueDate, debt.status);
                     if (feeInfo && feeInfo.fee > 0) {
@@ -1847,7 +1373,6 @@
                         displayAmount = feeInfo.total;
                     }
                 }
-
                 html += `<tr>
                     <td class="col-due"><strong>${debt.dueDate}</strong></td>
                     <td class="col-desc">${debt.description}</td>
@@ -1856,30 +1381,51 @@
                     <td class="col-action"><button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${currentPlate}")'><img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img"> PIX</button></td>
                 </tr>`;
             });
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+        }
 
+        function renderMaintenance() {
+            const v = currentVehicle;
+            const container = document.getElementById('maintenanceContainer');
+            const maintenances = v.maintenances || [];
+            if (maintenances.length === 0) {
+                container.innerHTML =
+                    `<div class="empty-state"><span class="emoji">🔧</span>Nenhuma manutenção registrada<br><span style="font-size:12px;color:#94a3b8;">As manutenções aparecerão aqui.</span></div>`;
+                return;
+            }
+            let html = `<table class="maintenance-table"><thead><tr>
+                <th class="col-date">📅 Data</th>
+                <th class="col-desc">Serviço</th>
+                <th class="col-parts">Peças trocadas</th>
+                <th class="col-labor">Mão de obra</th>
+                <th class="col-total">Total</th>
+            </tr></thead><tbody>`;
+            maintenances.forEach(m => {
+                html += `<tr>
+                    <td class="col-date"><strong>${m.date}</strong></td>
+                    <td class="col-desc">${m.description}</td>
+                    <td class="col-parts">${m.parts || '-'}</td>
+                    <td class="col-labor">${formatCurrency(m.labor)}</td>
+                    <td class="col-total"><strong>${formatCurrency(m.total)}</strong></td>
+                </tr>`;
+            });
             html += `</tbody></table>`;
             container.innerHTML = html;
         }
 
         function renderHistory() {
-            const vehicle = currentVehicle;
+            const v = currentVehicle;
             const container = document.getElementById('historyContainer');
-
-            if (vehicle.history.length === 0) {
+            if (v.history.length === 0) {
                 container.innerHTML =
                     `<div class="empty-state"><span class="emoji">📭</span>Nenhum histórico de pagamento<br><span style="font-size:12px;color:#94a3b8;">Os pagamentos aparecerão aqui.</span></div>`;
                 return;
             }
-
             let html = `<table class="history-table"><thead><tr>
-                <th class="col-date">📅 Data</th>
-                <th class="col-desc">Descrição</th>
-                <th class="col-amount">Valor</th>
-                <th class="col-ref">Referência</th>
-                <th class="col-status">Status</th>
+                <th class="col-date">📅 Data</th><th class="col-desc">Descrição</th><th class="col-amount">Valor</th><th class="col-ref">Referência</th><th class="col-status">Status</th>
             </tr></thead><tbody>`;
-
-            vehicle.history.forEach(h => {
+            v.history.forEach(h => {
                 html += `<tr>
                     <td class="col-date">${h.paymentDate}</td>
                     <td class="col-desc">${h.description}</td>
@@ -1888,23 +1434,15 @@
                     <td class="col-status"><span class="badge badge-paid">✅ Pago</span></td>
                 </tr>`;
             });
-
             html += `</tbody></table>`;
             container.innerHTML = html;
         }
 
         function renderSummary() {
-            const vehicle = currentVehicle;
+            const v = currentVehicle;
             const container = document.getElementById('summaryContainer');
-
-            let totalDebt = 0,
-                overdueCount = 0,
-                pendingCount = 0,
-                totalPaid = 0,
-                totalOverdueAmount = 0,
-                totalPendingAmount = 0;
-
-            vehicle.debts.forEach(debt => {
+            let totalDebt = 0, overdueCount = 0, pendingCount = 0, totalPaid = 0, totalOverdueAmount = 0, totalPendingAmount = 0;
+            v.debts.forEach(debt => {
                 let current = debt.amount;
                 if (debt.status === 'overdue') {
                     current = calculateTotalWithFee(debt.originalAmount, debt.dueDate, debt.status);
@@ -1916,53 +1454,35 @@
                 }
                 totalDebt += current;
             });
+            v.history.forEach(h => totalPaid += h.amount);
 
-            vehicle.history.forEach(h => totalPaid += h.amount);
+            const maintenances = v.maintenances || [];
+            const totalMaint = maintenances.reduce((sum, m) => sum + m.total, 0);
+            const maintCount = maintenances.length;
 
             const hasOverdue = overdueCount > 0;
             const hasPending = pendingCount > 0;
-            const isAllPaid = vehicle.debts.length === 0;
+            const isAllPaid = v.debts.length === 0;
 
-            let statusMessage = '';
-            let statusColor = '';
-
-            if (isAllPaid) {
-                statusMessage = '✅ Tudo em dia!';
-                statusColor = '#059669';
-            } else if (hasOverdue) {
-                statusMessage = '⚠️ Atenção! Há débitos atrasados.';
-                statusColor = '#dc2626';
-            } else if (hasPending) {
-                statusMessage = '⏳ Há débitos pendentes. Fique atento aos vencimentos.';
-                statusColor = '#d97706';
-            }
+            let statusMessage = '', statusColor = '';
+            if (isAllPaid) { statusMessage = '✅ Tudo em dia!'; statusColor = '#059669'; }
+            else if (hasOverdue) { statusMessage = '⚠️ Atenção! Há débitos atrasados.'; statusColor = '#dc2626'; }
+            else if (hasPending) { statusMessage = '⏳ Há débitos pendentes. Fique atento aos vencimentos.'; statusColor = '#d97706'; }
 
             container.innerHTML = `
                 <div style="background: ${statusColor}10; border: 1px solid ${statusColor}30; border-radius: 20px; padding: 20px; margin-bottom: 24px; text-align: center;">
                     <div style="font-size: 24px; font-weight: 700; color: ${statusColor};">${statusMessage}</div>
-                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Situação atual do veículo ${vehicle.vehicle}</div>
+                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Situação atual do veículo ${v.vehicle}</div>
                 </div>
 
                 <div class="stats-summary-grid">
-                    <div class="stats-summary-card">
-                        <div class="number debt">${formatCurrency(totalDebt)}</div>
-                        <div class="label">💰 Total em débito</div>
-                    </div>
-                    <div class="stats-summary-card">
-                        <div class="number success">${formatCurrency(totalPaid)}</div>
-                        <div class="label">✅ Total já pago</div>
-                    </div>
-                    <div class="stats-summary-card">
-                        <div class="number">${vehicle.debts.length}</div>
-                        <div class="label">📋 Débitos totais</div>
-                    </div>
-                    <div class="stats-summary-card">
-                        <div class="number">${vehicle.history.length}</div>
-                        <div class="label">📜 Pagamentos realizados</div>
-                    </div>
+                    <div class="stats-summary-card"><div class="number debt">${formatCurrency(totalDebt)}</div><div class="label">💰 Total em débito</div></div>
+                    <div class="stats-summary-card"><div class="number success">${formatCurrency(totalPaid)}</div><div class="label">✅ Total já pago</div></div>
+                    <div class="stats-summary-card"><div class="number">${v.debts.length}</div><div class="label">📋 Débitos totais</div></div>
+                    <div class="stats-summary-card"><div class="number">${v.history.length}</div><div class="label">📜 Pagamentos realizados</div></div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px;">
                     <div style="background: #fef3c7; padding: 16px; border-radius: 16px; text-align: center;">
                         <div style="font-size: 24px; font-weight: 700; color: #d97706;">${pendingCount}</div>
                         <div style="font-size: 12px; color: #92400e;">⏳ Pendentes</div>
@@ -1971,18 +1491,30 @@
                         <div style="font-size: 24px; font-weight: 700; color: #dc2626;">${overdueCount}</div>
                         <div style="font-size: 12px; color: #991b1b;">⚠️ Atrasados</div>
                     </div>
+                    <div style="background: #e0e7ff; padding: 16px; border-radius: 16px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #4f46e5;">${maintCount}</div>
+                        <div style="font-size: 12px; color: #3730a3;">🔧 Manutenções</div>
+                    </div>
                 </div>
 
                 ${hasOverdue ? `
-                <div style="margin-top: 16px; background: #fee2e2; padding: 16px; border-radius: 16px; border-left: 4px solid #dc2626;">
+                <div style="margin-top: 8px; background: #fee2e2; padding: 16px; border-radius: 16px; border-left: 4px solid #dc2626;">
                     <div style="font-size: 13px; font-weight: 600; color: #dc2626;">🔴 Débitos em atraso:</div>
                     <div style="font-size: 13px; color: #991b1b; margin-top: 4px;">${formatCurrency(totalOverdueAmount)} em débitos atrasados</div>
                     <div style="font-size: 11px; color: #991b1b; margin-top: 2px;">Multa de R$ ${FEE_PER_DAY.toFixed(2)} por dia de atraso (máx. ${MAX_FEE_DAYS} dias)</div>
                 </div>
                 ` : ''}
 
+                ${maintCount > 0 ? `
+                <div style="margin-top: 16px; background: #e0e7ff30; padding: 16px; border-radius: 16px; border-left: 4px solid #4f46e5;">
+                    <div style="font-size: 13px; font-weight: 600; color: #4f46e5;">🔧 Resumo de manutenções:</div>
+                    <div style="font-size: 13px; color: #3730a3; margin-top: 4px;">${maintCount} manutenção(ões) realizadas</div>
+                    <div style="font-size: 13px; color: #3730a3;">Total gasto: <strong>${formatCurrency(totalMaint)}</strong></div>
+                </div>
+                ` : ''}
+
                 <div style="margin-top: 16px; background: #f1f5f9; padding: 16px; border-radius: 16px; text-align: center; font-size: 12px; color: #64748b;">
-                    🚗 <strong>${vehicle.vehicle}</strong> • Placa <strong>${currentPlate}</strong>
+                    🚗 <strong>${v.vehicle}</strong> • Placa <strong>${currentPlate}</strong>
                 </div>
             `;
         }
@@ -1992,9 +1524,7 @@
             element.className = `alert alert-${type}`;
             element.innerHTML = message;
             element.style.display = 'block';
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 5000);
+            setTimeout(() => { element.style.display = 'none'; }, 5000);
         }
 
         function setExamplePlate(plate) {
@@ -2005,12 +1535,9 @@
         function updateDashboard(vehicle, plate) {
             currentVehicle = vehicle;
             currentPlate = plate;
-
             document.getElementById('plateDisplay').innerHTML = plate;
             document.getElementById('vehicleModel').innerHTML = vehicle.vehicle;
-
             updateSidebarVehicle(vehicle, plate);
-
             renderPageContent(currentPage);
         }
 
@@ -2019,21 +1546,10 @@
             let plate = document.getElementById('plateInput').value.trim();
             const alertDiv = document.getElementById('loginAlert');
             alertDiv.style.display = 'none';
-
-            if (!plate) {
-                showAlert(alertDiv, 'Informe a placa do veículo', 'error');
-                return;
-            }
-            if (!isValidPlate(plate)) {
-                showAlert(alertDiv, 'Formato inválido! Ex: ABC1234', 'error');
-                return;
-            }
-
+            if (!plate) { showAlert(alertDiv, 'Informe a placa do veículo', 'error'); return; }
+            if (!isValidPlate(plate)) { showAlert(alertDiv, 'Formato inválido! Ex: ABC1234', 'error'); return; }
             const vehicle = getVehicleData(plate);
-            if (!vehicle) {
-                showAlert(alertDiv, 'Veículo não encontrado', 'error');
-                return;
-            }
+            if (!vehicle) { showAlert(alertDiv, 'Veículo não encontrado', 'error'); return; }
 
             document.getElementById('loginScreen').style.opacity = '0';
             setTimeout(() => {
@@ -2062,27 +1578,20 @@
             updateSidebarVehicle(null, '');
             document.getElementById('statsGrid').innerHTML = '';
             document.getElementById('debtsContainer').innerHTML = '';
+            document.getElementById('maintenanceContainer').innerHTML = '';
             document.getElementById('historyContainer').innerHTML = '';
             document.getElementById('summaryContainer').innerHTML = '';
         }
 
         // ==================== EVENT LISTENERS ====================
-        document.getElementById('plateInput').addEventListener('keypress', e => {
-            if (e.key === 'Enter') handleLogin();
-        });
-
+        document.getElementById('plateInput').addEventListener('keypress', e => { if (e.key === 'Enter') handleLogin(); });
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 closeSidebar();
-                const modal = document.getElementById('pixModal');
-                if (modal.classList.contains('active')) closePixModal();
+                if (document.getElementById('pixModal').classList.contains('active')) closePixModal();
             }
         });
-
-        document.getElementById('pixModal').addEventListener('click', function(e) {
-            if (e.target === this) closePixModal();
-        });
-
+        document.getElementById('pixModal').addEventListener('click', function(e) { if (e.target === this) closePixModal(); });
         window.addEventListener('load', () => {
             document.getElementById('plateInput').focus();
             updateSidebarVehicle(null, '');
