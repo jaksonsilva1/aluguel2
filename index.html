@@ -4,16 +4,19 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="theme-color" content="#8b5cf6">
+    <meta name="theme-color" content="#0070f3">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>SuaveConsulta | Débitos Veiculares</title>
-  
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- ============================================================
-    ELEMENTOS DECORATIVOS
+    ELEMENTOS DECORATIVOS (BLOBS)
     ============================================================ -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -25,13 +28,14 @@
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
     <nav class="sidebar" id="sidebar">
-
         <!-- Cabeçalho da sidebar -->
         <div class="sidebar-header">
             <div class="sidebar-brand">
-                <div class="sidebar-logo">🚗</div>
+              <div class="sidebar-logo">
+    <img src="icon-aluguel.png" alt="Logo" style="width:100%; height:100%; object-fit:cover;">
+</div>
                 <div class="sidebar-brand-text">
-                    <h2>SuaveConsulta</h2>
+                    <h2>Suave<span>Consulta</span></h2>
                     <span>Débitos veiculares</span>
                 </div>
             </div>
@@ -51,33 +55,28 @@
         <nav class="sidebar-nav">
             <div class="sidebar-nav-label">Menu</div>
 
-            <!-- Visão Geral -->
             <button class="sidebar-nav-item" data-page="overview" onclick="navigateTo('overview')">
                 <span class="nav-icon">📊</span>
                 <span>Visão Geral</span>
             </button>
 
-            <!-- Débitos -->
             <button class="sidebar-nav-item active" data-page="debts" onclick="navigateTo('debts')">
                 <span class="nav-icon">📌</span>
                 <span>Débitos</span>
                 <span class="nav-badge" id="sidebarDebtBadge">0</span>
             </button>
 
-            <!-- MANUTENÇÕES -->
             <button class="sidebar-nav-item" data-page="maintenance" onclick="navigateTo('maintenance')">
                 <span class="nav-icon">🔧</span>
                 <span>Manutenções</span>
                 <span class="nav-badge" id="sidebarMaintenanceBadge">0</span>
             </button>
 
-            <!-- Histórico -->
             <button class="sidebar-nav-item" data-page="history" onclick="navigateTo('history')">
                 <span class="nav-icon">📜</span>
                 <span>Histórico</span>
             </button>
 
-            <!-- Resumo -->
             <button class="sidebar-nav-item" data-page="summary" onclick="navigateTo('summary')">
                 <span class="nav-icon">📈</span>
                 <span>Resumo</span>
@@ -85,14 +84,12 @@
 
             <div class="sidebar-nav-label" style="margin-top: 12px;">Ajuda</div>
 
-            <!-- Ajuda -->
             <button class="sidebar-nav-item" onclick="showHelp()">
                 <span class="nav-icon">❓</span>
                 <span>Ajuda</span>
                 <span class="nav-arrow">→</span>
             </button>
 
-            <!-- Sobre -->
             <button class="sidebar-nav-item" onclick="showAbout()">
                 <span class="nav-icon">ℹ️</span>
                 <span>Sobre</span>
@@ -119,10 +116,10 @@
         ============================================================ -->
         <div id="loginScreen" class="login-card soft-card">
             <div class="logo">
-                <span>🚗</span>
-            </div>
-            <h1>SuaveConsulta</h1>
-            <div class="tagline">Consulte débitos do seu veículo</div>
+    <img src="icon-aluguel.png" alt="Logo" style="width:100%; height:100%; object-fit:cover;">
+</div>
+            <h1>Suave<span>Consulta</span></h1>
+            <div class="tagline">Consulte débitos do seu veículo instantaneamente</div>
 
             <div id="loginAlert" class="alert alert-error"></div>
 
@@ -140,7 +137,7 @@
 
             <div class="examples-box">
                 <div class="examples-title">
-                    <span>📋</span> Testar com exemplo
+                    <span>📋</span> Testar com exemplo rápido
                 </div>
                 <div class="chips">
                     <div class="chip" onclick="setExamplePlate('ABC1234')">ABC1234</div>
@@ -231,9 +228,11 @@
     ============================================================ -->
     <div id="pixModal" class="modal-overlay">
         <div class="modal-content">
-            <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" alt="PIX" class="pix-icon-large">
+            <div class="pix-icon-large">
+                <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" alt="PIX">
+            </div>
             <h4>Pagar com PIX</h4>
-            <p style="color: #64748b; margin-bottom: 8px; font-size: 13px;">Detalhes do débito:</p>
+            <p style="color: #7e8b9b; margin-bottom: 8px; font-size: 13px;">Detalhes do débito:</p>
 
             <div class="modal-debt-info" id="modalDebtInfo">
                 <div class="info-row">
@@ -265,14 +264,11 @@
                 <button class="btn-copy" onclick="copyPixCode()">📋 Copiar código</button>
                 <button class="btn-close" onclick="closePixModal()">Fechar</button>
             </div>
-            <p style="font-size: 10px; color: #94a3b8; margin-top: 14px;">Pagamento seguro via Mercado Pago</p>
+            <p style="font-size: 10px; color: #55698f; margin-top: 14px;">Pagamento seguro via Mercado Pago</p>
         </div>
     </div>
-    <script src="script.js"></script>
-    <!-- ============================================================
-    JAVASCRIPT
-    ============================================================ -->
-   
 
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
