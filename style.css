@@ -787,21 +787,21 @@
             border-bottom: none;
         }
 
-        /* Larguras fixas para colunas - TABELA DE DÉBITOS COM BOTÃO APENAS ÍCONE */
+        /* Larguras fixas para colunas - TABELA DE DÉBITOS - COLUNA VENCIMENTO AUMENTADA */
         .debt-table .col-due {
-            width: 15%;
+            width: 22% !important;
         }
         .debt-table .col-desc {
-            width: 30%;
+            width: 26% !important;
         }
         .debt-table .col-status {
-            width: 16%;
+            width: 14% !important;
         }
         .debt-table .col-value {
-            width: 27%;
+            width: 24% !important;
         }
         .debt-table .col-action {
-            width: 12%;
+            width: 14% !important;
             text-align: center;
         }
 
@@ -1291,21 +1291,21 @@
                 display: none;
             }
 
-            /* Ajustes nas tabelas para mobile - DÉBITOS */
+            /* Ajustes nas tabelas para mobile - DÉBITOS - COLUNA VENCIMENTO AUMENTADA */
             .debt-table .col-due {
-                width: 14%;
+                width: 20% !important;
             }
             .debt-table .col-desc {
-                width: 28%;
+                width: 24% !important;
             }
             .debt-table .col-status {
-                width: 16%;
+                width: 14% !important;
             }
             .debt-table .col-value {
-                width: 28%;
+                width: 26% !important;
             }
             .debt-table .col-action {
-                width: 14%;
+                width: 16% !important;
             }
 
             .history-table .col-date {
@@ -1441,20 +1441,21 @@
                 margin-bottom: 8px;
             }
 
+            /* Celular pequeno - COLUNA VENCIMENTO AUMENTADA */
             .debt-table .col-due {
-                width: 13%;
+                width: 20% !important;
             }
             .debt-table .col-desc {
-                width: 26%;
+                width: 22% !important;
             }
             .debt-table .col-status {
-                width: 15%;
+                width: 13% !important;
             }
             .debt-table .col-value {
-                width: 30%;
+                width: 27% !important;
             }
             .debt-table .col-action {
-                width: 16%;
+                width: 18% !important;
             }
 
             .history-table .col-date {
