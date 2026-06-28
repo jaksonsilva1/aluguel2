@@ -1,5 +1,5 @@
 /* ============================================================
-                   RESET E CONFIGURAÇÕES GERAIS
+                   RESET E CONFIGURAÇÕES GERAIS - DARK MODE
                    ============================================================ */
         * {
             margin: 0;
@@ -10,21 +10,22 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Poppins', 'Inter', sans-serif;
-            background: linear-gradient(145deg, #f0f4f8 0%, #e2e8f0 100%);
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
             min-height: 100vh;
             position: relative;
             touch-action: pan-y pinch-zoom;
             overflow-x: hidden;
+            color: #e2e8f0;
         }
 
         /* ============================================================
-                   ELEMENTOS DECORATIVOS (BLOBS)
+                   ELEMENTOS DECORATIVOS (BLOBS) - DARK
                    ============================================================ */
         .blob {
             position: fixed;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.4;
+            opacity: 0.25;
             z-index: 0;
             pointer-events: none;
         }
@@ -34,7 +35,7 @@
             right: -100px;
             width: 300px;
             height: 300px;
-            background: #a78bfa;
+            background: #6d28d9;
         }
 
         .blob-2 {
@@ -42,7 +43,7 @@
             left: -100px;
             width: 250px;
             height: 250px;
-            background: #6ee7b7;
+            background: #0d9488;
         }
 
         .blob-3 {
@@ -50,22 +51,21 @@
             left: 50%;
             width: 200px;
             height: 200px;
-            background: #fde68a;
+            background: #b45309;
             transform: translate(-50%, -50%);
         }
 
         /* ============================================================
-                   SIDEBAR (MENU LATERAL)
+                   SIDEBAR (MENU LATERAL) - DARK
                    ============================================================ */
-        /* Overlay para fechar a sidebar ao clicar fora */
         .sidebar-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
             z-index: 999;
             display: none;
             animation: fadeIn 0.3s ease;
@@ -75,7 +75,6 @@
             display: block;
         }
 
-        /* Container da sidebar */
         .sidebar {
             position: fixed;
             top: 0;
@@ -83,9 +82,9 @@
             width: 300px;
             max-width: 85vw;
             height: 100vh;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(15, 23, 42, 0.98);
             backdrop-filter: blur(20px);
-            box-shadow: 4px 0 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 0 40px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
@@ -93,16 +92,16 @@
             padding: 24px 0 20px 0;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            border-right: 1px solid #334155;
         }
 
         .sidebar.open {
             left: 0;
         }
 
-        /* Cabeçalho da sidebar */
         .sidebar-header {
             padding: 0 20px 20px 20px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #334155;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -117,20 +116,20 @@
         .sidebar-logo {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #8b5cf6, #6ee7b7);
+            background: linear-gradient(135deg, #8b5cf6, #0d9488);
             border-radius: 16px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
             flex-shrink: 0;
         }
 
         .sidebar-brand-text h2 {
             font-size: 18px;
             font-weight: 700;
-            background: linear-gradient(135deg, #4c1d95, #0f766e);
+            background: linear-gradient(135deg, #a78bfa, #2dd4bf);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -139,7 +138,7 @@
 
         .sidebar-brand-text span {
             font-size: 11px;
-            color: #94a3b8;
+            color: #64748b;
             font-weight: 500;
         }
 
@@ -158,22 +157,21 @@
             transform: scale(0.9);
         }
 
-        /* Informações do veículo na sidebar */
         .sidebar-vehicle {
             padding: 16px 20px;
-            background: #f8fafc;
+            background: #1e293b;
             margin: 16px 16px 12px 16px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #334155;
         }
 
         .sidebar-vehicle-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+            background: linear-gradient(135deg, #312e81, #1e1b4b);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -189,7 +187,7 @@
 
         .sidebar-vehicle-info .model {
             font-weight: 600;
-            color: #1e293b;
+            color: #e2e8f0;
             font-size: 14px;
             white-space: nowrap;
             overflow: hidden;
@@ -200,11 +198,10 @@
             font-family: 'Courier New', monospace;
             font-size: 13px;
             font-weight: 700;
-            color: #475569;
+            color: #94a3b8;
             letter-spacing: 1.5px;
         }
 
-        /* Navegação da sidebar */
         .sidebar-nav {
             flex: 1;
             padding: 8px 12px;
@@ -213,7 +210,7 @@
         .sidebar-nav-label {
             font-size: 11px;
             font-weight: 600;
-            color: #94a3b8;
+            color: #64748b;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             padding: 8px 12px 8px 12px;
@@ -225,7 +222,7 @@
             gap: 12px;
             padding: 12px 16px;
             border-radius: 16px;
-            color: #475569;
+            color: #94a3b8;
             font-weight: 500;
             font-size: 14px;
             cursor: pointer;
@@ -245,11 +242,11 @@
         }
 
         .sidebar-nav-item:hover {
-            background: #f1f5f9;
+            background: #1e293b;
         }
 
         .sidebar-nav-item.active {
-            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            background: linear-gradient(135deg, #6d28d9, #7c3aed);
             color: white;
             box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
         }
@@ -263,8 +260,8 @@
 
         .sidebar-nav-item .nav-badge {
             margin-left: auto;
-            background: #fee2e2;
-            color: #dc2626;
+            background: #450a0a;
+            color: #f87171;
             padding: 2px 10px;
             border-radius: 20px;
             font-size: 11px;
@@ -272,34 +269,33 @@
         }
 
         .sidebar-nav-item.active .nav-badge {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
         }
 
         .sidebar-nav-item .nav-arrow {
             margin-left: auto;
             font-size: 12px;
-            color: #94a3b8;
+            color: #64748b;
         }
 
         .sidebar-nav-item.active .nav-arrow {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Rodapé da sidebar */
         .sidebar-footer {
             padding: 16px 20px;
-            border-top: 1px solid #f1f5f9;
+            border-top: 1px solid #334155;
             margin-top: auto;
         }
 
         .sidebar-footer .btn-logout {
             width: 100%;
             padding: 12px;
-            background: #f1f5f9;
+            background: #1e293b;
             border: none;
             border-radius: 16px;
-            color: #64748b;
+            color: #94a3b8;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
@@ -314,19 +310,19 @@
 
         .sidebar-footer .btn-logout:active {
             transform: scale(0.97);
-            background: #e2e8f0;
+            background: #334155;
         }
 
         .sidebar-version {
             text-align: center;
             font-size: 10px;
-            color: #cbd5e1;
+            color: #475569;
             margin-top: 12px;
             letter-spacing: 0.3px;
         }
 
         /* ============================================================
-                   CONTEÚDO PRINCIPAL
+                   CONTEÚDO PRINCIPAL - DARK
                    ============================================================ */
         .main-content {
             padding: 16px;
@@ -337,17 +333,17 @@
             transition: all 0.3s ease;
         }
 
-        /* Cards com fundo suave */
         .soft-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(30, 41, 59, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 32px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+            border: 1px solid #334155;
         }
 
         /* ============================================================
-                   TELA DE LOGIN
+                   TELA DE LOGIN - DARK
                    ============================================================ */
         .login-card {
             max-width: 500px;
@@ -359,13 +355,13 @@
         .logo {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #8b5cf6, #6ee7b7);
+            background: linear-gradient(135deg, #8b5cf6, #0d9488);
             border-radius: 28px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
         }
 
         .logo span {
@@ -375,7 +371,7 @@
         h1 {
             font-size: 28px;
             font-weight: 700;
-            background: linear-gradient(135deg, #4c1d95, #0f766e);
+            background: linear-gradient(135deg, #a78bfa, #2dd4bf);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -384,15 +380,14 @@
         }
 
         .tagline {
-            color: #64748b;
+            color: #94a3b8;
             font-size: 13px;
             margin-bottom: 28px;
         }
 
-        /* Botão hambúrguer (visível em todas as telas) */
         .hamburger-btn {
-            background: white;
-            border: 1px solid #e2e8f0;
+            background: #1e293b;
+            border: 1px solid #334155;
             border-radius: 16px;
             padding: 10px 16px;
             cursor: pointer;
@@ -400,17 +395,17 @@
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            color: #475569;
+            color: #e2e8f0;
             transition: all 0.2s;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             gap: 8px;
         }
 
         .hamburger-btn:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
+            background: #334155;
+            border-color: #475569;
         }
 
         .hamburger-btn:active {
@@ -420,10 +415,9 @@
         .hamburger-btn .btn-label {
             font-size: 14px;
             font-weight: 500;
-            color: #475569;
+            color: #e2e8f0;
         }
 
-        /* Campos de entrada */
         .input-group {
             margin-bottom: 20px;
             text-align: left;
@@ -432,7 +426,7 @@
         .input-group label {
             display: block;
             margin-bottom: 8px;
-            color: #334155;
+            color: #cbd5e1;
             font-weight: 500;
             font-size: 13px;
         }
@@ -447,35 +441,39 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 18px;
-            color: #94a3b8;
+            color: #64748b;
         }
 
         .input-wrapper input {
             width: 100%;
             padding: 16px 16px 16px 48px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #334155;
             border-radius: 24px;
             font-size: 18px;
             transition: all 0.3s;
-            background: white;
+            background: #0f172a;
             font-family: monospace;
             letter-spacing: 2px;
             text-transform: uppercase;
             -webkit-appearance: none;
             appearance: none;
+            color: #e2e8f0;
         }
 
         .input-wrapper input:focus {
             outline: none;
             border-color: #8b5cf6;
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
         }
 
-        /* Botão primário */
+        .input-wrapper input::placeholder {
+            color: #475569;
+        }
+
         .btn-primary {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #8b5cf6, #6ee7b7);
+            background: linear-gradient(135deg, #8b5cf6, #0d9488);
             border: none;
             border-radius: 28px;
             color: white;
@@ -496,16 +494,16 @@
             transition: transform 0.05s;
         }
 
-        /* Exemplos de placas */
         .examples-box {
             margin-top: 28px;
             padding: 16px;
-            background: #f8fafc;
+            background: #1e293b;
             border-radius: 24px;
+            border: 1px solid #334155;
         }
 
         .examples-title {
-            color: #64748b;
+            color: #94a3b8;
             font-size: 12px;
             margin-bottom: 10px;
             display: flex;
@@ -523,14 +521,14 @@
 
         .chip {
             padding: 10px 18px;
-            background: white;
-            border: 1px solid #e2e8f0;
+            background: #0f172a;
+            border: 1px solid #334155;
             border-radius: 40px;
             font-size: 14px;
             font-family: monospace;
             cursor: pointer;
             transition: all 0.2s;
-            color: #475569;
+            color: #cbd5e1;
             font-weight: 500;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
@@ -538,12 +536,18 @@
 
         .chip:active {
             transform: scale(0.95);
-            background: #8b5cf6;
+            background: #7c3aed;
             color: white;
+            border-color: #7c3aed;
+        }
+
+        .chip:hover {
+            background: #1e293b;
+            border-color: #475569;
         }
 
         /* ============================================================
-                   ALERTAS
+                   ALERTAS - DARK
                    ============================================================ */
         .alert {
             padding: 14px 16px;
@@ -575,25 +579,25 @@
         }
 
         .alert-error {
-            background: #fee2e2;
-            color: #dc2626;
+            background: #450a0a;
+            color: #f87171;
             border-left: 4px solid #dc2626;
         }
 
         .alert-success {
-            background: #d1fae5;
-            color: #059669;
+            background: #052e16;
+            color: #34d399;
             border-left: 4px solid #059669;
         }
 
         .alert-info {
-            background: #dbeafe;
-            color: #2563eb;
+            background: #172554;
+            color: #60a5fa;
             border-left: 4px solid #2563eb;
         }
 
         /* ============================================================
-                   DASHBOARD
+                   DASHBOARD - DARK
                    ============================================================ */
         .dashboard {
             display: none;
@@ -604,10 +608,9 @@
             display: block;
         }
 
-        /* Cabeçalho do dashboard */
         .dashboard-header {
             padding: 16px 20px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #334155;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -629,30 +632,30 @@
         }
 
         .vehicle-model-right {
-            color: #475569;
+            color: #94a3b8;
             font-size: 13px;
             font-weight: 500;
         }
 
         .plate-small {
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            background: linear-gradient(135deg, #1e293b, #334155);
             padding: 6px 14px;
             border-radius: 24px;
             font-family: 'Courier New', monospace;
             font-size: 15px;
             font-weight: 700;
             letter-spacing: 2px;
-            color: #1e293b;
+            color: #e2e8f0;
             display: inline-block;
-            border: 1px solid #94a3b8;
+            border: 1px solid #475569;
         }
 
         .btn-secondary {
             padding: 10px 20px;
-            background: white;
-            border: 1px solid #e2e8f0;
+            background: #1e293b;
+            border: 1px solid #334155;
             border-radius: 40px;
-            color: #64748b;
+            color: #94a3b8;
             cursor: pointer;
             transition: all 0.2s;
             font-size: 14px;
@@ -667,16 +670,16 @@
 
         .btn-secondary:active {
             transform: scale(0.97);
-            background: #f1f5f9;
+            background: #334155;
         }
 
         .btn-secondary:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
+            background: #334155;
+            border-color: #475569;
         }
 
         /* ============================================================
-                   PÁGINAS (SECTIONS)
+                   PÁGINAS (SECTIONS) - DARK
                    ============================================================ */
         .page {
             display: none;
@@ -691,18 +694,18 @@
         .page-title {
             font-size: 20px;
             font-weight: 700;
-            color: #1e293b;
+            color: #f1f5f9;
             margin-bottom: 4px;
         }
 
         .page-subtitle {
-            color: #94a3b8;
+            color: #64748b;
             font-size: 13px;
             margin-bottom: 20px;
         }
 
         /* ============================================================
-                   GRID DE ESTATÍSTICAS
+                   GRID DE ESTATÍSTICAS - DARK
                    ============================================================ */
         .stats-grid {
             display: grid;
@@ -711,11 +714,11 @@
         }
 
         .stat-item {
-            background: white;
+            background: #1e293b;
             padding: 16px;
             border-radius: 24px;
             transition: all 0.2s;
-            border: 1px solid #f1f5f9;
+            border: 1px solid #334155;
             text-align: center;
         }
 
@@ -731,31 +734,31 @@
         .stat-value {
             font-size: 24px;
             font-weight: 700;
-            color: #1e293b;
+            color: #f1f5f9;
             margin-bottom: 4px;
         }
 
         .stat-label {
             font-size: 11px;
-            color: #94a3b8;
+            color: #64748b;
         }
 
         .stat-value.debt {
-            color: #dc2626;
+            color: #f87171;
         }
 
         .stat-value.success {
-            color: #059669;
+            color: #34d399;
         }
 
         /* ============================================================
-                   TABELAS - SEM ROLAGEM HORIZONTAL
+                   TABELAS - DARK
                    ============================================================ */
         .table-container {
             overflow: visible;
-            background: white;
+            background: #1e293b;
             border-radius: 20px;
-            border: 1px solid #f1f5f9;
+            border: 1px solid #334155;
             width: 100%;
         }
 
@@ -768,17 +771,17 @@
         th {
             text-align: left;
             padding: 12px 10px;
-            color: #64748b;
+            color: #94a3b8;
             font-weight: 500;
             font-size: 11px;
-            background: #fafcff;
-            border-bottom: 1px solid #e2e8f0;
+            background: #0f172a;
+            border-bottom: 1px solid #334155;
         }
 
         td {
             padding: 10px 10px;
-            color: #334155;
-            border-bottom: 1px solid #f1f5f9;
+            color: #cbd5e1;
+            border-bottom: 1px solid #1e293b;
             font-size: 12px;
             word-wrap: break-word;
         }
@@ -787,7 +790,11 @@
             border-bottom: none;
         }
 
-        /* Larguras fixas para colunas - TABELA DE DÉBITOS - COLUNA VENCIMENTO AUMENTADA */
+        tr:hover td {
+            background: #0f172a;
+        }
+
+        /* Larguras fixas para colunas - TABELA DE DÉBITOS */
         .debt-table .col-due {
             width: 22% !important;
         }
@@ -821,7 +828,6 @@
             width: 12%;
         }
 
-        /* Colunas da tabela de manutenções */
         .maintenance-table .col-date {
             width: 16%;
         }
@@ -838,7 +844,7 @@
             width: 18%;
         }
 
-        /* Badges */
+        /* Badges - DARK */
         .badge {
             display: inline-block;
             padding: 3px 10px;
@@ -849,28 +855,27 @@
         }
 
         .badge-pending {
-            background: #fef3c7;
-            color: #d97706;
+            background: #451a03;
+            color: #fbbf24;
         }
 
         .badge-overdue {
-            background: #fee2e2;
-            color: #dc2626;
+            background: #450a0a;
+            color: #f87171;
         }
 
         .badge-paid {
-            background: #d1fae5;
-            color: #059669;
+            background: #052e16;
+            color: #34d399;
         }
 
         .badge-maintenance {
-            background: #e0e7ff;
-            color: #4f46e5;
+            background: #1e1b4b;
+            color: #818cf8;
         }
 
-        /* Botão PIX - apenas ícone */
         .btn-pix {
-            background: linear-gradient(135deg, #00a86b, #0095d9);
+            background: linear-gradient(135deg, #0d9488, #0891b2);
             border: none;
             padding: 8px 10px;
             border-radius: 40px;
@@ -892,7 +897,7 @@
         }
 
         .btn-pix:hover {
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
         .pix-icon-img {
@@ -904,7 +909,7 @@
 
         .fee-info {
             font-size: 9px;
-            color: #dc2626;
+            color: #f87171;
             margin-top: 2px;
             display: block;
         }
@@ -912,15 +917,14 @@
         .original-amount {
             text-decoration: line-through;
             font-size: 10px;
-            color: #94a3b8;
+            color: #64748b;
             margin-right: 4px;
         }
 
-        /* Estado vazio */
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #94a3b8;
+            color: #64748b;
             font-size: 14px;
         }
 
@@ -930,7 +934,6 @@
             margin-bottom: 12px;
         }
 
-        /* Resumo de estatísticas */
         .stats-summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -939,35 +942,35 @@
         }
 
         .stats-summary-card {
-            background: white;
+            background: #1e293b;
             padding: 20px;
             border-radius: 24px;
-            border: 1px solid #f1f5f9;
+            border: 1px solid #334155;
             text-align: center;
         }
 
         .stats-summary-card .number {
             font-size: 28px;
             font-weight: 700;
-            color: #1e293b;
+            color: #f1f5f9;
         }
 
         .stats-summary-card .label {
             font-size: 12px;
-            color: #94a3b8;
+            color: #64748b;
             margin-top: 4px;
         }
 
         .stats-summary-card .number.debt {
-            color: #dc2626;
+            color: #f87171;
         }
 
         .stats-summary-card .number.success {
-            color: #059669;
+            color: #34d399;
         }
 
         /* ============================================================
-                   MODAL PIX - MOBILE OTIMIZADO
+                   MODAL PIX - DARK
                    ============================================================ */
         .modal-overlay {
             position: fixed;
@@ -975,8 +978,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
             display: none;
             align-items: center;
             justify-content: center;
@@ -990,7 +993,7 @@
         }
 
         .modal-content {
-            background: white;
+            background: #1e293b;
             border-radius: 32px;
             max-width: 450px;
             width: 100%;
@@ -1000,6 +1003,7 @@
             max-height: 90vh;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            border: 1px solid #334155;
         }
 
         @keyframes slideUp {
@@ -1022,33 +1026,33 @@
 
         .modal-content h4 {
             font-size: 22px;
-            color: #1e293b;
+            color: #f1f5f9;
             margin-bottom: 8px;
         }
 
         .modal-amount {
             font-size: 28px;
             font-weight: 700;
-            color: #00a86b;
+            color: #2dd4bf;
             margin: 16px 0;
         }
 
         .modal-fee-detail {
-            background: #fef3c7;
+            background: #451a03;
             padding: 12px;
             border-radius: 16px;
             margin: 12px 0;
             font-size: 12px;
-            color: #d97706;
+            color: #fbbf24;
         }
 
         .modal-debt-info {
-            background: #f8fafc;
+            background: #0f172a;
             padding: 12px;
             border-radius: 16px;
             margin: 8px 0 12px 0;
             font-size: 13px;
-            color: #475569;
+            color: #cbd5e1;
             text-align: left;
             display: flex;
             flex-direction: column;
@@ -1062,17 +1066,17 @@
         }
 
         .modal-debt-info .info-label {
-            color: #94a3b8;
+            color: #64748b;
             font-weight: 500;
         }
 
         .modal-debt-info .info-value {
-            color: #1e293b;
+            color: #f1f5f9;
             font-weight: 600;
         }
 
         .qrcode-container {
-            background: white;
+            background: #0f172a;
             padding: 16px;
             border-radius: 20px;
             margin: 16px 0;
@@ -1080,13 +1084,13 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #334155;
         }
 
         .qrcode-placeholder {
             width: 180px;
             height: 180px;
-            background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+            background: linear-gradient(135deg, #1e293b, #0f172a);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -1100,8 +1104,8 @@
         .qrcode-placeholder .loading-spinner {
             width: 36px;
             height: 36px;
-            border: 3px solid #e2e8f0;
-            border-top-color: #00a86b;
+            border: 3px solid #334155;
+            border-top-color: #2dd4bf;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -1113,7 +1117,7 @@
         }
 
         .pix-code {
-            background: #f1f5f9;
+            background: #0f172a;
             padding: 14px;
             border-radius: 16px;
             font-family: monospace;
@@ -1121,14 +1125,15 @@
             word-break: break-all;
             margin: 16px 0;
             text-align: left;
+            color: #cbd5e1;
         }
 
         .btn-close {
-            background: #e2e8f0;
+            background: #334155;
             border: none;
             padding: 12px 20px;
             border-radius: 40px;
-            color: #475569;
+            color: #cbd5e1;
             font-weight: 600;
             cursor: pointer;
             margin-top: 8px;
@@ -1137,7 +1142,7 @@
         }
 
         .btn-copy {
-            background: #00a86b;
+            background: #0d9488;
             border: none;
             padding: 12px 20px;
             border-radius: 40px;
@@ -1155,10 +1160,9 @@
         }
 
         /* ============================================================
-                   RESPONSIVIDADE - DASHBOARD AMPLIADO NO MOBILE
+                   RESPONSIVIDADE - DARK
                    ============================================================ */
 
-        /* Tablets e celulares grandes */
         @media (max-width: 768px) {
             body {
                 padding: 6px;
@@ -1176,13 +1180,11 @@
                 font-size: 24px;
             }
 
-            /* Dashboard ocupa toda a largura */
             .soft-card {
                 border-radius: 20px;
                 margin: 0;
             }
 
-            /* Grid de estatísticas - 3 colunas */
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 6px;
@@ -1272,7 +1274,6 @@
                 height: 150px;
             }
 
-            /* Em mobile, esconde o texto do botão menu */
             .hamburger-btn .btn-label {
                 display: none;
             }
@@ -1291,7 +1292,6 @@
                 display: none;
             }
 
-            /* Ajustes nas tabelas para mobile - DÉBITOS - COLUNA VENCIMENTO AUMENTADA */
             .debt-table .col-due {
                 width: 20% !important;
             }
@@ -1355,13 +1355,11 @@
                 font-size: 9px;
             }
 
-            /* Ajuste no container da tabela */
             .table-container {
                 border-radius: 16px;
                 overflow: hidden;
             }
 
-            /* Resumo - cards ocupam espaço */
             .stats-summary-card {
                 padding: 14px 10px;
                 border-radius: 16px;
@@ -1376,7 +1374,6 @@
             }
         }
 
-        /* Celulares pequenos - DASHBOARD OCUPA TELA INTEIRA */
         @media (max-width: 480px) {
             body {
                 padding: 4px;
@@ -1441,7 +1438,6 @@
                 margin-bottom: 8px;
             }
 
-            /* Celular pequeno - COLUNA VENCIMENTO AUMENTADA */
             .debt-table .col-due {
                 width: 20% !important;
             }
@@ -1536,14 +1532,12 @@
             }
         }
 
-        /* Desktop: botão menu com texto visível */
         @media (min-width: 769px) {
             .hamburger-btn .btn-label {
                 display: inline;
             }
         }
 
-        /* Prevenir zoom em inputs no iOS */
         @media (max-width: 768px) {
             input,
             button,
