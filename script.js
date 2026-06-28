@@ -1,5 +1,4 @@
-
-        // ============================================================
+// ============================================================
         // CONFIGURAÇÕES
         // ============================================================
         const FEE_PER_DAY = 6.60; // Multa por dia de atraso
@@ -437,7 +436,7 @@
             `;
         }
 
-        /** Renderiza a página de débitos */
+        /** Renderiza a página de débitos - COM BOTÃO PIX APENAS ÍCONE */
         function renderDebts() {
             const v = currentVehicle;
             const container = document.getElementById('debtsContainer');
@@ -456,7 +455,7 @@
                             <th class="col-desc">Descrição</th>
                             <th class="col-status">Status</th>
                             <th class="col-value">Valor</th>
-                            <th class="col-action">Ação</th>
+                            <th class="col-action">Pagar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -486,7 +485,7 @@
                         <td class="col-value">${originalDisplay}<strong>${formatCurrency(displayAmount)}</strong>${feeDisplay}</td>
                         <td class="col-action">
                             <button class="btn-pix" onclick='openPixModal(${JSON.stringify(debt)}, "${currentPlate}")'>
-                                <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img"> PIX
+                                <img src="https://img.icons8.com/?size=100&id=Dk4sj0EM4b20&format=png&color=000000" class="pix-icon-img" alt="PIX">
                             </button>
                         </td>
                     </tr>
@@ -816,4 +815,3 @@
             document.getElementById('plateInput').focus();
             updateSidebarVehicle(null, '');
         });
-    

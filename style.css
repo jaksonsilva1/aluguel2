@@ -1,5 +1,4 @@
-
-        /* ============================================================
+/* ============================================================
                    RESET E CONFIGURAÇÕES GERAIS
                    ============================================================ */
         * {
@@ -788,21 +787,22 @@
             border-bottom: none;
         }
 
-        /* Larguras fixas para colunas - EVITA ROLAGEM */
+        /* Larguras fixas para colunas - TABELA DE DÉBITOS COM BOTÃO APENAS ÍCONE */
         .debt-table .col-due {
-            width: 18%;
+            width: 15%;
         }
         .debt-table .col-desc {
-            width: 27%;
+            width: 30%;
         }
         .debt-table .col-status {
             width: 16%;
         }
         .debt-table .col-value {
-            width: 22%;
+            width: 27%;
         }
         .debt-table .col-action {
-            width: 17%;
+            width: 12%;
+            text-align: center;
         }
 
         .history-table .col-date {
@@ -868,34 +868,38 @@
             color: #4f46e5;
         }
 
-        /* Botão PIX */
+        /* Botão PIX - apenas ícone */
         .btn-pix {
             background: linear-gradient(135deg, #00a86b, #0095d9);
             border: none;
-            padding: 6px 12px;
+            padding: 8px 10px;
             border-radius: 40px;
             color: white;
-            font-weight: 600;
-            font-size: 11px;
             cursor: pointer;
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            font-family: inherit;
+            justify-content: center;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
-            white-space: nowrap;
+            font-family: inherit;
+            min-width: 36px;
+            min-height: 36px;
         }
 
         .btn-pix:active {
-            transform: scale(0.95);
+            transform: scale(0.92);
+        }
+
+        .btn-pix:hover {
+            opacity: 0.9;
         }
 
         .pix-icon-img {
-            width: 14px;
-            height: 14px;
+            width: 22px;
+            height: 22px;
             filter: brightness(0) invert(1);
+            display: block;
         }
 
         .fee-info {
@@ -1151,55 +1155,68 @@
         }
 
         /* ============================================================
-                   RESPONSIVIDADE
+                   RESPONSIVIDADE - DASHBOARD AMPLIADO NO MOBILE
                    ============================================================ */
 
         /* Tablets e celulares grandes */
         @media (max-width: 768px) {
             body {
-                padding: 12px;
+                padding: 6px;
             }
 
             .main-content {
-                padding: 8px;
+                padding: 4px;
             }
 
             .login-card {
-                padding: 28px 20px;
+                padding: 24px 16px;
             }
 
             h1 {
-                font-size: 26px;
+                font-size: 24px;
             }
 
+            /* Dashboard ocupa toda a largura */
+            .soft-card {
+                border-radius: 20px;
+                margin: 0;
+            }
+
+            /* Grid de estatísticas - 3 colunas */
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
+                gap: 6px;
             }
 
             .stats-summary-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                gap: 8px;
             }
 
             .stat-item {
-                padding: 10px 6px;
+                padding: 12px 6px;
+                border-radius: 16px;
             }
 
             .stat-value {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .stat-icon {
-                font-size: 18px;
+                font-size: 20px;
                 margin-bottom: 4px;
             }
 
+            .stat-label {
+                font-size: 10px;
+            }
+
             .dashboard-header {
-                padding: 12px 16px;
+                padding: 10px 14px;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
+                gap: 8px;
             }
 
             .vehicle-info-right {
@@ -1213,29 +1230,32 @@
             .plate-small {
                 font-size: 12px;
                 padding: 4px 10px;
+                letter-spacing: 1.5px;
             }
 
             .btn-secondary {
-                padding: 8px 14px;
+                padding: 8px 12px;
                 font-size: 12px;
             }
 
             .btn-pix {
-                padding: 5px 10px;
-                font-size: 10px;
+                padding: 6px 8px;
+                min-width: 32px;
+                min-height: 32px;
+                border-radius: 30px;
             }
 
             .pix-icon-img {
-                width: 12px;
-                height: 12px;
+                width: 18px;
+                height: 18px;
             }
 
             .page {
-                padding: 12px;
+                padding: 12px 8px;
             }
 
             .page-title {
-                font-size: 17px;
+                font-size: 18px;
             }
 
             .page-subtitle {
@@ -1258,7 +1278,8 @@
             }
 
             .hamburger-btn {
-                padding: 10px 12px;
+                padding: 8px 10px;
+                border-radius: 12px;
             }
 
             .sidebar {
@@ -1270,21 +1291,21 @@
                 display: none;
             }
 
-            /* Ajustes nas tabelas para mobile */
+            /* Ajustes nas tabelas para mobile - DÉBITOS */
             .debt-table .col-due {
-                width: 16%;
+                width: 14%;
             }
             .debt-table .col-desc {
-                width: 25%;
+                width: 28%;
             }
             .debt-table .col-status {
-                width: 15%;
+                width: 16%;
             }
             .debt-table .col-value {
-                width: 24%;
+                width: 28%;
             }
             .debt-table .col-action {
-                width: 20%;
+                width: 14%;
             }
 
             .history-table .col-date {
@@ -1333,29 +1354,107 @@
             .original-amount {
                 font-size: 9px;
             }
+
+            /* Ajuste no container da tabela */
+            .table-container {
+                border-radius: 16px;
+                overflow: hidden;
+            }
+
+            /* Resumo - cards ocupam espaço */
+            .stats-summary-card {
+                padding: 14px 10px;
+                border-radius: 16px;
+            }
+
+            .stats-summary-card .number {
+                font-size: 22px;
+            }
+
+            .stats-summary-card .label {
+                font-size: 11px;
+            }
         }
 
-        /* Celulares pequenos */
+        /* Celulares pequenos - DASHBOARD OCUPA TELA INTEIRA */
         @media (max-width: 480px) {
+            body {
+                padding: 4px;
+            }
+
+            .main-content {
+                padding: 2px;
+            }
+
+            .soft-card {
+                border-radius: 16px;
+                margin: 0;
+            }
+
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 6px;
+                gap: 4px;
+            }
+
+            .stat-item {
+                padding: 10px 4px;
+                border-radius: 12px;
+            }
+
+            .stat-value {
+                font-size: 18px;
+            }
+
+            .stat-icon {
+                font-size: 18px;
+            }
+
+            .stat-label {
+                font-size: 9px;
+            }
+
+            .dashboard-header {
+                padding: 8px 10px;
+                border-radius: 16px 16px 0 0;
+            }
+
+            .vehicle-model-right {
+                font-size: 10px;
+            }
+
+            .plate-small {
+                font-size: 10px;
+                padding: 3px 8px;
+                letter-spacing: 1px;
+            }
+
+            .page {
+                padding: 8px 4px;
+            }
+
+            .page-title {
+                font-size: 16px;
+            }
+
+            .page-subtitle {
+                font-size: 11px;
+                margin-bottom: 8px;
             }
 
             .debt-table .col-due {
-                width: 14%;
+                width: 13%;
             }
             .debt-table .col-desc {
-                width: 22%;
-            }
-            .debt-table .col-status {
-                width: 14%;
-            }
-            .debt-table .col-value {
                 width: 26%;
             }
+            .debt-table .col-status {
+                width: 15%;
+            }
+            .debt-table .col-value {
+                width: 30%;
+            }
             .debt-table .col-action {
-                width: 24%;
+                width: 16%;
             }
 
             .history-table .col-date {
@@ -1397,14 +1496,15 @@
             }
 
             .btn-pix {
-                padding: 4px 8px;
-                font-size: 9px;
-                gap: 2px;
+                padding: 4px 5px;
+                min-width: 26px;
+                min-height: 26px;
+                border-radius: 24px;
             }
 
             .pix-icon-img {
-                width: 10px;
-                height: 10px;
+                width: 15px;
+                height: 15px;
             }
 
             .badge {
@@ -1412,13 +1512,25 @@
                 padding: 2px 6px;
             }
 
-            .plate-small {
-                font-size: 10px;
-                padding: 3px 8px;
-                letter-spacing: 1px;
+            .table-container {
+                border-radius: 12px;
             }
 
-            .vehicle-model-right {
+            .stats-summary-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+
+            .stats-summary-card {
+                padding: 12px 8px;
+                border-radius: 12px;
+            }
+
+            .stats-summary-card .number {
+                font-size: 20px;
+            }
+
+            .stats-summary-card .label {
                 font-size: 10px;
             }
         }
