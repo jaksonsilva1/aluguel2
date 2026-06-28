@@ -1559,3 +1559,26 @@ tr:hover td {
         font-size: 16px;
     }
 }
+/* ============================================================
+   CLIQUE NO VEÍCULO - ABRE DÉBITOS
+   ============================================================ */
+
+.vehicle-model-right {
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.vehicle-model-right:hover {
+    color: #0070f3;
+}
+
+.vehicle-model-right:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+    .vehicle-model-right:active {
+        color: #0070f3;
+        opacity: 0.7;
+    }
+}

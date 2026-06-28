@@ -815,3 +815,35 @@
             document.getElementById('plateInput').focus();
             updateSidebarVehicle(null, '');
         });
+
+
+        // ============================================================
+// EVENTO PARA CLICAR NO VEÍCULO - ABRE DÉBITOS
+// ============================================================
+
+// Aguarda o DOM carregar para adicionar o evento
+document.addEventListener('DOMContentLoaded', function() {
+    // Adiciona evento de clique no nome do veículo (cabeçalho)
+    const vehicleModelElement = document.getElementById('vehicleModel');
+    if (vehicleModelElement) {
+        vehicleModelElement.style.cursor = 'pointer';
+        vehicleModelElement.addEventListener('click', function() {
+            // Navega para a página de débitos
+            navigateTo('debts');
+        });
+    }
+});
+// ============================================================
+// EVENTO PARA CLICAR NO VEÍCULO NA SIDEBAR - ABRE DÉBITOS
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarVehicle = document.getElementById('sidebarVehicle');
+    if (sidebarVehicle) {
+        sidebarVehicle.style.cursor = 'pointer';
+        sidebarVehicle.addEventListener('click', function() {
+            closeSidebar();
+            navigateTo('debts');
+        });
+    }
+});
